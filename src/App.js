@@ -1,10 +1,11 @@
 import './App.css';
-import Activity from './components/Activity'
+import ActivityContainer from './components/ActivityContainer'
 
 function App() {
   return (
     <div className="App">
-      <Activity/>
+      <h1>Main page</h1>
+      <ActivityContainer/>
     </div>
   );
 }
