@@ -3,11 +3,31 @@ const Members = db.members;
 const Op = db.Sequelize.Op;
 
 // Retrieve all Members from the database.
+
+/*
 exports.findAll = (req, res) => {
-    const title = req.query.title;
-    var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
+    //const title = req.query.title;
+    //var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
   
-    Members.findAll({ where: condition })
+    
+  Members.findAll({})
+      .then(data => {
+        res.send(data);
+      })
+      .catch(err => {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while retrieving members."
+        });
+      });
+  };*/
+
+
+  exports.findAll = (req, res) => {
+    const mem = req.query.mem;
+    //var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
+
+  Members.findAll()
       .then(data => {
         res.send(data);
       })

@@ -28,8 +28,9 @@ module.exports = (sequelize, Sequelize) => {
       phone: {
         type: Sequelize.STRING(50)
       }
+      
 
-    });
+    }, { timestamps:false });
   
     return Members;
   };
