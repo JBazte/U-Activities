@@ -3,6 +3,7 @@ module.exports = app => {
   
     var router = require("express").Router();
   
+    router.post("/", members.create);
     
     // Retrieve all Members
     router.get("/", members.findAll);
