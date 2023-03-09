@@ -1,7 +1,7 @@
 module.exports = {
     HOST: "suliserver.ddns.net",
-    USER: "adminUser",
-    PASSWORD: "1234Peperoni",
+    USER: "test",
+    PASSWORD: "1234Peperoni!",
     DB: "voluntariado",
     dialect: "mysql",
     pool: {
