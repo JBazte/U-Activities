@@ -68,7 +68,7 @@ exports.findOne = (req, res) => {
         res.send(data);
       } else {
         res.status(404).send({
-          message: `Cannot find a Member with id=${id}.`
+          message: "Cannot find a Member with id" + id
         });
       }
     })
@@ -78,6 +78,54 @@ exports.findOne = (req, res) => {
       });
     });
 };
+
+exports.update = (req, res) => {
+  const id = req.params.id;
+
+  Members.update(req.body, {
+    where: { id: id }
+  })
+    .then(num => {
+      if (num == 1) {
+        res.send({
+          message: "Member was updated successfully."
+        });
+      } else {
+        res.send({
+          message: `Cannot update member with id=${id}. Maybe Tutorial was not found or req.body is empty!`
+        });
+      }
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Error updating member with id=" + id
+      });
+    });
+};
+
+exports.deleteOne = (req, res) => {
+  const id = req.params.id;
+
+  Members.destroy({
+    where: { id: id }
+  })
+    .then(num => {
+      if (num == 1) {
+        res.send({
+          message: "Tutorial was deleted successfully!"
+        });
+      } else {
+        res.send({
+          message: "Cannot delete member with id=${id}."
+        });
+      }
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Could not delete member with id=" + id
+      });
+    });
+}
 
   
 
