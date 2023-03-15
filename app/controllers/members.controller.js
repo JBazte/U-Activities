@@ -116,7 +116,7 @@ exports.deleteOne = (req, res) => {
         });
       } else {
         res.send({
-          message: "Cannot delete member with id=${id}."
+          message: "Cannot delete member with id=" + id
         });
       }
     })
