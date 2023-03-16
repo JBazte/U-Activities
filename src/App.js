@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="App m-5">
       <h1>Main page</h1>
-      <ActivityContainer/>
+      <ActivityContainer />
     </div>
   );
 }
