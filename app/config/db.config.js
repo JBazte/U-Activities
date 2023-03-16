@@ -1,9 +1,11 @@
+require('dotenv').config();
+
 module.exports = {
-    HOST: "suliserver.ddns.net",
-    USER: "test",
-    PASSWORD: "1234Peperoni!",
-    DB: "voluntariado",
-    dialect: "mysql",
+    HOST: process.env.HOST,
+    USER: process.env.USER,
+    PASSWORD: process.env.PASSWORD,
+    DB: process.env.DB,
+    dialect: process.env.DIALECT,
     pool: {
       max: 5,
       min: 0,
