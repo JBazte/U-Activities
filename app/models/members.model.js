@@ -20,10 +20,17 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING(50)
       },
       email: {
-        type: Sequelize.STRING(50)
+        type: Sequelize.STRING(50),
+        validate: {
+          min: -90,
+          max: 90
+        }
       },
       password: {
-        type: Sequelize.STRING(50)
+        type: Sequelize.STRING(50),
+        validate: {
+          len: [8, 20]
+        }
       },
       phone: {
         type: Sequelize.STRING(50)
