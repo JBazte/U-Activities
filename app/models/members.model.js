@@ -21,7 +21,7 @@ module.exports = (sequelize, Sequelize) => {
         }
       },
       email: {
-        type: Sequelize.STRING(50),
+        type: Sequelize.STRING(65),
         validate: {
           validateString(value) {
             if (value === null || len > 50 || !isEmail) {
@@ -52,7 +52,8 @@ module.exports = (sequelize, Sequelize) => {
       }
       
 
-    }, { timestamps:false });
+    }, 
+    { timestamps:false });
   
     return Members;
   };
