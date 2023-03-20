@@ -1,5 +1,10 @@
 module.exports = (sequelize, Sequelize) => {
     const Sponsors = sequelize.define("sponsors", {
+      id: {
+        type: Sequelize.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+      },
       entity: {
         type: Sequelize.STRING(50),
         validate: {
@@ -42,7 +47,9 @@ module.exports = (sequelize, Sequelize) => {
       }
 
     }, 
-    { timestamps:false });
+    { 
+      timestamps:false 
+    });
   
     return Sponsors;
   };

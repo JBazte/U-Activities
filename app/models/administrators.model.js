@@ -1,5 +1,10 @@
 module.exports = (sequelize, Sequelize) => {
     const Administrators = sequelize.define("administrators", {
+        id: {
+            type: Sequelize.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
+        },
         user: {
             type: Sequelize.STRING(50),
             validate: {
@@ -34,5 +39,5 @@ module.exports = (sequelize, Sequelize) => {
     }, 
     { timestamps:false });
   
-    return Sponsors;
+    return Administrators;
   };

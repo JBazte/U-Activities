@@ -3,6 +3,11 @@ const Activities = require("../models/activities.model");
 
 module.exports = (sequelize, Sequelize) => {
     const Participation = sequelize.define("participation", {
+        id: {
+            type: Sequelize.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
+        },
         member: {
             type: Sequelize.INTEGER,
             references: {
@@ -16,7 +21,7 @@ module.exports = (sequelize, Sequelize) => {
                     }
                 }
             }
-        },
+       },
         activity: {
             type: Sequelize.INTEGER,
             references: {
@@ -35,8 +40,5 @@ module.exports = (sequelize, Sequelize) => {
     }, 
     { timestamps:false });
   
-    return Sponsors;
+    return Participation;
   };
-
-  Members.hasMany(Participation)
-  Activities.hasMany(Participation)

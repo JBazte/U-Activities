@@ -2,6 +2,11 @@ const Sponsors = require("../models/sponsors.model");
 
 module.exports = (sequelize, Sequelize) => {
     const Activities = sequelize.define("activities", {
+        id: {
+            type: Sequelize.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
+        },
         name: {
             type: Sequelize.STRING(50),
             validate: {
@@ -130,7 +135,5 @@ module.exports = (sequelize, Sequelize) => {
     }, 
     { timestamps:false });
   
-    return Sponsors;
+    return Activities;
   };
-
-  Sponsors.hasMany(Activities)

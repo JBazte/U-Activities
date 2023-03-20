@@ -2,6 +2,11 @@ const Members = require("../models/members.model");
 
 module.exports = (sequelize, Sequelize) => {
     const Preferences = sequelize.define("preferences", {
+        id: {
+            type: Sequelize.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
+        },
         category: {
             type: Sequelize.STRING(20),
             validate: {
@@ -60,12 +65,5 @@ module.exports = (sequelize, Sequelize) => {
     }, 
     { timestamps:false });
   
-    return Sponsors;
+    return Preferences;
   };
-
-  Members.hasOne(Preferences)
-
-  /*Members.hasOne(Preferences);
-  Preferences.belongsTo(Members, {
-    foreignKey: 'member'
-    });*/
