@@ -35,11 +35,51 @@ module.exports = (sequelize, Sequelize) => {
           }
         }
       },
+      bith_date:{
+        type: Sequelize.DATEONLY,
+        validate: {
+          validateString(value) {
+            if (value === null) {
+              throw new Error("Birth date incorrect");
+            }
+          }
+        }
+      },
+      dni:{
+        type: Sequelize.STRING(9),
+        validate: {
+          validateString(value) {
+            if (value === null || len != 9) {
+              throw new Error("DNI incorrect");
+            }
+          }
+        }
+      },
+      genre:{
+        type: Sequelize.STRING(9),
+        validate: {
+          validateString(value) {
+            if (value === null) {
+              throw new Error("Genre incorrect");
+            }
+          }
+        }
+      },
       password: {
         type: Sequelize.STRING(50),
         validate: {
           validateString(value) {
             if (value === null || len > 50 || len < 8 || !isAlphanumeric) {
+              throw new Error("Password incorrect");
+            }
+          }
+        }
+      },
+      studies: {
+        type: Sequelize.STRING(50),
+        validate: {
+          validateString(value) {
+            if (value === null) {
               throw new Error("Password incorrect");
             }
           }
