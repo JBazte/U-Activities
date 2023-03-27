@@ -22,6 +22,8 @@ exports.create = (req, res) => {
     password: req.body.password,
     birth_date: req.body.birth_date,
     dni: req.body.dni,
+    genre: req.body.genre,
+    studies: req.body.studies,
     phone: req.body.phone
   };
 
