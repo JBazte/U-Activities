@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  font-family: "Montserrat", Sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .App-logo {
@@ -37,4 +37,9 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.nav-link.active {
+  background-color: black !important;
+  color: white !important;
 }
