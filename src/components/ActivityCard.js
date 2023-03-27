@@ -11,7 +11,7 @@ function ActivityCard() {
             <div className="row no-gutters">
                 <div className="col-sm-3">
                     <img src='https://apiimg.iberostar.com/uploads/image/47658/crops/1200:310/1200/image.jpeg' alt='activity_img' className='d-block float-right w-100 h-100 image-cover' />
-                    <div className='card-img-overlay pt-2 ms-1 '>
+                    <div className='card-img-overlay pt-2 ms-1 w-25 '>
                         <div className='d-flex'>
                             <p className='text-white bg-white bg-opacity-25 rounded-3 px-3 card-categody-text'><small>Category</small></p>
                         </div>
