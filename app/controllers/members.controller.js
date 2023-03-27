@@ -24,7 +24,8 @@ exports.create = (req, res) => {
     dni: req.body.dni,
     genre: req.body.genre,
     studies: req.body.studies,
-    phone: req.body.phone
+    phone: req.body.phone,
+    extra_info: req.body.extra_info
   };
 
   console.log(member)

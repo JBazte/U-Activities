@@ -98,8 +98,6 @@ module.exports = (sequelize, Sequelize) => {
       extra_info: {
         type: Sequelize.STRING(300)
       }
-      
-
     }, 
     { 
       timestamps:false
