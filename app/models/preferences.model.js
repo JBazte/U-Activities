@@ -47,7 +47,7 @@ module.exports = (sequelize, Sequelize) => {
             }
             }
         },
-        member: {
+        member_id_fk: {
             type: Sequelize.INTEGER,
             references: {
                 model: Members,

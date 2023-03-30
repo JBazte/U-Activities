@@ -1,12 +1,7 @@
 const dbConfig = require("../config/db.config.js");
 
-const Sequelize = require("sequelize");
-const membersModel = require("./members.model.js");
-const administratorsModel = require("./administrators.model.js");
-const preferencesModel = require("./preferences.model.js");
-const sponsorsModel = require("./sponsors.model.js");
-const activitiesModel = require("./activities.model.js");
-const participationModel = require("./participation.model.js");
+const {Sequelize, DataTypes} = require("sequelize");
+
 
 const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   host: dbConfig.HOST,
@@ -26,15 +21,24 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
+
+//tablas
+db.administrators = require("./administrators.model.js")(sequelize, Sequelize);
+db.members = require("./members.model.js")(sequelize, DataTypes);
+db.preferences = require("./preferences.model.js")(sequelize, Sequelize);
+db.sponsors = require("./sponsors.model.js")(sequelize, Sequelize);
+db.activities = require("./activities.model.js")(sequelize, Sequelize);
+db.participation = require("./participation.model.js")(sequelize, Sequelize);
+
+const Members = db.members
+const Preferences = db.preferences
+
 //ASIGNAMOS FK
 //RELACION 1-N member y preferences
-membersModel.hasMany(preferencesModel, {
-  foreignKey: 'member'
+Members.hasOne(Preferences, {
+  foreignKey: 'member_id_fk'
 });
-preferencesModel.belongsTo(membersModel, {
-  foreignKey: 'member',
-  targetKey: 'id'
-});
+Preferences.belongsTo(Members);
 
 
 //RELACION 1-N sponsor y activities
@@ -63,16 +67,6 @@ participationModel.belongsTo(activitiesModel, {
   foreignKey: 'activity',
   targetKey: 'id'
 });
-
-
-//tablas
-db.administrators = require("./administrators.model.js")(sequelize, Sequelize);
-db.members = require("./members.model.js")(sequelize, Sequelize);
-db.preferences = require("./preferences.model.js")(sequelize, Sequelize);
-db.sponsors = require("./sponsors.model.js")(sequelize, Sequelize);
-db.activities = require("./activities.model.js")(sequelize, Sequelize);
-db.participation = require("./participation.model.js")(sequelize, Sequelize);
-
 
 
 

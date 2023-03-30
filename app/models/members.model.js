@@ -1,12 +1,12 @@
-module.exports = (sequelize, Sequelize) => {
+module.exports = (sequelize, DataTypes) => {
     const Members = sequelize.define("members", {
       id: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
       },
       first_name: {
-        type: Sequelize.STRING(50),
+        type: DataTypes.STRING(50),
         validate: {
           validateString(value) {
             if (value === null || value.len > 50 ) {
@@ -16,7 +16,7 @@ module.exports = (sequelize, Sequelize) => {
         }
       },
       last_name: {
-        type: Sequelize.STRING(50),
+        type: DataTypes.STRING(50),
         validate: {
           validateString(value) {
             if (value === null || value.len > 50 ) {
@@ -26,7 +26,7 @@ module.exports = (sequelize, Sequelize) => {
         }
       },
       email: {
-        type: Sequelize.STRING(65),
+        type: DataTypes.STRING(65),
         validate: {
           validateString(value) {
             if (value === null || len > 50 || !isEmail) {
@@ -36,7 +36,7 @@ module.exports = (sequelize, Sequelize) => {
         }
       },
       bith_date:{
-        type: Sequelize.DATEONLY,
+        type: DataTypes.DATEONLY,
         validate: {
           validateString(value) {
             if (value === null) {
@@ -46,7 +46,7 @@ module.exports = (sequelize, Sequelize) => {
         }
       },
       dni:{
-        type: Sequelize.STRING(9),
+        type: DataTypes.STRING(9),
         validate: {
           validateString(value) {
             if (value === null || len != 9) {
@@ -56,7 +56,7 @@ module.exports = (sequelize, Sequelize) => {
         }
       },
       genre:{
-        type: Sequelize.STRING(9),
+        type: DataTypes.STRING(9),
         validate: {
           validateString(value) {
             if (value === null) {
@@ -66,7 +66,7 @@ module.exports = (sequelize, Sequelize) => {
         }
       },
       password: {
-        type: Sequelize.STRING(50),
+        type: DataTypes.STRING(50),
         validate: {
           validateString(value) {
             if (value === null || len > 50 || len < 8 || !isAlphanumeric) {
@@ -76,7 +76,7 @@ module.exports = (sequelize, Sequelize) => {
         }
       },
       studies: {
-        type: Sequelize.STRING(50),
+        type: DataTypes.STRING(50),
         validate: {
           validateString(value) {
             if (value === null) {
@@ -86,7 +86,7 @@ module.exports = (sequelize, Sequelize) => {
         }
       },
       phone: {
-        type: Sequelize.STRING(50),
+        type: DataTypes.STRING(50),
         validate: {
           validateString(value) {
             if (!isNumeric || value.len != 9) {
@@ -96,7 +96,7 @@ module.exports = (sequelize, Sequelize) => {
         }
       },
       extra_info: {
-        type: Sequelize.STRING(300)
+        type: DataTypes.STRING(300)
       }
     }, 
     { 
