@@ -1,6 +1,7 @@
 .App {
   text-align: center;
   font-family: 'Montserrat', sans-serif;
+  min-width: 450px;
 }
 
 .App-logo {

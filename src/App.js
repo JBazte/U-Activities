@@ -1,13 +1,10 @@
 import './App.css';
-import Navbar from './components/Navbar'
-import ActivityContainer from './components/ActivityContainer'
+import Home from './pages/Home';
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <h1>Main page</h1>
-      <ActivityContainer />
+      <Home />
     </div>
   );
 }

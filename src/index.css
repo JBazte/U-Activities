@@ -1,3 +1,9 @@
+:root {
+  --utad-blue: #0065EF;
+  --light-grey: #9DA3A7;
+  --extra-light-grey: #E5E9EC;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Roboto';
@@ -19,18 +25,18 @@ code {
 }
 
 .blue-highlight-text {
-  color: #0065EF;
+  color: var(--utad-blue);
 }
 
 .bg-button-blue {
-  background-color: #0065EF;
+  background-color: var(--utad-blue);
 }
 
 .title-text {
   font-weight: 700;
   font-size: 32px;
   line-height: 39px;
-  color: #0065EF;
+  color: var(--utad-blue);
 }
 
 .body-text {
@@ -55,4 +61,31 @@ code {
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
+}
+
+.filter-button {
+  background-color: var(--extra-light-grey);
+  color: var(--light-grey);
+}
+
+.carousel .carousel-item {
+  height: 500px;
+}
+
+.carousel-item img {
+  position: absolute;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+  min-height: 500px;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background: #c2c9d2;
 }

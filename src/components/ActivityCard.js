@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button';
 
 function ActivityCard() {
     return (
-        <div className="card border border-dark rounded-1 activity-containershadow mb-3">
+        <div className="card border border-dark rounded-1 activity-container-shadow mb-3">
             <div className="row no-gutters">
                 <div className="col-sm-3">
                     <img src='https://apiimg.iberostar.com/uploads/image/47658/crops/1200:310/1200/image.jpeg' alt='activity_img' className='d-block float-right w-100 h-100 image-cover' />
