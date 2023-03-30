@@ -1,12 +1,12 @@
-module.exports = (sequelize, Sequelize) => {
+module.exports = (sequelize, DataTypes) => {
     const Administrators = sequelize.define("administrators", {
         id: {
-            type: Sequelize.INTEGER,
+            type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
         user: {
-            type: Sequelize.STRING(50),
+            type: DataTypes.STRING(50),
             validate: {
                 validateString(value) {
                 if (value === null || value.len > 50 ) {
@@ -16,7 +16,7 @@ module.exports = (sequelize, Sequelize) => {
             }
         },
         email: {
-            type: Sequelize.STRING(65),
+            type: DataTypes.STRING(65),
             validate: {
             validateString(value) {
                 if (value === null || len > 50 || !isEmail) {
@@ -26,7 +26,7 @@ module.exports = (sequelize, Sequelize) => {
             }
         },
         phone: {
-            type: Sequelize.STRING(50),
+            type: DataTypes.STRING(50),
             validate: {
             validateString(value) {
                 if (value === null || len > 50 || len < 9 || !isNumeric) {

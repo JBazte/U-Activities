@@ -23,50 +23,45 @@ db.sequelize = sequelize;
 
 
 //tablas
-db.administrators = require("./administrators.model.js")(sequelize, Sequelize);
+db.administrators = require("./administrators.model.js")(sequelize, DataTypes);
 db.members = require("./members.model.js")(sequelize, DataTypes);
-db.preferences = require("./preferences.model.js")(sequelize, Sequelize);
-db.sponsors = require("./sponsors.model.js")(sequelize, Sequelize);
-db.activities = require("./activities.model.js")(sequelize, Sequelize);
-db.participation = require("./participation.model.js")(sequelize, Sequelize);
+db.preferences = require("./preferences.model.js")(sequelize, DataTypes);
+db.sponsors = require("./sponsors.model.js")(sequelize, DataTypes);
+db.activities = require("./activities.model.js")(sequelize, DataTypes);
+db.participation = require("./participation.model.js")(sequelize, DataTypes);
 
 const Members = db.members
 const Preferences = db.preferences
+const Administrators = db.administrators
+const Sponsors = db.sponsors
+const Activities = db.activities
+const Participation = db.participation
 
 //ASIGNAMOS FK
 //RELACION 1-N member y preferences
 Members.hasOne(Preferences, {
-  foreignKey: 'member_id_fk'
+  foreignKey: 'member_id'
 });
 Preferences.belongsTo(Members);
 
 
 //RELACION 1-N sponsor y activities
-sponsorsModel.hasMany(activitiesModel, {
-  foreignKey: 'sponsor'
+Sponsors.hasMany(Activities, {
+  foreignKey: 'sponsor_id'
 });
-activitiesModel.belongsTo(sponsorsModel, {
-  foreignKey: 'sponsor',
-  targetKey: 'id'
-});
+Activities.belongsTo(Sponsors);
 
 
 //RELACION N-N entre members y activities, tabla partcipation
-membersModel.hasMany(participationModel, {
-  foreignKey: 'member'
+Members.hasMany(Participation, {
+  foreignKey: 'member_id'
 });
-participationModel.belongsTo(membersModel, {
-  foreignKey: 'member',
-  targetKey: 'id'
-});
+Participation.belongsTo(Members);
 
-activitiesModel.hasMany(participationModel, {
-  foreignKey: 'activity'
+Activities.hasMany(Participation, {
+  foreignKey: 'activity_id'
 });
-participationModel.belongsTo(activitiesModel, {
-  foreignKey: 'activity',
-  targetKey: 'id'
-});
+Participation.belongsTo(Activities);
 
 
 

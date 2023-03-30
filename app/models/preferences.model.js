@@ -1,14 +1,14 @@
 const Members = require("../models/members.model");
 
-module.exports = (sequelize, Sequelize) => {
+module.exports = (sequelize, DataTypes) => {
     const Preferences = sequelize.define("preferences", {
         id: {
-            type: Sequelize.INTEGER,
+            type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
         category: {
-            type: Sequelize.STRING(20),
+            type: DataTypes.STRING(20),
             validate: {
             validateString(value) {
                 if (value === null || len > 20) {
@@ -18,7 +18,7 @@ module.exports = (sequelize, Sequelize) => {
             }
         },
         modality: {
-            type: Sequelize.STRING(20),
+            type: DataTypes.STRING(20),
             validate: {
             validateString(value) {
                 if (value === null || len > 20) {
@@ -28,7 +28,7 @@ module.exports = (sequelize, Sequelize) => {
             }
         },
         commitment_estimate: {
-            type: Sequelize.STRING(10),
+            type: DataTypes.STRING(10),
             validate: {
             validateString(value) {
                 if (value === null || len > 10) {
@@ -38,7 +38,7 @@ module.exports = (sequelize, Sequelize) => {
             }
         },
         availability: {
-            type: Sequelize.STRING(10),
+            type: DataTypes.STRING(10),
             validate: {
             validateString(value) {
                 if (value === null || len > 10) {
@@ -48,7 +48,7 @@ module.exports = (sequelize, Sequelize) => {
             }
         },
         member_id_fk: {
-            type: Sequelize.INTEGER,
+            type: DataTypes.INTEGER,
             references: {
                 model: Members,
                 key: 'id'

@@ -1,14 +1,14 @@
 const Sponsors = require("../models/sponsors.model");
 
-module.exports = (sequelize, Sequelize) => {
+module.exports = (sequelize, DataTypes) => {
     const Activities = sequelize.define("activities", {
         id: {
-            type: Sequelize.INTEGER,
+            type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
         name: {
-            type: Sequelize.STRING(50),
+            type: DataTypes.STRING(50),
             validate: {
                 validateString(value) {
                 if (value === null || value.len > 50 ) {
@@ -18,7 +18,7 @@ module.exports = (sequelize, Sequelize) => {
             }
         },
         description: {
-            type: Sequelize.STRING(250),
+            type: DataTypes.STRING(250),
             validate: {
             validateString(value) {
                 if (value === null || len > 250) {
@@ -28,7 +28,7 @@ module.exports = (sequelize, Sequelize) => {
             }
         },
         category: {
-            type: Sequelize.STRING(20),
+            type: DataTypes.STRING(20),
             validate: {
             validateString(value) {
                 if (value === null || len > 20) {
@@ -38,7 +38,7 @@ module.exports = (sequelize, Sequelize) => {
             }
         },
         action_field: {
-            type: Sequelize.STRING(30),
+            type: DataTypes.STRING(30),
             validate: {
             validateString(value) {
                 if (value === null || len > 30) {
@@ -48,7 +48,7 @@ module.exports = (sequelize, Sequelize) => {
             }
         },
         involved_group: {
-            type: Sequelize.STRING(50),
+            type: DataTypes.STRING(50),
             validate: {
             validateString(value) {
                 if (value === null || len > 50) {
@@ -58,7 +58,7 @@ module.exports = (sequelize, Sequelize) => {
             }
         },
         location: {
-            type: Sequelize.STRING(100),
+            type: DataTypes.STRING(100),
             validate: {
             validateString(value) {
                 if (value === null || len > 100) {
@@ -68,7 +68,7 @@ module.exports = (sequelize, Sequelize) => {
             }
         },
         start_date: {
-            type: Sequelize.DATEONLY,
+            type: DataTypes.DATEONLY,
             validate: {
             validateString(value) {
                 if (value === null) {
@@ -78,7 +78,7 @@ module.exports = (sequelize, Sequelize) => {
             }
         },
         end_date: {
-            type: Sequelize.DATEONLY,
+            type: DataTypes.DATEONLY,
             validate: {
             validateString(value) {
                 if (value === null) {
@@ -88,7 +88,7 @@ module.exports = (sequelize, Sequelize) => {
             }
         },
         modality: {
-            type: Sequelize.STRING(10),
+            type: DataTypes.STRING(10),
             validate: {
             validateString(value) {
                 if (value === null || len > 10) {
@@ -98,7 +98,7 @@ module.exports = (sequelize, Sequelize) => {
             }
         },
         min_members: {
-            type: Sequelize.INTEGER,
+            type: DataTypes.INTEGER,
             validate: {
             validateString(value) {
                 if (value === null) {
@@ -108,7 +108,7 @@ module.exports = (sequelize, Sequelize) => {
             }
         },
         max_members: {
-            type: Sequelize.INTEGER,
+            type: DataTypes.INTEGER,
             validate: {
                 validateString(value) {
                     if (value === null) {
@@ -117,8 +117,8 @@ module.exports = (sequelize, Sequelize) => {
                 }
             }
         },
-        sponsor: {
-            type: Sequelize.INTEGER,
+        sponsor_id: {
+            type: DataTypes.INTEGER,
             references: {
                 model: Sponsors,
                 key: 'id'

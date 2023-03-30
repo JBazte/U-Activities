@@ -1,15 +1,15 @@
 const Members = require("../models/members.model");
 const Activities = require("../models/activities.model");
 
-module.exports = (sequelize, Sequelize) => {
+module.exports = (sequelize, DataTypes) => {
     const Participation = sequelize.define("participation", {
         id: {
-            type: Sequelize.INTEGER,
+            type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
-        member: {
-            type: Sequelize.INTEGER,
+        member_id: {
+            type: DataTypes.INTEGER,
             references: {
                 model: Members,
                 key: 'id'
@@ -22,8 +22,8 @@ module.exports = (sequelize, Sequelize) => {
                 }
             }
        },
-        activity: {
-            type: Sequelize.INTEGER,
+        activity_id: {
+            type: DataTypes.INTEGER,
             references: {
                 model: Activities,
                 key: 'id'

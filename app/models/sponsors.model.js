@@ -1,12 +1,12 @@
-module.exports = (sequelize, Sequelize) => {
+module.exports = (sequelize, DataTypes) => {
     const Sponsors = sequelize.define("sponsors", {
       id: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
       },
       entity: {
-        type: Sequelize.STRING(50),
+        type: DataTypes.STRING(50),
         validate: {
           validateString(value) {
             if (value === null || value.len > 50 || value.len < 10 ) {
@@ -16,7 +16,7 @@ module.exports = (sequelize, Sequelize) => {
         }
       },
       user: {
-        type: Sequelize.STRING(50),
+        type: DataTypes.STRING(50),
         validate: {
           validateString(value) {
             if (value === null || value.len > 50 ) {
@@ -26,7 +26,7 @@ module.exports = (sequelize, Sequelize) => {
         }
       },
       password: {
-        type: Sequelize.STRING(50),
+        type: DataTypes.STRING(50),
         validate: {
           validateString(value) {
             if (value === null || len > 50 || len < 8 || !isAlphanumeric) {
@@ -36,7 +36,7 @@ module.exports = (sequelize, Sequelize) => {
         }
       },
       email: {
-        type: Sequelize.STRING(65),
+        type: DataTypes.STRING(65),
         validate: {
           validateString(value) {
             if (value === null || len > 50 || !isEmail) {
