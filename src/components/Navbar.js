@@ -1,4 +1,4 @@
-import React from 'react';
+import { React } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faCircleXmark } from '@fortawesome/free-regular-svg-icons'
 import { faUserCircle, faCircle, faBell, faCog } from '@fortawesome/free-solid-svg-icons';
@@ -24,11 +24,25 @@ function Navbar() {
                         <li className="nav-item">
                             <a className="nav-link" href="#">Más</a>
                         </li>
-                        <li className="nav-item dropdown me-3">
+                        <div className='d-md-none'>
+                            <li className="nav-item">
+                                <a className="nav-link" href="#">Notificaciones</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="#">Guardados</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="#">Ajustes</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="#">Cerrar sesión</a>
+                            </li>
+                        </div>
+                        <li className="nav-item dropdown me-3 d-none d-md-block">
                             <a className="nav-link dropdown-toggle pt-1" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ color: "#0065ef" }} >
                                 <FontAwesomeIcon icon={faUserCircle} size="2xl" style={{ color: "#0065EF" }} />
                             </a>
-                            <ul className="dropdown-menu border border-3 border-primary" aria-labelledby="navbarDropdown">
+                            <ul className="dropdown-menu border border-3 border-primary dropdown-custom-position" aria-labelledby="navbarDropdown">
                                 <li>
                                     <a className="dropdown-item" href="#">
                                         <span className="fa-layers me-2">

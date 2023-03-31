@@ -6,6 +6,16 @@
   --extra-light-grey-hover: #cbd2d6;
 }
 
+::-webkit-scrollbar {
+  width: 8px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background: #c2c9d2;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Roboto';
@@ -86,12 +96,22 @@ code {
   min-height: 550px;
 }
 
-::-webkit-scrollbar {
-  width: 8px;
-  height: 10px;
+.dropdown-custom-position {
+  left: 100% !important;
+  right: auto;
+  transform: translateX(-100%);
 }
 
-::-webkit-scrollbar-thumb {
-  border-radius: 8px;
-  background: #c2c9d2;
+.funny-button {
+  animation: hue-rotate 3s infinite linear;
+}
+
+@keyframes hue-rotate {
+  from {
+    filter: hue-rotate(0deg);
+  }
+
+  to {
+    filter: hue-rotate(360deg);
+  }
 }
