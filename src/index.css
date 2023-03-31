@@ -1,7 +1,9 @@
 :root {
   --utad-blue: #0065EF;
   --light-grey: #9DA3A7;
+  --lignt-grey-hover: #868c8f;
   --extra-light-grey: #E5E9EC;
+  --extra-light-grey-hover: #cbd2d6;
 }
 
 body {
@@ -36,7 +38,6 @@ code {
   font-weight: 700;
   font-size: 32px;
   line-height: 39px;
-  color: var(--utad-blue);
 }
 
 .body-text {
@@ -66,10 +67,15 @@ code {
 .filter-button {
   background-color: var(--extra-light-grey);
   color: var(--light-grey);
+  transition: background-color 0.2s;
+}
+
+.filter-button:hover {
+  background-color: var(--extra-light-grey-hover);
 }
 
 .carousel .carousel-item {
-  height: 500px;
+  height: 550px;
 }
 
 .carousel-item img {
@@ -77,7 +83,7 @@ code {
   object-fit: cover;
   top: 0;
   left: 0;
-  min-height: 500px;
+  min-height: 550px;
 }
 
 ::-webkit-scrollbar {

@@ -5,7 +5,7 @@ import { faUserCircle, faCircle, faBell, faCog } from '@fortawesome/free-solid-s
 
 function Navbar() {
     return (
-        <nav className="navbar sticky-top navbar-light navbar-expand-md bg-white justify-content-center shadow-sm mb-2">
+        <nav className="navbar sticky-top navbar-light navbar-expand-md bg-white justify-content-center shadow-sm my-2">
             <div className="container">
                 <a className="navbar-brand" href="#">
                     <img src="https://st1.u-tad.com/media/2020/06/logo_utad.png" alt="" className="d-inline-block align-top" />
@@ -24,9 +24,9 @@ function Navbar() {
                         <li className="nav-item">
                             <a className="nav-link" href="#">Más</a>
                         </li>
-                        <li className="nav-item dropdown me-5">
-                            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ color: "#0065ef" }} >
-                                <FontAwesomeIcon icon={faUserCircle} size="xl" style={{ color: "#0065EF" }} />
+                        <li className="nav-item dropdown me-3">
+                            <a className="nav-link dropdown-toggle pt-1" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ color: "#0065ef" }} >
+                                <FontAwesomeIcon icon={faUserCircle} size="2xl" style={{ color: "#0065EF" }} />
                             </a>
                             <ul className="dropdown-menu border border-3 border-primary" aria-labelledby="navbarDropdown">
                                 <li>

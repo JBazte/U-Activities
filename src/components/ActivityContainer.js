@@ -7,7 +7,7 @@ function ActivityContainer() {
     return (
         <>
             <div className="d-flex text-start">
-                <p className="title-text m-0">EVENTS</p>
+                <p className="title-text blue-highlight-text m-0">EVENTS</p>
             </div>
             <hr className='border border-5 border-dark opacity-100 my-2' />
             <div className='row g-0'>
@@ -36,7 +36,7 @@ function ActivityContainer() {
                     </button>
                 </div>
             </div>
-            <div className="mt-2">
+            <div className="mt-4">
                 <ActivityCard />
                 <ActivityCard />
                 <ActivityCard />

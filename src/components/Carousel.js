@@ -12,23 +12,23 @@ function Carousel() {
                 <div className="carousel-inner">
                     <div className="carousel-item active">
                         <img src="https://apiimg.iberostar.com/uploads/image/47658/crops/1200:310/1200/image.jpeg" className="d-block w-100" alt="..." />
-                        <div className="carousel-caption d-none d-md-block">
-                            <h5>First slide label</h5>
-                            <p>Some representative placeholder content for the first slide.</p>
+                        <div className="carousel-caption d-flex flex-column">
+                            <p className='title-text text-start'>EVENT NAME 1</p>
+                            <p className='text-start'>Basic or highlighted information about the event.</p>
                         </div>
                     </div>
                     <div className="carousel-item">
                         <img src="https://apiimg.iberostar.com/uploads/image/47658/crops/1200:310/1200/image.jpeg" className="d-block w-100" alt="..." />
-                        <div className="carousel-caption d-none d-md-block">
-                            <h5>Second slide label</h5>
-                            <p>Some representative placeholder content for the second slide.</p>
+                        <div className="carousel-caption d-flex flex-column">
+                            <p className='title-text text-start'>EVENT NAME 2</p>
+                            <p className='text-start'>Basic or highlighted information about the event.</p>
                         </div>
                     </div>
                     <div className="carousel-item">
                         <img src="https://apiimg.iberostar.com/uploads/image/47658/crops/1200:310/1200/image.jpeg" className="d-block w-100" alt="..." />
-                        <div className="carousel-caption d-none d-md-block">
-                            <h5>Third slide label</h5>
-                            <p>Some representative placeholder content for the third slide.</p>
+                        <div className="carousel-caption d-flex flex-column">
+                            <p className='title-text text-start'>EVENT NAME 3</p>
+                            <p className='text-start'>Basic or highlighted information about the event.</p>
                         </div>
                     </div>
                 </div>

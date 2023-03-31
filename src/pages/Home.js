@@ -7,12 +7,12 @@ function Home() {
     return (
         <>
             <Navbar />
-            <div className='mx-5'>
-                <div className='mt-5 row'>
-                    <div className='col'>
+            <div className='mx-5 px-5'>
+                <div className='row mt-4'>
+                    <div className='col mx-3'>
                         <ActivityContainer />
                     </div>
-                    <div className='col-3 mt-5 d-none d-lg-block'>
+                    <div className='col-3 mt-5 mx-3 d-none d-lg-block'>
                         <Carousel />
                     </div>
                 </div>
