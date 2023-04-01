@@ -2,7 +2,6 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendarCheck } from '@fortawesome/free-regular-svg-icons'
 import ActivityCard from './ActivityCard'
-import ActivityButton from './ActivityButton'
 
 function ActivityContainer() {
     return (
