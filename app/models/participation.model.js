@@ -10,23 +10,11 @@ module.exports = (sequelize, DataTypes) => {
         },
         member_id: {
             type: DataTypes.INTEGER,
-            validate: {
-                validateString(value) {
-                    if (value === null) {
-                        throw new Error("Member incorrect");
-                    }
-                }
-            }
+            allowNull:false
        },
         activity_id: {
             type: DataTypes.INTEGER,
-            validate: {
-                validateString(value) {
-                    if (value === null) {
-                        throw new Error("Activity incorrect");
-                    }
-                }
-            }
+            allowNull:false
         }
 
     }, 

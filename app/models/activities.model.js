@@ -9,123 +9,51 @@ module.exports = (sequelize, DataTypes) => {
         },
         name: {
             type: DataTypes.STRING,
-            validate: {
-                validateString(value) {
-                if (value === null || value.len > 50 ) {
-                    throw new Error("Activity name incorrect");
-                }
-                }
-            }
+            allowNull:false
         },
         description: {
             type: DataTypes.STRING,
-            validate: {
-            validateString(value) {
-                if (value === null || value.len > 250) {
-                    throw new Error("Description incorrect");
-                }
-            }
-            }
+            allowNull:false
         },
         category: {
             type: DataTypes.STRING,
-            validate: {
-            validateString(value) {
-                if (value === null || value.len > 20) {
-                    throw new Error("Category incorrect");
-                }
-            }
-            }
+            allowNull:false
         },
         action_field: {
             type: DataTypes.STRING,
-            validate: {
-            validateString(value) {
-                if (value === null || value.len > 30) {
-                    throw new Error("Action field incorrect");
-                }
-            }
-            }
+            allowNull:false
         },
         involved_group: {
             type: DataTypes.STRING,
-            validate: {
-            validateString(value) {
-                if (value === null || value.len > 50) {
-                    throw new Error("Involved field incorrect");
-                }
-            }
-            }
+            allowNull:false
         },
         location: {
             type: DataTypes.STRING,
-            validate: {
-            validateString(value) {
-                if (value === null || value.len > 100) {
-                    throw new Error("Location incorrect");
-                }
-            }
-            }
+            allowNull:false
         },
         start_date: {
             type: DataTypes.DATEONLY,
-            validate: {
-            validateString(value) {
-                if (value === null) {
-                    throw new Error("Start date incorrect");
-                }
-            }
-            }
+            allowNull:false
         },
         end_date: {
             type: DataTypes.DATEONLY,
-            validate: {
-            validateString(value) {
-                if (value === null) {
-                    throw new Error("End date incorrect");
-                }
-            }
-            }
+            allowNull:false
         },
         modality: {
             type: DataTypes.STRING,
-            validate: {
-            validateString(value) {
-                if (value === null || value.len > 10) {
-                    throw new Error("End date incorrect");
-                }
-            }
-            }
+            allowNull:false
         },
         min_members: {
             type: DataTypes.INTEGER,
-            validate: {
-            validateString(value) {
-                if (value === null) {
-                    throw new Error("Min members incorrect");
-                }
-            }
-            }
+            allowNull:false
         },
         max_members: {
             type: DataTypes.INTEGER,
-            validate: {
-                validateString(value) {
-                    if (value === null) {
-                        throw new Error("Max members incorrect");
-                    }
-                }
-            }
+            allowNull:false
         },
         sponsor_id: {
             type: DataTypes.INTEGER,
-            validate: {
-                validateString(value) {
-                    if (value === null) {
-                        throw new Error("Sponsor incorrect");
-                    }
-                }
-            }
+            allowNull:false
         }
 
     }, 

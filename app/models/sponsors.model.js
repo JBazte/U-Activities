@@ -7,43 +7,19 @@ module.exports = (sequelize, DataTypes) => {
       },
       entity: {
         type: DataTypes.STRING,
-        validate: {
-          validateString(value) {
-            if (value === null || value.len > 50 || value.len < 10 ) {
-              throw new Error("Entity Name incorrect");
-            }
-          }
-        }
+        allowNull:false
       },
       user: {
         type: DataTypes.STRING,
-        validate: {
-          validateString(value) {
-            if (value === null || value.len > 50 ) {
-              throw new Error("User name incorrect");
-            }
-          }
-        }
+        allowNull:false
       },
       password: {
         type: DataTypes.STRING,
-        validate: {
-          validateString(value) {
-            if (value === null || value.len > 50 || value.len < 8 || !value.isAlphanumeric) {
-              throw new Error("Password incorrect");
-            }
-          }
-        }
+        allowNull:false
       },
       email: {
         type: DataTypes.STRING,
-        validate: {
-          validateString(value) {
-            if (value === null || value.len > 50 || !value.isEmail) {
-              throw new Error("Email incorrect");
-            }
-          }
-        }
+        allowNull:false
       }
 
     }, 

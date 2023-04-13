@@ -7,93 +7,39 @@ module.exports = (sequelize, DataTypes) => {
       },
       first_name: {
         type: DataTypes.STRING,
-        validate: {
-          validateString(value) {
-            if (value === null || value.len > 50 ) {
-              throw new Error("First Name incorrect");
-            }
-          }
-        }
+        allowNull:false
       },
       last_name: {
         type: DataTypes.STRING,
-        validate: {
-          validateString(value) {
-            if (value === null || value.len > 50 ) {
-              throw new Error("Last name incorrect");
-            }
-          }
-        }
+        allowNull:false
       },
       email: {
         type: DataTypes.STRING,
-        validate: {
-          validateString(value) {
-            if (value === null || value.len > 50 || !value.isEmail) {
-              throw new Error("Email incorrect");
-            }
-          }
-        }
+        allowNull:false
       },
       bith_date:{
         type: DataTypes.DATEONLY,
-        validate: {
-          validateString(value) {
-            if (value === null) {
-              throw new Error("Birth date incorrect");
-            }
-          }
-        }
+        allowNull:false
       },
       dni:{
         type: DataTypes.STRING,
-        validate: {
-          validateString(value) {
-            if (value === null || value.len != 9) {
-              throw new Error("DNI incorrect");
-            }
-          }
-        }
+        allowNull:false
       },
       genre:{
         type: DataTypes.STRING,
-        validate: {
-          validateString(value) {
-            if (value === null) {
-              throw new Error("Genre incorrect");
-            }
-          }
-        }
+        allowNull:false
       },
       password: {
         type: DataTypes.STRING,
-        validate: {
-          validateString(value) {
-            if (value === null || value.len > 50 || value.len < 8 || !value.isAlphanumeric) {
-              throw new Error("Password incorrect");
-            }
-          }
-        }
+        allowNull:false
       },
       studies: {
         type: DataTypes.STRING,
-        validate: {
-          validateString(value) {
-            if (value === null) {
-              throw new Error("Password incorrect");
-            }
-          }
-        }
+        allowNull:false
       },
       phone: {
         type: DataTypes.STRING,
-        validate: {
-          validateString(value) {
-            if (!value.isNumeric || value.len != 9) {
-              throw new Error("Phone incorrect");
-            }
-          }
-        }
+        allowNull:false
       },
       extra_info: {
         type: DataTypes.STRING

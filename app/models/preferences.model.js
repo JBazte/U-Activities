@@ -9,53 +9,23 @@ module.exports = (sequelize, DataTypes) => {
         },
         category: {
             type: DataTypes.STRING,
-            validate: {
-            validateString(value) {
-                if (value === null || value.len > 20) {
-                    throw new Error("Category incorrect");
-                }
-            }
-            }
+            allowNull:false
         },
         modality: {
             type: DataTypes.STRING,
-            validate: {
-            validateString(value) {
-                if (value === null || value.len > 20) {
-                    throw new Error("Modality incorrect");
-                }
-            }
-            }
+            allowNull:false
         },
         commitment_estimate: {
             type: DataTypes.STRING,
-            validate: {
-            validateString(value) {
-                if (value === null || value.len > 10) {
-                    throw new Error("Commitment estimate incorrect");
-                }
-            }
-            }
+            allowNull:false
         },
         availability: {
             type: DataTypes.STRING,
-            validate: {
-            validateString(value) {
-                if (value === null || value.len > 10) {
-                    throw new Error("Availability incorrect");
-                }
-            }
-            }
+            allowNull:false
         },
         member_id_fk: {
             type: DataTypes.INTEGER,
-            validate: {
-                validateString(value) {
-                    if (value === null) {
-                        throw new Error("Member incorrect");
-                    }
-                }
-            }
+            allowNull:false
         }
 
     }, 
