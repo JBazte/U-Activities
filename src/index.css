@@ -1,5 +1,5 @@
 :root {
-  --utad-blue: #0065EF;
+  --utad-blue: #0065ef;
   --light-grey: #9DA3A7;
   --lignt-grey-hover: #868c8f;
   --extra-light-grey: #E5E9EC;
@@ -84,8 +84,20 @@ code {
   background-color: var(--extra-light-grey-hover);
 }
 
+.carousel-position {
+  margin-top: 10.1rem;
+}
+
+.carousel-gradient {
+  background: linear-gradient(to top, rgb(0, 101, 239, 0.55) 0%, rgba(255, 255, 255, 0) 55%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
 .carousel .carousel-item {
-  height: 550px;
+  height: 600px;
 }
 
 .carousel-item img {
@@ -93,7 +105,15 @@ code {
   object-fit: cover;
   top: 0;
   left: 0;
-  min-height: 550px;
+  min-height: 600px;
+}
+
+.carousel-caption {
+  z-index: 2;
+}
+
+.carousel-indicators {
+  z-index: 3 !important;
 }
 
 .dropdown-custom-position {

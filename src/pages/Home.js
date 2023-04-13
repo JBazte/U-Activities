@@ -12,7 +12,7 @@ function Home() {
                     <div className='col mx-3'>
                         <ActivityContainer />
                     </div>
-                    <div className='col-3 mt-5 mx-3 d-none d-lg-block'>
+                    <div className='col-3 mx-3 d-none d-lg-block'>
                         <Carousel />
                     </div>
                 </div>
