@@ -10,10 +10,6 @@ module.exports = (sequelize, DataTypes) => {
         },
         member_id: {
             type: DataTypes.INTEGER,
-            references: {
-                model: Members,
-                key: 'id'
-            },
             validate: {
                 validateString(value) {
                     if (value === null) {
@@ -24,10 +20,6 @@ module.exports = (sequelize, DataTypes) => {
        },
         activity_id: {
             type: DataTypes.INTEGER,
-            references: {
-                model: Activities,
-                key: 'id'
-            },
             validate: {
                 validateString(value) {
                     if (value === null) {

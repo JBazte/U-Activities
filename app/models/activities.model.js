@@ -119,10 +119,6 @@ module.exports = (sequelize, DataTypes) => {
         },
         sponsor_id: {
             type: DataTypes.INTEGER,
-            references: {
-                model: Sponsors,
-                key: 'id'
-            },
             validate: {
                 validateString(value) {
                     if (value === null) {
