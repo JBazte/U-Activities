@@ -1,18 +1,18 @@
 
-GET http://localhost:8080
+GET http://localhost:3000
 ###
-GET http://localhost:8080/api/members
+GET http://localhost:3000/api/members
 ###
-GET http://localhost:8080/api/members/1
+GET http://localhost:3000/api/members/1
 
 ###
-POST http://localhost:8080/api/members
+POST http://localhost:3000/api/members
 Content-Type: application/json
 
 {
     "first_name": "Alejandro",
     "last_name": "Escudero",
-    "email": "alex@u-tad.com",
+    "email": "alex@gmail.com",
     "password": "pass1",
     "phone": "123456789"
 }

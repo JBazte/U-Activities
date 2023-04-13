@@ -29,7 +29,8 @@ const Sponsors = db.sponsors
 const Activities = db.activities
 const Participation = db.participation
 
-//ASIGNAMOS FK
+//RELACIONES:
+
 //RELACION 1-N member y preferences
 Members.hasOne(Preferences, {
   foreignKey: 'member_id',
@@ -74,7 +75,7 @@ Participation.belongsTo(Activities, {
 
 
 //Sincronizamos las tablsa en la base de datos
-db.sequelize.sync({force: true })
+db.sequelize.sync({force: false })
     .then(() => {
         console.log('Tablas sincronizadas')
     });
