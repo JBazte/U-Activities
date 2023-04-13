@@ -8,40 +8,40 @@ module.exports = (sequelize, DataTypes) => {
             autoIncrement: true
         },
         category: {
-            type: DataTypes.STRING(20),
+            type: DataTypes.STRING,
             validate: {
             validateString(value) {
-                if (value === null || len > 20) {
+                if (value === null || value.len > 20) {
                     throw new Error("Category incorrect");
                 }
             }
             }
         },
         modality: {
-            type: DataTypes.STRING(20),
+            type: DataTypes.STRING,
             validate: {
             validateString(value) {
-                if (value === null || len > 20) {
+                if (value === null || value.len > 20) {
                     throw new Error("Modality incorrect");
                 }
             }
             }
         },
         commitment_estimate: {
-            type: DataTypes.STRING(10),
+            type: DataTypes.STRING,
             validate: {
             validateString(value) {
-                if (value === null || len > 10) {
+                if (value === null || value.len > 10) {
                     throw new Error("Commitment estimate incorrect");
                 }
             }
             }
         },
         availability: {
-            type: DataTypes.STRING(10),
+            type: DataTypes.STRING,
             validate: {
             validateString(value) {
-                if (value === null || len > 10) {
+                if (value === null || value.len > 10) {
                     throw new Error("Availability incorrect");
                 }
             }

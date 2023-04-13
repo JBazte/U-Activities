@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
             autoIncrement: true
         },
         user: {
-            type: DataTypes.STRING(50),
+            type: DataTypes.STRING,
             validate: {
                 validateString(value) {
                 if (value === null || value.len > 50 ) {
@@ -16,20 +16,20 @@ module.exports = (sequelize, DataTypes) => {
             }
         },
         email: {
-            type: DataTypes.STRING(65),
+            type: DataTypes.STRING,
             validate: {
             validateString(value) {
-                if (value === null || len > 50 || !isEmail) {
+                if (value === null || value.len > 50 || !value.isEmail) {
                 throw new Error("Email incorrect");
                 }
             }
             }
         },
         phone: {
-            type: DataTypes.STRING(50),
+            type: DataTypes.STRING,
             validate: {
             validateString(value) {
-                if (value === null || len > 50 || len < 9 || !isNumeric) {
+                if (value === null || value.len > 50 || value.len < 9 || !value.isNumeric) {
                 throw new Error("Phone contact incorrect");
                 }
             }

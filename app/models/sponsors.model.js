@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
         autoIncrement: true
       },
       entity: {
-        type: DataTypes.STRING(50),
+        type: DataTypes.STRING,
         validate: {
           validateString(value) {
             if (value === null || value.len > 50 || value.len < 10 ) {
@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
         }
       },
       user: {
-        type: DataTypes.STRING(50),
+        type: DataTypes.STRING,
         validate: {
           validateString(value) {
             if (value === null || value.len > 50 ) {
@@ -26,20 +26,20 @@ module.exports = (sequelize, DataTypes) => {
         }
       },
       password: {
-        type: DataTypes.STRING(50),
+        type: DataTypes.STRING,
         validate: {
           validateString(value) {
-            if (value === null || len > 50 || len < 8 || !isAlphanumeric) {
+            if (value === null || value.len > 50 || value.len < 8 || !value.isAlphanumeric) {
               throw new Error("Password incorrect");
             }
           }
         }
       },
       email: {
-        type: DataTypes.STRING(65),
+        type: DataTypes.STRING,
         validate: {
           validateString(value) {
-            if (value === null || len > 50 || !isEmail) {
+            if (value === null || value.len > 50 || !value.isEmail) {
               throw new Error("Email incorrect");
             }
           }

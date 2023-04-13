@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
             autoIncrement: true
         },
         name: {
-            type: DataTypes.STRING(50),
+            type: DataTypes.STRING,
             validate: {
                 validateString(value) {
                 if (value === null || value.len > 50 ) {
@@ -18,50 +18,50 @@ module.exports = (sequelize, DataTypes) => {
             }
         },
         description: {
-            type: DataTypes.STRING(250),
+            type: DataTypes.STRING,
             validate: {
             validateString(value) {
-                if (value === null || len > 250) {
+                if (value === null || value.len > 250) {
                     throw new Error("Description incorrect");
                 }
             }
             }
         },
         category: {
-            type: DataTypes.STRING(20),
+            type: DataTypes.STRING,
             validate: {
             validateString(value) {
-                if (value === null || len > 20) {
+                if (value === null || value.len > 20) {
                     throw new Error("Category incorrect");
                 }
             }
             }
         },
         action_field: {
-            type: DataTypes.STRING(30),
+            type: DataTypes.STRING,
             validate: {
             validateString(value) {
-                if (value === null || len > 30) {
+                if (value === null || value.len > 30) {
                     throw new Error("Action field incorrect");
                 }
             }
             }
         },
         involved_group: {
-            type: DataTypes.STRING(50),
+            type: DataTypes.STRING,
             validate: {
             validateString(value) {
-                if (value === null || len > 50) {
+                if (value === null || value.len > 50) {
                     throw new Error("Involved field incorrect");
                 }
             }
             }
         },
         location: {
-            type: DataTypes.STRING(100),
+            type: DataTypes.STRING,
             validate: {
             validateString(value) {
-                if (value === null || len > 100) {
+                if (value === null || value.len > 100) {
                     throw new Error("Location incorrect");
                 }
             }
@@ -88,10 +88,10 @@ module.exports = (sequelize, DataTypes) => {
             }
         },
         modality: {
-            type: DataTypes.STRING(10),
+            type: DataTypes.STRING,
             validate: {
             validateString(value) {
-                if (value === null || len > 10) {
+                if (value === null || value.len > 10) {
                     throw new Error("End date incorrect");
                 }
             }

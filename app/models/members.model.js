@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         validate: {
           validateString(value) {
-            if (value === null || len > 50 || !isEmail) {
+            if (value === null || value.len > 50 || !value.isEmail) {
               throw new Error("Email incorrect");
             }
           }
@@ -49,7 +49,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         validate: {
           validateString(value) {
-            if (value === null || len != 9) {
+            if (value === null || value.len != 9) {
               throw new Error("DNI incorrect");
             }
           }
@@ -69,7 +69,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         validate: {
           validateString(value) {
-            if (value === null || len > 50 || len < 8 || !isAlphanumeric) {
+            if (value === null || value.len > 50 || value.len < 8 || !value.isAlphanumeric) {
               throw new Error("Password incorrect");
             }
           }
@@ -89,7 +89,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         validate: {
           validateString(value) {
-            if (!isNumeric || value.len != 9) {
+            if (!value.isNumeric || value.len != 9) {
               throw new Error("Phone incorrect");
             }
           }

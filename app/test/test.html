@@ -10,7 +10,7 @@
 
 	<script>
 		function obtenerDatos() {
-			fetch('http://localhost:8080/api/members')
+			fetch('http://localhost:3000/api/members')
 			  .then(response => response.json())
 			  .then(data => console.log(data))
 			  .catch(error => console.error(error));
