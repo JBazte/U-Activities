@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 const db = require("./app/models");
 
-db.sequelize.sync();
+db.sequelize.sync({ force: true});
 /*
 db.sequelize.sync({force: true})//borrar {force:true} al final del desarollo
   .then(() => {

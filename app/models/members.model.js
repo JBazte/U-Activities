@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
         autoIncrement: true
       },
       first_name: {
-        type: DataTypes.STRING(50),
+        type: DataTypes.STRING,
         validate: {
           validateString(value) {
             if (value === null || value.len > 50 ) {
@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
         }
       },
       last_name: {
-        type: DataTypes.STRING(50),
+        type: DataTypes.STRING,
         validate: {
           validateString(value) {
             if (value === null || value.len > 50 ) {
@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
         }
       },
       email: {
-        type: DataTypes.STRING(65),
+        type: DataTypes.STRING,
         validate: {
           validateString(value) {
             if (value === null || len > 50 || !isEmail) {
@@ -46,7 +46,7 @@ module.exports = (sequelize, DataTypes) => {
         }
       },
       dni:{
-        type: DataTypes.STRING(9),
+        type: DataTypes.STRING,
         validate: {
           validateString(value) {
             if (value === null || len != 9) {
@@ -56,7 +56,7 @@ module.exports = (sequelize, DataTypes) => {
         }
       },
       genre:{
-        type: DataTypes.STRING(9),
+        type: DataTypes.STRING,
         validate: {
           validateString(value) {
             if (value === null) {
@@ -66,7 +66,7 @@ module.exports = (sequelize, DataTypes) => {
         }
       },
       password: {
-        type: DataTypes.STRING(50),
+        type: DataTypes.STRING,
         validate: {
           validateString(value) {
             if (value === null || len > 50 || len < 8 || !isAlphanumeric) {
@@ -76,7 +76,7 @@ module.exports = (sequelize, DataTypes) => {
         }
       },
       studies: {
-        type: DataTypes.STRING(50),
+        type: DataTypes.STRING,
         validate: {
           validateString(value) {
             if (value === null) {
@@ -86,7 +86,7 @@ module.exports = (sequelize, DataTypes) => {
         }
       },
       phone: {
-        type: DataTypes.STRING(50),
+        type: DataTypes.STRING,
         validate: {
           validateString(value) {
             if (!isNumeric || value.len != 9) {
@@ -96,7 +96,7 @@ module.exports = (sequelize, DataTypes) => {
         }
       },
       extra_info: {
-        type: DataTypes.STRING(300)
+        type: DataTypes.STRING
       }
     }, 
     { 
