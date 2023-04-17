@@ -21,6 +21,7 @@ app.get("/", (req, res) => {
 });
 
 require("./app/routes/members.routes")(app);
+require("./app/routes/preferences.routes")(app);
 
   // set port, listen for requests
 const PORT = process.env.PORT || 3000;

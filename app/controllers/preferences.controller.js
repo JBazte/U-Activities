@@ -1,5 +1,5 @@
 const db = require("../models");
-const Preferences = db.Preferences;
+const Preferences = db.preferences;
 const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {
@@ -18,7 +18,7 @@ exports.create = (req, res) => {
       modality: req.body.modality,
       commitment_estimate: req.body.commitment_estimate,
       availability: req.body.availability,
-      member: req.body.member
+      member_id: req.body.member_id
     };
   
     console.log(preference)
@@ -35,6 +35,21 @@ exports.create = (req, res) => {
         });
       });
 };
+
+exports.findALl = (req, res) => {
+  const mem = req.query.mem;
+
+  Preferences.findAll()
+    .then(data => {
+      res.send(data)
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error ocurred while retrieving preferences."
+      });
+    });
+}
 
 // Find a single Member with an id
 exports.findOne = (req, res) => {
