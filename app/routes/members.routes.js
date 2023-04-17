@@ -1,19 +1,21 @@
 module.exports = app => {
   const members = require("../controllers/members.controller.js");
-
   var router = require("express").Router();
+  
+  const {validatorCreateMember, validatorGetMember} = require("../validators/members.validators.js")
 
-  router.post("/", members.create);
+
+  router.post("/", validatorCreateMember, members.create);
   
   // Retrieve all Members
   router.get("/", members.findAll);
 
   // Retrieve a single Member with id
-  router.get("/:id", members.findOne);
+  router.get("/:id", validatorGetMember, members.findOne);
 
-  router.put("/:id", members.update)
+  router.put("/:id", validatorGetMember, validatorCreateMember, members.update)
 
-  router.delete("/:id", members.deleteOne);
+  router.delete("/:id", validatorGetMember, members.deleteOne);
 
   app.use('/api/members', router);
 };
