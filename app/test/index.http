@@ -36,4 +36,17 @@ Content-Type: application/json
 
 ###
 
+PUT http://localhost:3000/api/preferences/2
+Content-Type: application/json
+
+{
+    "category": "medioambiental",
+    "modality": "total",
+    "availability": "total",
+    "commitment_estimate": "total",
+    "member_id": 1
+}
+
+###
+
 DELETE http://localhost:3000/api/preferences/1
