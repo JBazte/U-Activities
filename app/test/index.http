@@ -14,7 +14,12 @@ Content-Type: application/json
     "last_name": "Escudero",
     "email": "alex@gmail.com",
     "password": "pass1",
-    "phone": "123456789"
+    "phone": "123456789",
+    "birth_date": "1995-06-15",
+    "bith_date": "1995-06-15",
+    "dni": "54367567H",
+    "genre": "male",
+    "studies": "INSO"
 }
 
 ###

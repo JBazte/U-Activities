@@ -6,7 +6,7 @@ const validatorCreateMember = [
     check("first_name").exists().notEmpty().isAlpha()/*withMessage("Ha habido un problema al introducir el nombre")*/,
     check("last_name").exists().notEmpty().isAlpha(),
     check("email").exists().notEmpty().isEmail(),
-    check("bith_date").exists().notEmpty()/*.isDate()*/,
+    check("birth_date").exists().notEmpty()/*.isDate()*/,
     check("dni").exists().notEmpty().isAlphanumeric(),
     check("genre").exists().notEmpty().isAlpha(),
     check("password").exists().notEmpty(),

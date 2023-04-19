@@ -15,15 +15,33 @@ module.exports = (sequelize, DataTypes) => {
       },
       email: {
         type: DataTypes.STRING,
-        allowNull:false
+        unique: true,
+        allowNull:false,
+        validate: {
+          async isUnique(value) {
+            const exists = await Members.findOne({ where: { email: value } });
+            if (exists) {
+              throw new Error('El email ya está en uso');
+            }
+          }
+        }
       },
-      bith_date:{
+      birth_date:{
         type: DataTypes.DATEONLY,
         allowNull:false
       },
       dni:{
         type: DataTypes.STRING,
-        allowNull:false
+        unique: true,
+        allowNull:false,
+        validate: {
+          async isUnique(value) {
+            const exists = await Members.findOne({ where: { dni: value } });
+            if (exists) {
+              throw new Error('El DNI ya está en uso');
+            }
+          }
+        }
       },
       genre:{
         type: DataTypes.STRING,
