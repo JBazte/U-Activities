@@ -1,5 +1,5 @@
 const db = require("../models");
-const Participations = db.Participations;
+const Participations = db.participation;
 const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {
@@ -14,8 +14,8 @@ exports.create = (req, res) => {
   
     // Create a Participation
     const participation = {
-      member: req.body.member,
-      activity: req.body.activity
+      member_id: req.body.member_id,
+      activity_id: req.body.activity_id
     };
   
     console.log(participation)
@@ -34,11 +34,10 @@ exports.create = (req, res) => {
 };
 
 exports.deleteOne = (req, res) => {
-    const member = req.params.member;
-    const activity = req.params.activity;
+    const id = req.params.id;
   
     Participations.destroy({
-      where: { member: member, activity: activity }
+      where: { id: id }
     })
       .then(num => {
         if (num == 1) {

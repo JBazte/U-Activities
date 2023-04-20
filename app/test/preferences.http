@@ -1,0 +1,37 @@
+###
+
+GET http://localhost:3000/api/preferences
+
+###
+
+GET http://localhost:3000/api/preferences/2
+
+###
+
+POST http://localhost:3000/api/preferences
+Content-Type: application/json
+
+{
+    "category": "medioambiental",
+    "modality": "online",
+    "availability": "total",
+    "commitment_estimate": "total",
+    "member_id": 1
+}
+
+###
+
+PUT http://localhost:3000/api/preferences/2
+Content-Type: application/json
+
+{
+    "category": "medioambiental",
+    "modality": "total",
+    "availability": "total",
+    "commitment_estimate": "total",
+    "member_id": 1
+}
+
+###
+
+DELETE http://localhost:3000/api/preferences/1

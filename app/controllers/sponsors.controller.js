@@ -1,5 +1,5 @@
 const db = require("../models");
-const Sponsors = db.Sponsors;
+const Sponsors = db.sponsors;
 const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {
@@ -14,8 +14,8 @@ exports.create = (req, res) => {
   
     // Create a Member
     const sponsor = {
-      entity: req.body.first_name,
-      user: req.body.last_name,
+      entity: req.body.entity,
+      user: req.body.user,
       email: req.body.email,
       password: req.body.password
     };
@@ -40,7 +40,7 @@ exports.create = (req, res) => {
 // Retrieve all Sponsors from the database.
 
 exports.findAll = (req, res) => {
-    const sponsor = req.query.sponsor;
+    const spon = req.query.spon;
     //var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
   
     Sponsors.findAll()

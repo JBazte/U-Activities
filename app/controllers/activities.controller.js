@@ -26,7 +26,7 @@ exports.create = (req, res) => {
       modality: req.body.modality,
       min_members: req.body.min_members,
       max_members: req.body.max_members,
-      sponsor: req.body.sponsor
+      sponsor_id: req.body.sponsor_id
     };
 
     console.log(activity)

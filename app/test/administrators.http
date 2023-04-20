@@ -1,0 +1,12 @@
+POST http://localhost:3000/api/administrators
+Content-Type: application/json
+
+{
+    "user": "Marcos",
+    "email": "marcos.ortiz@live.u-tad.com",
+    "phone": 717712185
+}
+
+###
+
+DELETE http://localhost:3000/api/administrators/1

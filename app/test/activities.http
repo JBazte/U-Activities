@@ -1,0 +1,49 @@
+GET http://localhost:3000/api/activities
+
+###
+
+POST http://localhost:3000/api/activities
+Content-Type: application/json
+
+{
+    "name": "Zoolab",
+    "description": "steochondropathy",
+    "category": "social",
+    "action_field": "rutrum",
+    "involved_group": "ac",
+    "location": "578 Fair Oaks Court",
+    "start_date": "2022-05-26",
+    "end_date": "2023-12-21",
+    "modality": "presencial",
+    "min_members": 22,
+    "max_members": 75,
+    "sponsor_id": 2
+}
+
+###
+
+GET http://localhost:3000/api/activities/2
+
+###
+
+PUT http://localhost:3000/api/activities/2
+Content-Type: application/json
+
+{
+    "name": "Hola",
+    "description": "steochondropathy",
+    "category": "medioambiental",
+    "action_field": "rutrum",
+    "involved_group": "ac",
+    "location": "578 Fair Oaks Court",
+    "start_date": "2022-05-26",
+    "end_date": "2023-12-21",
+    "modality": "presencial",
+    "min_members": 22,
+    "max_members": 75,
+    "sponsor_id": 2
+}
+
+###
+
+DELETE http://localhost:3000/api/activities/2

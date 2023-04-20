@@ -22,6 +22,10 @@ app.get("/", (req, res) => {
 
 require("./app/routes/members.routes")(app);
 require("./app/routes/preferences.routes")(app);
+require("./app/routes/administrators.routes")(app);
+require("./app/routes/sponsors.routes")(app);
+require("./app/routes/activities.routes")(app);
+require("./app/routes/participation.routes")(app);
 
   // set port, listen for requests
 const PORT = process.env.PORT || 3000;

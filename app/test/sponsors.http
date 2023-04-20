@@ -1,0 +1,33 @@
+GET http://localhost:3000/api/sponsors
+
+###
+
+POST http://localhost:3000/api/sponsors
+Content-Type: application/json
+
+{
+    "entity": "Oracle",
+    "user": "Jose Luis",
+    "password": "1234",
+    "email": "joseluis.perez@u-tad.com"
+}
+
+###
+
+GET http://localhost:3000/api/sponsors/1
+
+###
+
+PUT http://localhost:3000/api/sponsors/1
+Content-Type: application/json
+
+{
+    "entity": "Saleforce",
+    "user": "Jose Luis",
+    "password": "1234",
+    "email": "joseluis.perez@u-tad.com"
+}
+
+###
+
+DELETE http://localhost:3000/api/sponsors/1
