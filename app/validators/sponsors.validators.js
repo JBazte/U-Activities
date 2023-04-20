@@ -1,10 +1,11 @@
 const { check } = require("express-validator")
 const validateResults = require("../utils/handleValidator")
 
-const validatorCreateAdministrator = [
+const validatorCreateSponsor = [
+    check("entity").exists().notEmpty(),
     check("user").exists().notEmpty(),
     check("email").exists().notEmpty().isEmail(),
-    check("phone").exists().notEmpty(),
+    check("password").exists().notEmpty(),
 
     //Middleware tiene que responder después de la petición
     (req, res, next) => {
@@ -13,11 +14,11 @@ const validatorCreateAdministrator = [
     //(req, res, next) => validateResults(req, res, next) // Otra forma de invocarlo
 ]
 
-const validatorGetAdministrator = [
+const validatorGetSponsor = [
     check("id").exists().notEmpty(),
     (req, res, next) => {
         return validateResults(req, res, next)
     }
 ]
 
-module.exports = {validatorCreateAdministrator, validatorGetAdministrator}
+module.exports = {validatorCreateSponsor, validatorGetSponsor}

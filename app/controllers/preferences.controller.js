@@ -2,6 +2,40 @@ const db = require("../models");
 const Preferences = db.preferences;
 const Op = db.Sequelize.Op;
 
+/*exports.createNull = (req, res) => {
+
+  // Validate the request
+  if (!req.body) {
+    res.status(400).send({
+      message: "Content can not be empty!"
+    });
+    return;
+  }
+
+  // Create Preferences for a user
+  const preference = {
+    category: null,
+    modality: null,
+    commitment_estimate: null,
+    availability: null,
+    member_id: req.body.member_id
+  };
+
+  console.log(preference)
+
+  // Save those Preferences in the database
+  Preferences.create(preference)
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while creating the Prefernce."
+      });
+    });
+};*/
+
 exports.create = (req, res) => {
 
     // Validate the request

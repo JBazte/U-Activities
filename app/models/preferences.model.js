@@ -25,7 +25,15 @@ module.exports = (sequelize, DataTypes) => {
         },
         member_id: {
             type: DataTypes.INTEGER,
-            allowNull:false
+            allowNull:false,
+            validate: {
+                async isUnique(value) {
+                    const exists = await Members.findOne({ where: { id: value } });
+                    if (!exists) {
+                        throw new Error('El id member seleccionado no existe');
+                    }
+                }
+            }
         }
 
     }, 

@@ -9,7 +9,15 @@ module.exports = (sequelize, DataTypes) => {
         },
         name: {
             type: DataTypes.STRING,
-            allowNull:false
+            allowNull:false,
+            validate: {
+                async isUnique(value) {
+                    const exists = await Activities.findOne({ where: { name: value } });
+                    if (exists) {
+                    throw new Error('El nombre de actividad ya está en uso');
+                    }
+                }
+            }
         },
         description: {
             type: DataTypes.STRING,
@@ -53,7 +61,15 @@ module.exports = (sequelize, DataTypes) => {
         },
         sponsor_id: {
             type: DataTypes.INTEGER,
-            allowNull:false
+            allowNull:false,
+            validate: {
+                async isUnique(value) {
+                    const exists = await Sponsors.findOne({ where: { id: value } });
+                    if (!exists) {
+                        throw new Error('El id sponsor seleccionado no existe');
+                    }
+                }
+            }
         }
 
     }, 

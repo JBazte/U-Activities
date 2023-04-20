@@ -23,7 +23,8 @@ module.exports = (sequelize, DataTypes) => {
             if (exists) {
               throw new Error('El email ya está en uso');
             }
-          }
+          },
+          
         }
       },
       birth_date:{
@@ -49,7 +50,10 @@ module.exports = (sequelize, DataTypes) => {
       },
       password: {
         type: DataTypes.STRING,
-        allowNull:false
+        allowNull:false,
+        /*validate: {
+          len: [5, 10]
+        }*/
       },
       studies: {
         type: DataTypes.STRING,
