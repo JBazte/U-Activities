@@ -5,7 +5,7 @@ module.exports = app => {
   
     router.post("/", preferences.create);
 
-    //router.get("/", preferences.findAll);
+    router.get("/", preferences.findAll);
     
     // Retrieve a single Preference with id
     router.get("/:id", preferences.findOne);

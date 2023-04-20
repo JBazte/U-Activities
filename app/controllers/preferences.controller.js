@@ -36,7 +36,7 @@ exports.create = (req, res) => {
       });
 };
 
-exports.findALl = (req, res) => {
+exports.findAll = (req, res) => {
   const mem = req.query.mem;
 
   Preferences.findAll()

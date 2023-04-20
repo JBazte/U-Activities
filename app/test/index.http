@@ -24,6 +24,10 @@ Content-Type: application/json
 
 ###
 
+GET http://localhost:3000/api/preferences
+
+###
+
 GET http://localhost:3000/api/preferences/2
 
 ###
