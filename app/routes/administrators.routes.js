@@ -1,11 +1,13 @@
 module.exports = app => {
     const administrators = require("../controllers/administrators.controller.js");
+
+    const {validatorCreateAdministrator, validatorGetAdministrator} = require("../validators/administrators.validators.js")
   
     var router = require("express").Router();
   
-    router.post("/", administrators.create);
+    router.post("/", validatorCreateAdministrator, administrators.create);
     
-    router.delete("/:id", administrators.deleteOne);
+    router.delete("/:id", validatorGetAdministrator, administrators.deleteOne);
   
     app.use('/api/administrators', router);
   };

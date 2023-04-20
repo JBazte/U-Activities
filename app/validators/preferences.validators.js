@@ -1,7 +1,7 @@
 const { check } = require("express-validator")
 const validateResults = require("../utils/handleValidator")
 
-const validatorCreateActivity = [
+const validatorCreatePreference = [
     check("category").exists().notEmpty(),
     check("modality").exists().notEmpty(),
     check("commitment_estimate").exists().notEmpty(),
@@ -15,11 +15,11 @@ const validatorCreateActivity = [
     //(req, res, next) => validateResults(req, res, next) // Otra forma de invocarlo
 ]
 
-const validatorGetActivity = [
+const validatorGetPreference = [
     check("id").exists().notEmpty(),
     (req, res, next) => {
         return validateResults(req, res, next)
     }
 ]
 
-module.exports = {validatorCreateActivity, validatorGetActivity}
+module.exports = {validatorCreatePreference, validatorGetPreference}
