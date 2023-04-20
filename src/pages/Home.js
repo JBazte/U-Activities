@@ -7,12 +7,12 @@ function Home() {
     return (
         <>
             <Navbar />
-            <div className='mx-5 px-5'>
+            <div className='page-margin'>
                 <div className='row mt-4'>
                     <div className='col mx-3'>
                         <ActivityContainer />
                     </div>
-                    <div className='col-3 mx-3 d-none d-lg-block'>
+                    <div className='col-custom mx-3 d-none d-lg-block'>
                         <Carousel />
                     </div>
                 </div>

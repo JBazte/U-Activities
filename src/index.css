@@ -1,5 +1,5 @@
 :root {
-  --utad-blue: #0065ef;
+  --utad-blue: #0065EF;
   --light-grey: #9DA3A7;
   --lignt-grey-hover: #868c8f;
   --extra-light-grey: #E5E9EC;
@@ -28,6 +28,16 @@ code {
     monospace;
 }
 
+.page-margin {
+  margin-right: 9rem !important;
+  margin-left: 9rem !important;
+}
+
+.col-custom {
+  flex: 0 0 auto;
+  width: 27% !important;
+}
+
 .activity-container-shadow {
   box-shadow: 0px 9px 11px 2px rgba(0, 0, 0, 0.12);
 }
@@ -44,48 +54,94 @@ code {
   background-color: var(--utad-blue);
 }
 
+.button-style {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  padding-top: 3.5px !important;
+  padding-bottom: 3.5px !important;
+}
+
 .title-text {
   font-weight: 700;
-  font-size: 32px;
+  font-size: 30px;
   line-height: 39px;
 }
 
 .body-text {
   font-weight: 400;
-  font-size: 24px;
-  line-height: 29px;
+  font-size: 14px;
+  line-height: 18px;
 }
 
 .card-title-text {
   font-weight: 500;
-  font-size: 32px;
-  line-height: 39px;
+  font-size: 30px;
+  line-height: 30px;
 }
 
 .card-date-text {
   font-weight: 300;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 24px;
 }
 
-.card-categody-text {
+.card-category-style {
   font-weight: 400;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 17px;
+  color: var(--utad-blue);
+  padding-top: 1px !important;
+  padding-bottom: 1px !important;
+  padding-right: 11px !important;
+  padding-left: 11px !important;
+}
+
+.card-business-text {
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.col-card-custom {
+  flex: 0 0 auto;
+  width: 20% !important;
+}
+
+.col-card-image-custom {
+  flex: 0 0 auto;
+  width: 28% !important;
+}
+
+.card-image {
+  border-top-left-radius: 0.25rem !important;
+  border-bottom-left-radius: 0.25rem !important;
 }
 
 .filter-button {
   background-color: var(--extra-light-grey);
   color: var(--light-grey);
-  transition: background-color 0.2s;
+  transition: background-color 1s, color 0.1s;
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+}
+
+.filter-button svg {
+  color: var(--light-grey);
+  transition: color 0.1s;
 }
 
 .filter-button:hover {
-  background-color: var(--extra-light-grey-hover);
+  background-color: var(--utad-blue);
+  color: white;
+}
+
+.filter-button:hover svg {
+  color: white;
 }
 
 .carousel-position {
-  margin-top: 10.1rem;
+  margin-top: 2.9rem;
 }
 
 .carousel-gradient {
@@ -97,7 +153,7 @@ code {
 }
 
 .carousel .carousel-item {
-  height: 600px;
+  height: 36rem;
 }
 
 .carousel-item img {
@@ -105,7 +161,6 @@ code {
   object-fit: cover;
   top: 0;
   left: 0;
-  min-height: 600px;
 }
 
 .carousel-caption {
@@ -114,6 +169,24 @@ code {
 
 .carousel-indicators {
   z-index: 3 !important;
+}
+
+.carousel .carousel-indicators button {
+  width: 8px;
+  height: 8px;
+  border-radius: 100%;
+}
+
+.carousel-title-text {
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 34px;
+}
+
+.carousel-body-text {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
 }
 
 .dropdown-custom-position {
