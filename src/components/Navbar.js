@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 function Navbar() {
     return (
         <nav className="navbar sticky-top navbar-light navbar-expand-md bg-white justify-content-center shadow-sm my-2">
-            <div className="container">
+            <div className="d-flex justify-content-between mx-5 px-5 w-100">
                 <Link className="navbar-brand" to="#">
                     <img src="https://st1.u-tad.com/media/2020/06/logo_utad.png" alt="" className="d-inline-block align-top" />
                 </Link>

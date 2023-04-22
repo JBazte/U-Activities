@@ -196,7 +196,7 @@ code {
 }
 
 .custom-form {
-  background-color: var(--extra-light-grey) !important;
+  background-color: white !important;
   border: 2px solid black !important;
 }
 

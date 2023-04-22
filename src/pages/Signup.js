@@ -17,8 +17,8 @@ function SignUp() {
                             <Form.Label>CONTRASEÑA</Form.Label>
                             <Form.Control type="password" />
                         </Form.Group>
-                        <div class="d-flex mt-4 justify-content-center align-items-center w-100">
-                            <button type="submit" class="btn btn-primary">REGISTRARSE</button>
+                        <div className="d-flex mt-4 justify-content-center align-items-center w-100">
+                            <button type="submit" className="btn btn-primary">REGISTRARSE</button>
                         </div>
                     </Form>
                 </Card.Body>
