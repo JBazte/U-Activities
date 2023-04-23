@@ -16,7 +16,7 @@ Content-Type: application/json
     "modality": "online",
     "availability": "total",
     "commitment_estimate": "total",
-    "member_id": 1
+    "member_id": 7
 }
 
 ###

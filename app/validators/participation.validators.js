@@ -1,5 +1,5 @@
 const { check } = require("express-validator")
-const validateResults = require("../utils/handleValidator")
+const validateResults = require("../utils/handleValidators")
 
 const validatorCreateParticipation = [
     check("member_id").exists().notEmpty().isInt(),

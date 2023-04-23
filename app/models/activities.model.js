@@ -62,14 +62,14 @@ module.exports = (sequelize, DataTypes) => {
         sponsor_id: {
             type: DataTypes.INTEGER,
             allowNull:false,
-            validate: {
+            /*validate: {
                 async isUnique(value) {
                     const exists = await Sponsors.findOne({ where: { id: value } });
                     if (!exists) {
                         throw new Error('El id sponsor seleccionado no existe');
                     }
                 }
-            }
+            }*/
         }
 
     }, 
