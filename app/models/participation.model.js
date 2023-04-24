@@ -34,7 +34,24 @@ module.exports = (sequelize, DataTypes) => {
         }
 
     }, 
-    { timestamps:true });
+    { 
+        timestamps: true,
+        validate: {
+            tuplaUnica: function() {
+                // Comprobar si ya existe una tupla con los mismos valores de columna1 y columna2
+                return Participation.findOne({
+                    where: {
+                        member_id: this.member_id,
+                        activity_id: this.activity_id
+                    }
+                }).then((tuplaExistente) => {
+                    if (tuplaExistente) {
+                        throw new Error('La tupla ya existe en la tabla');
+                    }
+                });
+            }
+        }
+    });
   
     return Participation;
   };
