@@ -1,3 +1,10 @@
+GET http://localhost:3000/api/administrators
+
+###
+GET http://localhost:3000/api/administrators/2
+
+###
+
 POST http://localhost:3000/api/administrators
 Content-Type: application/json
 
@@ -9,4 +16,15 @@ Content-Type: application/json
 
 ###
 
+PUT http://localhost:3000/api/administrators/2
+Content-Type: application/json
+
+{
+    "user": "JoseMaria",
+    "email": "marcos.ortiz@live.u-tad.com",
+    "phone": 717712185
+}
+
+
+###
 DELETE http://localhost:3000/api/administrators/1
