@@ -22,15 +22,15 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3000/api/activities/2
+GET http://localhost:3000/api/activities/3
 
 ###
 
-PUT http://localhost:3000/api/activities/2
+PUT http://localhost:3000/api/activities/3
 Content-Type: application/json
 
 {
-    "name": "Hola",
+    "name": "sadfsdassasdadasd",
     "description": "steochondropathy",
     "category": "medioambiental",
     "action_field": "rutrum",

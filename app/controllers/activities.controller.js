@@ -32,7 +32,7 @@ exports.create = (req, res) => {
     console.log(activity)
 
     Activities.create(activity)
-        .then()(data =>{
+        .then(data =>{
             res.send(data);
         })
         .catch(err => {
@@ -91,7 +91,7 @@ exports.update = (req, res) => {
             if(num == 1){
                 res.send({
                     message: "Activity was updated successfully."
-                })
+                });
             } else {
                 res.send({
                     message: `Cannot update Activity with id=${id}. Maybe Tutorial was not found or req.body is empty!`
