@@ -9,7 +9,7 @@ function Home() {
             <Navbar />
             <div className='page-margin'>
                 <div className='row mt-4'>
-                    <div className='col mx-3'>
+                    <div className='col me-3'>
                         <ActivityContainer />
                     </div>
                     <div className='col-custom mx-3 d-none d-lg-block'>

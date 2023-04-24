@@ -21,7 +21,7 @@ function ActivityCard() {
                     <div className="card-body d-flex text-start flex-column px-2 h-100">
                         <h1 className="card-title card-title-text mb-0">Nombre del Evento</h1>
                         <p className='text-muted mb-2 card-date-text'>Lunes 23-10-23</p>
-                        <p className="card-text mb-3 body-text">Descripcion breve Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
+                        <p className="card-text mb-3 body-text card-body-text">Descripcion breve Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
                         <h5 className='card-text mt-auto blue-highlight-text card-business-text'>U-TAD</h5>
                     </div>
                 </div>

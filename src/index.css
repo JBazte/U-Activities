@@ -56,6 +56,7 @@ code {
 
 .button-style {
   font-weight: 400;
+  width: 143px;
   font-size: 18px;
   line-height: 24px;
   padding-top: 3.5px !important;
@@ -72,6 +73,16 @@ code {
   font-weight: 400;
   font-size: 14px;
   line-height: 18px;
+}
+
+.card-body-text {
+  width: 400px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 .card-title-text {
@@ -121,7 +132,7 @@ code {
 .filter-button {
   background-color: var(--extra-light-grey);
   color: var(--light-grey);
-  transition: background-color 1s, color 0.1s;
+  transition: background-color .5s, color .5s;
   padding-top: 5px !important;
   padding-bottom: 5px !important;
 }
