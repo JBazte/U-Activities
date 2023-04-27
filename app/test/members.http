@@ -1,7 +1,7 @@
 
 GET http://localhost:3000/api/members
 ###
-GET http://localhost:3000/api/members/1
+GET http://localhost:3000/api/members/11
 
 ###
 POST http://localhost:3000/api/members
@@ -19,3 +19,23 @@ Content-Type: application/json
     "genre": "male",
     "studies": "INSO"
 }
+
+###
+PUT http://localhost:3000/api/members/11
+Content-Type: application/json
+
+{
+    "first_name": "Alejandro",
+    "last_name": "Escudero",
+    "email": "1234@gmail.com",
+    "password": "pass1",
+    "phone": "123456789",
+    "birth_date": "1995-06-15",
+    "bith_date": "1995-06-15",
+    "dni": "54347567H",
+    "genre": "male",
+    "studies": "INSO"
+}
+
+###
+DELETE http://localhost:3000/api/members/11

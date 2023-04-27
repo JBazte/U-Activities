@@ -119,7 +119,7 @@ exports.deleteOne = (req, res) => {
     .then(num => {
       if (num == 1) {
         res.send({
-          message: "Tutorial was deleted successfully!"
+          message: "Member was deleted successfully!"
         });
       } else {
         res.send({
