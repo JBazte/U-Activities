@@ -1,4 +1,5 @@
 const db = require("../models");
+const sequelize = require("sequelize")
 const Participations = db.participation;
 const Op = db.Sequelize.Op;
 
@@ -47,6 +48,24 @@ exports.findAll = (req, res) =>{
       });
     });
 }
+
+exports.getMembers = (req, res) => {
+  const activity_id = req.params.activity_id
+  
+  Participations.findAll({
+    where: { activity_id: activity_id },
+    attributes: [ [sequelize.fn('COUNT', sequelize.col('member_id')), "n_members"] ]
+  })
+    .then(data =>{
+      res.send(data)
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving participations."
+      });
+    });
+}  
 
 exports.findOne = (req, res) => {
   const id = req.params.id

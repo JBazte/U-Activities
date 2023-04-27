@@ -18,4 +18,11 @@ const validatorGetParticipation = [
     }
 ]
 
-module.exports = {validatorCreateParticipation, validatorGetParticipation}
+const validatorGetActivityParticipation = [
+    check("activity_id").exists().notEmpty(),
+    (req, res, next) => {
+        return validateResults(req, res, next)
+    }
+]
+
+module.exports = {validatorCreateParticipation, validatorGetParticipation, validatorGetActivityParticipation}
