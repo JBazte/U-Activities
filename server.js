@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require('cors');
+require('dotenv').config();
 const bodyParser = require("body-parser");
 
 const app = express();
@@ -30,6 +31,7 @@ require("./app/routes/administrators.routes")(app);
 require("./app/routes/sponsors.routes")(app);
 require("./app/routes/activities.routes")(app);
 require("./app/routes/participation.routes")(app);
+require("./app/routes/auth.routes")(app);
 
   // set port, listen for requests
 const PORT = process.env.PORT || 3000;

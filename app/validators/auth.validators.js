@@ -1,5 +1,5 @@
 const { check } = require("express-validator")
-const validateResults = require("../utils/handleValidator")
+const validateResults = require("../utils/handleValidators")
 
 const validatorRegisterMember = [
     check("first_name").exists().notEmpty().isAlpha()/*withMessage("Ha habido un problema al introducir el nombre")*/,
