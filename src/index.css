@@ -51,7 +51,7 @@ code {
 }
 
 .bg-button-blue {
-  background-color: var(--utad-blue);
+  background-color: var(--utad-blue) !important;
 }
 
 .button-style {
@@ -232,4 +232,28 @@ label {
   to {
     filter: hue-rotate(360deg);
   }
+}
+
+.activity-detail-type-text {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.activity-detail-gradient {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.55) 0%, rgba(255, 255, 255, 0) 50%);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.activity-detail-tags {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 17px;
+  padding-top: 1px !important;
+  padding-bottom: 1px !important;
+  padding-right: 11px !important;
+  padding-left: 11px !important;
+  background-color: var(--light-grey);
 }

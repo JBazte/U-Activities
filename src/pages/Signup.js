@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form, Card } from 'react-bootstrap';
+import Footer from '../components/Footer';
 
 function SignUp() {
     return (
@@ -23,6 +24,9 @@ function SignUp() {
                     </Form>
                 </Card.Body>
             </Card>
+            <div className='sticky-bottom'>
+                <Footer />
+            </div>
         </div>
     );
 };

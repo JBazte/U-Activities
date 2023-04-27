@@ -6,7 +6,7 @@ import Footer from '../components/Footer';
 function Login() {
     return (
         <>
-            <section className="vh-100">
+            <section className="vh-100 overflow-hidden">
                 <div className="container-fluid">
                     <div className="row d-flex align-items-center">
                         <div className="col-sm-4 px-0 position-relative d-none d-sm-block">
@@ -52,8 +52,10 @@ function Login() {
                         </div>
                     </div>
                 </div>
+                <div className='sticky-bottom'>
+                    <Footer />
+                </div>
             </section >
-            < Footer />
         </>
     );
 };
