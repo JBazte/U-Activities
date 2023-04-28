@@ -4,12 +4,12 @@ Content-Type: application/json
 {
     "first_name": "Alejandro",
     "last_name": "Escudero",
-    "email": "registrado9@gmail.com",
+    "email": "registrado12@gmail.com",
     "password": "pass1",
     "phone": "123456789",
     "birth_date": "1995-06-15",
     "bith_date": "1995-06-15",
-    "dni": "54123967H",
+    "dni": "54173167H",
     "genre": "male",
     "studies": "INSO"
 }
