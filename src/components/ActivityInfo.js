@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart } from '@fortawesome/free-regular-svg-icons'
+import { faHeart, faCalendarXmark, faClock, faMap } from '@fortawesome/free-regular-svg-icons'
+import { faUserGroup, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { Button } from 'react-bootstrap';
 
 function ActivityInfo() {
@@ -10,9 +11,23 @@ function ActivityInfo() {
             <div className='bg-white shadow rounded overflow-hidden my-3' style={{ height: "18.5rem" }}>
                 <div className='d-flex flex-column h-100'>
                     <div className='mx-4 my-3'>
-                        <p><b>Fecha</b> del Evento y Horario</p>
-                        <p><b>X</b> Días para inscribirse</p>
-                        <p className='mb-5'><b>Ubicación</b></p>
+
+                        <p>
+                            <FontAwesomeIcon icon={faCalendarXmark} transform='grow-5' className='me-2' />
+                            <b>Fecha</b> del Evento y Horario
+                        </p>
+                        <p>
+                            <FontAwesomeIcon icon={faClock} transform='grow-5' className='me-2' />
+                            <b>X</b> Días Para Inscribirse
+                        </p>
+                        <p>
+                            <FontAwesomeIcon icon={faMap} transform='grow-5' className='me-2' />
+                            <b>Ubicación</b>
+                        </p>
+                        <p className='mb-4'>
+                            <FontAwesomeIcon icon={faUserGroup} transform='grow-5' className='me-2' />
+                            <b>Participantes XX/XX</b>
+                        </p>
                         <div className='mt-auto'>
                             <Button className='w-100 rounded-1 my-1' style={{ backgroundColor: 'var(--light-grey)', border: 'none' }}>Guardar en favoritos <FontAwesomeIcon icon={faHeart} transform='grow-1' className='ms-2' /></Button>
                             <Button className='w-100 rounded-1 my-1 bg-button-blue' style={{ backgroundColor: 'var(--light-grey)', border: 'none' }}>Inscribirse a la actividad </Button>
@@ -21,12 +36,31 @@ function ActivityInfo() {
                 </div>
             </div>
             <div className='bg-white shadow rounded overflow-hidden my-4'>
-                <div className='mx-4 my-3 d-flex flex-column align-items-center'>
+                <div className='mx-4 my-3 d-flex flex-column align-items-center text-center'>
                     <p>Hay <b>X personas</b> inscritas a este evento</p>
-                    <div className='d-flex position-relative'>
+                    <div className='d-flex position-relative' style={{ left: "-30px" }}>
                         <img src='' alt='' height='130px' width='130px' className='bg-dark bg-opacity-50 rounded-circle border border-white border-5 img-cover' />
                         <div className='bg-dark bg-opacity-25 rounded-circle border border-white border-5 d-flex align-items-center justify-content-center position-absolute top-0 start-100 translate-middle-x' style={{ height: "130px", width: "130px" }}>
                             <p className='m-0'>X más...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className='bg-white shadow rounded overflow-hidden my-4'>
+                <div className='mx-4 my-3 d-flex flex-column align-items-center text-center'>
+                    <p>Otros eventos de este Organizador...</p>
+                    <div className='d-flex'>
+                        <div className='d-block me-3'>
+                            <div className='bg-dark bg-opacity-50 rounded-4 border border-white border-5' style={{ height: "130px", width: "130px" }} />
+                            <p className='m-0'><b>Nombre de el<br></br>evento</b></p>
+                        </div>
+                        <div className='d-block me-3'>
+                            <div className='bg-dark bg-opacity-50 rounded-4 border border-white border-5' style={{ height: "130px", width: "130px" }} />
+                            <p className='m-0'><b>Nombre de el<br></br>evento</b></p>
+                        </div>
+                        <div className='d-block align-self-center mb-5'>
+                            <p className='m-0'>MÁS...</p>
+                            <FontAwesomeIcon icon={faArrowRight} transform='grow-5' />
                         </div>
                     </div>
                 </div>
