@@ -1,7 +1,7 @@
 module.exports = app => {
     const activities = require("../controllers/activities.controller.js");
-
-    const {validatorCreateActivity, validatorGetActivity} = require("../validators/activities.validators.js")
+    //const {validatorGetSponsor} = require("../validators/sponsors.validators.js");
+    const {validatorCreateActivity, validatorGetActivity, validatorGetActivitySponsor} = require("../validators/activities.validators.js")
   
     var router = require("express").Router();
   
@@ -13,7 +13,9 @@ module.exports = app => {
     // Retrieve a single Member with id
     router.get("/:id", validatorGetActivity, activities.findOne);
   
-    router.put("/:id", validatorGetActivity, validatorCreateActivity, activities.update)
+    router.get("/sponsor/:sponsor_id", validatorGetActivitySponsor, activities.getActivities);
+
+    router.put("/:id", validatorGetActivity, validatorCreateActivity, activities.update);
   
     router.delete("/:id", validatorGetActivity, activities.deleteOne);
   

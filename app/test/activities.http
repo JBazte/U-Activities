@@ -17,7 +17,7 @@ Content-Type: application/json
     "modality": "presencial",
     "min_members": 22,
     "max_members": 75,
-    "sponsor_id": 2
+    "sponsor_id": 1
 }
 
 ###
@@ -46,4 +46,11 @@ Content-Type: application/json
 
 ###
 
+<<<<<<< Updated upstream
 DELETE http://localhost:3011/api/activities/2
+=======
+DELETE http://localhost:3011/api/activities/2
+###
+
+GET http://localhost:3011/api/activities/sponsor/1
+>>>>>>> Stashed changes

@@ -29,4 +29,11 @@ const validatorGetActivity = [
     }
 ]
 
-module.exports = {validatorCreateActivity, validatorGetActivity}
+const validatorGetActivitySponsor = [
+    check("sponsor_id").exists().notEmpty(),
+    (req, res, next) => {
+        return validateResults(req, res, next)
+    }
+]
+
+module.exports = {validatorCreateActivity, validatorGetActivity, validatorGetActivitySponsor}
