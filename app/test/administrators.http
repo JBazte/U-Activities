@@ -1,11 +1,11 @@
-GET http://localhost:3000/api/administrators
+GET http://localhost:3011/api/administrators
 
 ###
-GET http://localhost:3000/api/administrators/2
+GET http://localhost:3011/api/administrators/2
 
 ###
 
-POST http://localhost:3000/api/administrators
+POST http://localhost:3011/api/administrators
 Content-Type: application/json
 
 {
@@ -16,7 +16,7 @@ Content-Type: application/json
 
 ###
 
-PUT http://localhost:3000/api/administrators/2
+PUT http://localhost:3011/api/administrators/2
 Content-Type: application/json
 
 {
@@ -27,4 +27,4 @@ Content-Type: application/json
 
 
 ###
-DELETE http://localhost:3000/api/administrators/1
+DELETE http://localhost:3011/api/administrators/1

@@ -1,12 +1,12 @@
 
-GET http://localhost:3000
+GET http://localhost:3011
 ###
-GET http://localhost:3000/api/members
+GET http://localhost:3011/api/members
 ###
-GET http://localhost:3000/api/members/1
+GET http://localhost:3011/api/members/1
 
 ###
-POST http://localhost:3000/api/members
+POST http://localhost:3011/api/members
 Content-Type: application/json
 
 {
@@ -23,15 +23,15 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3000/api/preferences
+GET http://localhost:3011/api/preferences
 
 ###
 
-GET http://localhost:3000/api/preferences/2
+GET http://localhost:3011/api/preferences/2
 
 ###
 
-POST http://localhost:3000/api/preferences
+POST http://localhost:3011/api/preferences
 Content-Type: application/json
 
 {
@@ -44,7 +44,7 @@ Content-Type: application/json
 
 ###
 
-PUT http://localhost:3000/api/preferences/2
+PUT http://localhost:3011/api/preferences/2
 Content-Type: application/json
 
 {
@@ -57,4 +57,4 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3000/api/preferences/1
+DELETE http://localhost:3011/api/preferences/1

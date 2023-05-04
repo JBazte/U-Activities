@@ -1,4 +1,4 @@
-POST http://localhost:3000/api/auth/register/member HTTP/1.1
+POST http://localhost:3011/api/auth/register/member HTTP/1.1
 Content-Type: application/json
 
 {
@@ -15,7 +15,7 @@ Content-Type: application/json
 }
 
 ###LOGIN DE UN MIEMBRO
-POST http://localhost:3000/api/auth/login/member HTTP/1.1
+POST http://localhost:3011/api/auth/login/member HTTP/1.1
 Content-Type: application/json
 
 {

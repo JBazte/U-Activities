@@ -1,8 +1,8 @@
-GET http://localhost:3000/api/sponsors
+GET http://localhost:3011/api/sponsors
 
 ###
 
-POST http://localhost:3000/api/sponsors
+POST http://localhost:3011/api/sponsors
 Content-Type: application/json
 
 {
@@ -14,11 +14,11 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3000/api/sponsors/1
+GET http://localhost:3011/api/sponsors/1
 
 ###
 
-PUT http://localhost:3000/api/sponsors/1
+PUT http://localhost:3011/api/sponsors/1
 Content-Type: application/json
 
 {
@@ -30,4 +30,4 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3000/api/sponsors/1
+DELETE http://localhost:3011/api/sponsors/1
