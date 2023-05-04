@@ -40,6 +40,13 @@ code {
   width: 27% !important;
 }
 
+.navbar-custom-text {
+  font-weight: 500 !important;
+  font-size: 15px !important;
+  line-height: 20px !important;
+  color: black !important;
+}
+
 .activity-container-shadow {
   box-shadow: 0px 9px 11px 2px rgba(0, 0, 0, 0.12);
 }

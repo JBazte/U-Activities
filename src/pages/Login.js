@@ -19,7 +19,7 @@ function Login() {
                             <div className="p-5">
                                 <Card className="shadow custom-form">
                                     <Card.Body className="py-3 d-flex flex-column align-items-center">
-                                        <h3 className="mb-4">LOG IN</h3>
+                                        <h3 className="mb-4">INICIAR SESIÓN</h3>
                                         <Form className='w-100 px-2'>
                                             <Form.Group controlId="formEmail">
                                                 <Form.Label className='fw-bold text-dark h6'>Correo Electrónico</Form.Label>
@@ -30,7 +30,7 @@ function Login() {
                                                 <Form.Label className='fw-bold text-dark h6'>Contraseña</Form.Label>
                                                 <Form.Control type="password" />
                                             </Form.Group>
-                                            <Link to="#" className='text-decoration-none text-body'>¿Has olvidado tu contraseña?</Link>
+                                            <Link to="#" className='text-decoration-none text-body'><u>¿Has olvidado tu contraseña?</u></Link>
                                             {/* <Form.Group controlId="formBasicCheckbox">
                                                     <Form.Check type="checkbox">
                                                     <Form.Check.Input />
@@ -41,8 +41,7 @@ function Login() {
                                             <button type="submit" className="btn btn-primary mt-3 w-100">Acceder</button>
                                             <div className="mt-4 w-100 text-center">
                                                 <Link to="/signup">
-                                                    <span className='text-body'>¿No tienes una cuenta?  </span>
-                                                    Regístrate
+                                                    <u style={{ color: "black", textDecoration: "underline black" }}>¿No tienes una cuenta?</u><u style={{ color: "#0065EF", textDecoration: "underline #0065EF" }}> Regístrate</u>
                                                 </Link>
                                             </div>
                                         </Form>
