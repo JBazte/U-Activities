@@ -1,5 +1,7 @@
 :root {
   --utad-blue: #0065EF;
+  --utad-blue-hover: #04449e;
+  --dark-grey: #383B42;
   --light-grey: #9DA3A7;
   --lignt-grey-hover: #868c8f;
   --extra-light-grey: #E5E9EC;
@@ -52,6 +54,10 @@ code {
 
 .bg-button-blue {
   background-color: var(--utad-blue) !important;
+}
+
+.bg-button-blue:hover {
+  background-color: var(--utad-blue-hover);
 }
 
 .button-style {
@@ -117,6 +123,11 @@ code {
 .col-card-custom {
   flex: 0 0 auto;
   width: 20% !important;
+}
+
+.col-card-body-custom {
+  flex: 0 0 auto;
+  width: 50% !important;
 }
 
 .col-card-image-custom {
@@ -256,4 +267,36 @@ label {
   padding-right: 11px !important;
   padding-left: 11px !important;
   background-color: var(--light-grey);
+}
+
+.activity-detail-title {
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 37px;
+}
+
+.activity-detail-subtitle {
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 20px;
+  color: var(--utad-blue)
+}
+
+.activity-detail-schedule {
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 22px;
+  color: var(--dark-grey)
+}
+
+.activity-detail-body {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.activity-detail-button {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
 }

@@ -19,9 +19,7 @@ function ActivityDetails() {
                         <div className="profile mt-4 me-3 mb-2 border border-white border-5 rounded-3">
                             <img src="https://apiimg.iberostar.com/uploads/image/47658/crops/1200:310/1200/image.jpeg" alt="..." height="130" width="130" className="rounded-3 full-width image-cover" />
                         </div>
-
                     </div>
-
                 </div>
 
                 <div className="p-4 d-flex justify-content-end text-center">
@@ -36,11 +34,11 @@ function ActivityDetails() {
                 </div>
 
                 <div className='px-5'>
-                    <h1 className="mb-0">Nombre del Evento</h1>
-                    <h5 className='mt-auto blue-highlight-text'>Descripcion breve del evento</h5>
-                    <p className='ms-2 mb-2 text'><FontAwesomeIcon icon={faCalendarXmark} color='#6F7276' transform="grow-3" className='me-1' /> Lunes 23-10-23</p>
-                    <p className='ms-2 mb-2 text'><FontAwesomeIcon icon={faCalendarXmark} color='#6F7276' transform="grow-3" className='me-1' /> 19:00-20:00</p>
-                    <p className="mb-3 body-text w-100">
+                    <h1 className="mb-0 activity-detail-title">Nombre del Evento</h1>
+                    <h5 className='mt-auto activity-detail-subtitle'>Descripcion breve del evento</h5>
+                    <p className='ms-2 mb-2 activity-detail-schedule'><FontAwesomeIcon icon={faCalendarXmark} color='#6F7276' transform="grow-1" className='me-2' /> Lunes 23-10-23</p>
+                    <p className='ms-2 mb-2 activity-detail-schedule'><FontAwesomeIcon icon={faCalendarXmark} color='#6F7276' transform="grow-1" className='me-2' /> 19:00-20:00</p>
+                    <p className="mt-3 mb-3 activity-detail-body w-100">
                         Descripcion breve Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...
                         <br />
                         <br />
@@ -50,7 +48,7 @@ function ActivityDetails() {
                         Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
                     </p>
                     <div className='d-flex justify-content-end mb-4'>
-                        <Button style={{ backgroundColor: "var(--light-grey)", border: "none" }}>Contacta con el organizador</Button>
+                        <Button className='activity-detail-button px-4 rounded-1' style={{ backgroundColor: "var(--light-grey)", border: "none" }}>Contacta con el organizador</Button>
                     </div>
                 </div>
             </div>
