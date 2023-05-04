@@ -42,7 +42,7 @@ exports.findAll = (req, res) =>{
 
 exports.getMembers = (req, res) => {
   const activity_id = req.params.activity_id
-  
+  console.log(activity_id)
   Participations.findAll({
     where: { activity_id: activity_id },
     attributes: [ [sequelize.fn('COUNT', sequelize.col('member_id')), "n_members"] ]

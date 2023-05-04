@@ -1,4 +1,5 @@
 const db = require("../models");
+const sequelize = require("sequelize");
 const Activities = db.activities;
 const Op = db.Sequelize.Op;
 
@@ -60,6 +61,24 @@ exports.findAll = (req, res) =>{
         });
 };
 
+exports.getActivities = (req, res) => {
+  const sponsor_id = req.params.sponsor_id
+  
+  Activities.findAll({
+    where: { sponsor_id: sponsor_id },
+    //attributes: [ [sequelize.fn('COUNT', sequelize.col('id')), "n_activities"] ]
+  })
+    .then(data =>{
+      res.send(data)
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving activities for sponsor " + sponsor_id + "."
+      });
+    });
+}
+
 // Find a single Activity whit an id
 exports.findOne = (req, res) => {
     const id = req.params.id;
@@ -100,7 +119,7 @@ exports.update = (req, res) => {
         })
         .catch(err => {
             res.status(500).send({
-              message: "Error updating member with id=" + id
+              message: "Error updating activity with id=" + id
             });
         });
 }
