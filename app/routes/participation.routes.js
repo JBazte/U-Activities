@@ -1,11 +1,12 @@
 module.exports = app => {
     const participation = require("../controllers/participation.controller.js");
+    const { authMiddlewareMember } = require("../middleware/session.js")
 
-    const {validatorCreateParticipation, validatorGetParticipation, validatorGetActivityParticipation} = require("../validators/participation.validators.js")
+    const {validatorCreateParticipation, validatorGetParticipation, validatorGetActivityParticipation, checkValidActivity} = require("../validators/participation.validators.js")
   
     var router = require("express").Router();
   
-    router.post("/", validatorCreateParticipation,  participation.create);
+    router.post("/:activity_id", authMiddlewareMember, checkValidActivity,  participation.create);
 
     router.get("/", participation.findAll);
     

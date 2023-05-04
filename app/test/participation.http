@@ -4,13 +4,9 @@ GET http://localhost:3011/api/participation
 GET http://localhost:3011/api/participation/2
 
 ###
-POST http://localhost:3011/api/participation
+POST http://localhost:3011/api/participation/1
 Content-Type: application/json
-
-{
-    "member_id": "8",
-    "activity_id": "3"
-}
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjgzMjAyMTA3LCJleHAiOjE2ODMyMDkzMDd9.JrhKSdQ3oRB3IchB8VvD5YC3yYSKhAM2JqLIBAPRSEg
 
 ###
 

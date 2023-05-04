@@ -1,5 +1,7 @@
 const { check } = require("express-validator")
 const validateResults = require("../utils/handleValidators")
+const { activities } = require("../models")
+const { handleHttpError } = require("../utils/handleErrors")
 
 const validatorCreateParticipation = [
     check("member_id").exists().notEmpty().isInt(),
@@ -25,4 +27,17 @@ const validatorGetActivityParticipation = [
     }
 ]
 
-module.exports = {validatorCreateParticipation, validatorGetParticipation, validatorGetActivityParticipation}
+const checkValidActivity = async (req, res, next) => {
+    
+    const activity = await activities.findByPk(req.params.activity_id)
+
+    if(activity == null)
+    {
+        handleHttpError(res, "NOT_FOUND_ACTIVITY")
+        return
+    }
+    
+    next()
+}
+
+module.exports = {validatorCreateParticipation, validatorGetParticipation, validatorGetActivityParticipation, checkValidActivity}

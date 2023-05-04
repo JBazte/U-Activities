@@ -43,7 +43,7 @@ const loginMember = async (req, res) => {
             where: {
                 email: req.email
             },
-            attributes: ['password', 'name', 'role', 'email']
+            attributes: ['password', 'first_name', 'email']
         }); 
 
         if(!member){

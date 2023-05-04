@@ -21,7 +21,7 @@ const authMiddlewareMember = async (req, res, next) => {
 
         const member = await members.findByPk(dataToken.id)
         req.member = member // Inyecto al user en la petición
-
+        
         next()
 
     }catch(err){

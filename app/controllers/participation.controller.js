@@ -4,19 +4,10 @@ const Participations = db.participation;
 const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {
-
-    // Validate the request
-    if (!req.body) {
-      res.status(400).send({
-        message: "Content can not be empty!"
-      });
-      return;
-    }
-  
     // Create a Participation
     const participation = {
-      member_id: req.body.member_id,
-      activity_id: req.body.activity_id
+      member_id: req.member.id,
+      activity_id: req.params.activity_id
     };
   
     console.log(participation)

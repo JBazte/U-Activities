@@ -8,7 +8,7 @@ const validatorRegisterMember = [
     check("birth_date").exists().notEmpty()/*.isDate()*/,
     check("dni").exists().notEmpty().isAlphanumeric(),
     check("genre").exists().notEmpty().isAlpha(),
-    check("password").exists().notEmpty(),
+    check("password").exists().notEmpty().isLength( {min:8, max: 64} ),
     check("studies").exists().notEmpty().isAlpha(),
     check("phone").exists().notEmpty(),
     
