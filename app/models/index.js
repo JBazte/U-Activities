@@ -1,11 +1,12 @@
 //const dbConfig = require("../config/db.config.js");
-
+require('dotenv').config();
 const {Sequelize, DataTypes} = require("sequelize");
 
 
+
 const sequelize = new Sequelize('test_voluntariado', 'test', '1234Peperoni!', {
-  host: 'suliserver.ddns.net', // dirección del host de la base de datos
-  dialect: 'mysql' // dialecto de la base de datos
+  host: process.env.HOST, // dirección del host de la base de datos
+  dialect: process.env.DIALECT // dialecto de la base de datos
 });
 
 const db = {};
