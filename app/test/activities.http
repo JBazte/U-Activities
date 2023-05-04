@@ -46,11 +46,7 @@ Content-Type: application/json
 
 ###
 
-<<<<<<< Updated upstream
-DELETE http://localhost:3011/api/activities/2
-=======
 DELETE http://localhost:3011/api/activities/2
 ###
 
 GET http://localhost:3011/api/activities/sponsor/1
->>>>>>> Stashed changes
