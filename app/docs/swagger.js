@@ -55,7 +55,8 @@ const options = {
                         example: "Hombre"
                     },
                     password: {
-                        type: "string"
+                        type: "string",
+                        example: " "
                     },
                     studies: {
                         type: "string",
@@ -66,7 +67,8 @@ const options = {
                         example: "123456789"
                     },
                     extra_info: {
-                        type: "string"
+                        type: "string",
+                        example: " "
                     },
                 },
             },
@@ -83,10 +85,12 @@ const options = {
                         example: "presencial"
                     },
                     commitment_estimate: {
-                        type: "date"
+                        type: "date",
+                        example: " "
                     },
                     avaliability: {
-                        type: "date"
+                        type: "date",
+                        example: " "
                     },
                     member_id: {
                         type: "integer",
@@ -125,7 +129,8 @@ const options = {
                         example: "Carla"
                     },
                     password: {
-                        type: "string"
+                        type: "string",
+                        example: " "
                     },
                     email: {
                         type: "string",
@@ -142,14 +147,16 @@ const options = {
                         example: "Ayuda a refugiados"
                     },
                     description: {
-                        type: "string"
+                        type: "string",
+                        example: " "
                     },
                     category: {
                         type: "string",
                         example: "social"
                     },
                     action_field: {
-                        type: "string"
+                        type: "string",
+                        example: " "
                     },
                     involved_group: {
                         type: "string",
@@ -215,7 +222,7 @@ const options = {
         },
       },
     },
-    apis: ["./routes/*.js"],
+    apis: ["./app/routes/*.js"],
   };
   
 module.exports = swaggerJsdoc(options)
