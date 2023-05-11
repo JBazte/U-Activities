@@ -24,8 +24,7 @@ module.exports = (sequelize, DataTypes) => {
         phone: {
             type: DataTypes.STRING,
             allowNull:false
-        },
-
+        }
     }, 
     { timestamps:true });
   

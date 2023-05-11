@@ -1,5 +1,5 @@
 const { handleHttpError } = require("../utils/handleErrors")
-const { verifyTokenUser }     = require("../utils/handleJwt")
+const { verifyTokenUser, verifyTokenAdmin, verifyTokenSponsor }     = require("../utils/handleJwt")
 const { members, sponsors, administrators }      = require("../models")
 
 const authMiddlewareMember = async (req, res, next) => {
@@ -16,6 +16,12 @@ const authMiddlewareMember = async (req, res, next) => {
 
         if(!dataToken) {
             handleHttpError(res, "NOT_PAYLOAD_DATA", 401)
+            return
+        }
+
+        if(dataToken.role != "member")
+        {
+            handleHttpError(res, "NOT_MEMBER_TOKEN", 401)
             return
         }
 
@@ -40,10 +46,16 @@ const authMiddlewareSponsor = async (req, res, next) => {
         // Nos llega la palabra reservada Bearer (es un estándar) y el Token, así que me quedo con la última parte
         const token = req.headers.authorization.split(' ').pop() 
         //Del token, miramos en Payload (revisar verifyToken de utils/handleJwt)
-        const dataToken = await verifyTokenUser(token)
+        const dataToken = await verifyTokenSponsor(token)
 
         if(!dataToken) {
             handleHttpError(res, "NOT_PAYLOAD_DATA", 401)
+            return
+        }
+
+        if(dataToken.role != "sponsor")
+        {
+            handleHttpError(res, "NOT_MEMBER_TOKEN", 401)
             return
         }
 
@@ -68,10 +80,16 @@ const authMiddlewareAdministrator = async (req, res, next) => {
         // Nos llega la palabra reservada Bearer (es un estándar) y el Token, así que me quedo con la última parte
         const token = req.headers.authorization.split(' ').pop() 
         //Del token, miramos en Payload (revisar verifyToken de utils/handleJwt)
-        const dataToken = await verifyTokenUser(token)
+        const dataToken = await verifyTokenAdmin(token)
 
         if(!dataToken) {
             handleHttpError(res, "NOT_PAYLOAD_DATA", 401)
+            return
+        }
+
+        if(dataToken.role != "admin")
+        {
+            handleHttpError(res, "NOT_MEMBER_TOKEN", 401)
             return
         }
 
@@ -82,7 +100,7 @@ const authMiddlewareAdministrator = async (req, res, next) => {
 
     }catch(err){
         console.log(err)
-        handleHttpError(res, "NOT_ADINISTRATOR_SESSION", 401)
+        handleHttpError(res, "NOT_ADMINISTRATOR_SESSION", 401)
     }
 }
 

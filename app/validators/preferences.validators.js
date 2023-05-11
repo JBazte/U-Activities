@@ -6,7 +6,6 @@ const validatorCreatePreference = [
     check("modality").exists().notEmpty(),
     check("commitment_estimate").exists().notEmpty(),
     check("availability").exists().notEmpty(),
-    check("member_id").exists().notEmpty().isInt(),
 
     //Middleware tiene que responder después de la petición
     (req, res, next) => {

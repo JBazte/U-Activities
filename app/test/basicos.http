@@ -1,0 +1,105 @@
+### Un usuario no registrado debería poder ver todas las actividades
+GET http://localhost:3011/api/activities
+
+
+### Un usuario no registrado deberá poder registrarse  y obtener su token, a su vez creará sus preferencias
+POST http://localhost:3011/api/auth/register/member HTTP/1.1
+Content-Type: application/json
+
+{
+    "member": {
+        "first_name": "Alex",
+        "last_name": "Concejero",
+        "email": "alexe@gmail.com",
+        "password": "password1",
+        "phone": "123456789",
+        "birth_date": "1995-06-15",
+        "dni": "54799987H",
+        "gender": "male",
+        "degree": "INSO"
+    },
+    "preferences": {
+        "category": "medioambiental",
+        "modality": "online",
+        "availability": "total",
+        "commitment_estimate": "total"
+    }
+}
+
+### Un usuario registrado deberá poder hacer login y obtener su token
+POST http://localhost:3011/api/auth/login/member HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "pedro@gmail.com",
+    "password": "password1"
+}
+
+### Un administrador deberá poder registar su usuario 
+POST http://localhost:3011/api/auth/register/admin
+Content-Type: application/json
+
+{
+    "user": "Admin3",
+    "email": "admin3@live.u-tad.com",
+    "phone": 717712185
+}
+
+### Un administrador deberá poder registrar a un sponsor con su token y devolverle el token del sponsor, que no caducara
+POST http://localhost:3011/api/auth/register/sponsor
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjgzODA3NTI5fQ.e66Xs4bRhbm0fD8HnHFK7N5F64FVNSQqGVFmY6SeC0s
+
+{
+    "entity": "Oracle",
+    "user": "Pere",
+    "password": "1234",
+    "email": "prpe.perez@u-tad.com"
+}
+
+### Un usuario registrado deberá poder crear sus preferncias con su token
+POST http://localhost:3011/api/preferences
+Content-Type: application/json
+Authorization: Bearer tokenMember
+
+{
+    "category": "medioambiental",
+    "modality": "online",
+    "availability": "total",
+    "commitment_estimate": "total"
+}
+
+### Un sponsor deberá poder crear una actividad con su token de sponsor
+POST http://localhost:3011/api/activities
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sZSI6InNwb25zb3IiLCJpYXQiOjE2ODM4MDc2MjQsImV4cCI6MTY4MzgxNDgyNH0.n3Wam_1HKJgs76LS7jtz_q7kI-SXTgq2fpBoKyx2HrU
+
+{
+    "name": "Zoolabos",
+    "description": "steochondropathy",
+    "category": "social",
+    "action_field": "rutrum",
+    "involved_group": "ac",
+    "location": "578 Fair Oaks Court",
+    "start_date": "2022-05-26",
+    "end_date": "2023-12-21",
+    "modality": "presencial",
+    "min_members": 22,
+    "max_members": 75
+}
+
+### Un usuario registrado podrá apuntarse a una actividad haciendo un post a la tabla de participation
+POST http://localhost:3011/api/participation/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjgzMjAyMTA3LCJleHAiOjE2ODMyMDkzMDd9.JrhKSdQ3oRB3IchB8VvD5YC3yYSKhAM2JqLIBAPRSEg
+
+### Un usuario registrado podrá darse de baja de una actividad
+DELETE http://localhost:3011/api/participation/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjgzMjAyMTA3LCJleHAiOjE2ODMyMDkzMDd9.JrhKSdQ3oRB3IchB8VvD5YC3yYSKhAM2JqLIBAPRSEg
+
+### Un sponsor deberá tener acceso a los usuarios inscritos a una actividad
+
+
+###
+

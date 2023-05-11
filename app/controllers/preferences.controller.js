@@ -48,11 +48,11 @@ exports.create = (req, res) => {
   
     // Create Preferences for a user
     const preference = {
-      category: req.body.category,
-      modality: req.body.modality,
-      commitment_estimate: req.body.commitment_estimate,
-      availability: req.body.availability,
-      member_id: req.body.member_id
+      category: req.body.preferences.category,
+      modality: req.body.preferences.modality,
+      commitment_estimate: req.body.preferences.commitment_estimate,
+      availability: req.body.preferences.availability,
+      member_id: req.memberId
     };
   
     console.log(preference)
@@ -60,7 +60,12 @@ exports.create = (req, res) => {
     // Save those Preferences in the database
     Preferences.create(preference)
       .then(data => {
-        res.send(data);
+        const data2 = {
+          token: req.data.token,
+          user: req.data.user,
+          preference: data
+        }
+        res.send(data2);
       })
       .catch(err => {
         res.status(500).send({

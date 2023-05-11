@@ -13,7 +13,6 @@ const validatorCreateActivity = [
     check("modality").exists().notEmpty(),
     check("min_members").exists().notEmpty().isInt(),
     check("max_members").exists().notEmpty().isInt(),
-    check("sponsor_id").exists().notEmpty().isInt(),
 
     //Middleware tiene que responder después de la petición
     (req, res, next) => {

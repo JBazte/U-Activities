@@ -76,7 +76,7 @@ Participation.belongsTo(Activities, {
 
 
 //Sincronizamos las tablsa en la base de datos
-db.sequelize.sync({force: false })
+db.sequelize.sync({force: true })
     .then(() => {
         console.log('Tablas sincronizadas')
     });

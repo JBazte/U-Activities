@@ -1,32 +1,81 @@
 const { matchedData } = require("express-validator")
-const { tokenSignUser } = require("../utils/handleJwt")
+const { tokenSignUser, tokenSignAdmin, tokenSignSponsor } = require("../utils/handleJwt")
 const { encrypt, compare } = require("../utils/handlePassword")
 const {handleHttpError} = require("../utils/handleErrors")
-const {members} = require("../models")
+const {members, administrators, sponsors} = require("../models")
 
 /**
  * Encargado de registrar un nuevo usuario
  * @param {*} req 
  * @param {*} res 
  */
-const registerMember = async (req, res) => {
+const registerMember = async (req, res, next) => {
     try {
-        req = matchedData(req)
-        const password = await encrypt(req.password)
-        const body = {...req, password} // Con "..." duplicamos el objeto y le añadimos o sobreescribimos una propiedad
+        const member = req.body.member
+        const password = await encrypt(member.password)
+        const body = {...member, password} // Con "..." duplicamos el objeto y le añadimos o sobreescribimos una propiedad
         const dataMember = await members.create(body)
         //Si no queremos que se devuelva el hash con "findOne", en el modelo de users ponemos select: false en el campo password
         //Además, en este caso con "create", debemos setear la propiedad tal que:  
         dataMember.set('password', undefined, { strict: false })
 
+
+
+        req.memberId = dataMember.id 
+        console.log(dataMember.id)
+        console.log(req.memberId)
+
         const data = {
             token: await tokenSignUser(dataMember),
             user: dataMember
         }
-        res.send(data)  
+
+        
+        req.data = data 
+
+        
+        next() 
     }catch(err) {
         console.log(err)
         handleHttpError(res, "ERROR_REGISTER_USER")
+    }
+}
+
+const registerAdmin = async (req, res) => {
+    try {
+        req = matchedData(req)
+        const body = req // Con "..." duplicamos el objeto y le añadimos o sobreescribimos una propiedad
+        const dataAdmin = await administrators.create(body)
+
+        const data = {
+            token: await tokenSignAdmin(dataAdmin),
+            admin: dataAdmin
+        }
+        res.send(data)  
+    }catch(err) {
+        console.log(err)
+        handleHttpError(res, "ERROR_REGISTER_ADMIN")
+    }
+}
+
+const registerSponsor = async (req, res) => {
+    try {
+        req = matchedData(req)
+        const password = await encrypt(req.password)
+        const body = {...req, password} // Con "..." duplicamos el objeto y le añadimos o sobreescribimos una propiedad
+        const dataSponsor = await sponsors.create(body)
+        //Si no queremos que se devuelva el hash con "findOne", en el modelo de users ponemos select: false en el campo password
+        //Además, en este caso con "create", debemos setear la propiedad tal que:  
+        dataSponsor.set('password', undefined, { strict: false })
+
+        const data = {
+            token: await tokenSignSponsor(dataSponsor),
+            sponsor: dataSponsor
+        }
+        res.send(data)  
+    }catch(err) {
+        console.log(err)
+        handleHttpError(res, "ERROR_REGISTER_SPONSOR")
     }
 }
 
@@ -74,4 +123,4 @@ const loginMember = async (req, res) => {
     }
 }
 
-module.exports = { registerMember, loginMember }
+module.exports = { registerMember, registerAdmin, registerSponsor, loginMember }

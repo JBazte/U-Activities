@@ -3,6 +3,7 @@ module.exports = app => {
   //const {validatorGetSponsor} = require("../validators/sponsors.validators.js");
   const {validatorCreateActivity, validatorGetActivity, validatorGetActivitySponsor} = require("../validators/activities.validators.js")
 
+
   var router = require("express").Router();
 
   /**
@@ -24,7 +25,7 @@ module.exports = app => {
   *          '401':
   *              description: Validation error
   */
-  router.post("/", validatorCreateActivity, activities.create);
+  router.post("/",authMiddlewareSponsor, validatorCreateActivity, activities.create);
 
   /**
    * @openapi

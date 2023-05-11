@@ -44,7 +44,7 @@ module.exports = (sequelize, DataTypes) => {
           }
         }
       },
-      genre:{
+      gender:{
         type: DataTypes.STRING,
         allowNull:false
       },
@@ -55,7 +55,7 @@ module.exports = (sequelize, DataTypes) => {
           len: [5, 10]
         }*/
       },
-      studies: {
+      degree: {
         type: DataTypes.STRING,
         allowNull:false
       },
