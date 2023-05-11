@@ -17,6 +17,9 @@
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
     "sequelize": "^6.29.0",
+    "swagger": "^0.7.5",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^4.6.3",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
