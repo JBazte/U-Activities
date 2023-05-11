@@ -103,10 +103,11 @@ exports.update = (req,res) => {
 }
 
 exports.deleteOne = (req, res) => {
-    const id = req.params.id;
+    const idMember = req.member.id;
+    const idActivity = req.params.activity_id;
   
     Participations.destroy({
-      where: { id: id }
+      where: { member_id: idMember, activity_id: idActivity }
     })
       .then(num => {
         if (num == 1) {
@@ -115,7 +116,7 @@ exports.deleteOne = (req, res) => {
           });
         } else {
           res.send({
-            message: "Cannot delete participation with id=" + id
+            message: "Cannot delete participation from member with id=" + idMember + "and activity with id="  + id
           });
         }
       })

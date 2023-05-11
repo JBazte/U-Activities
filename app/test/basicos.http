@@ -10,11 +10,11 @@ Content-Type: application/json
     "member": {
         "first_name": "Alex",
         "last_name": "Concejero",
-        "email": "alexe@gmail.com",
+        "email": "aleexe@gmail.com",
         "password": "password1",
         "phone": "123456789",
         "birth_date": "1995-06-15",
-        "dni": "54799987H",
+        "dni": "54779987H",
         "gender": "male",
         "degree": "INSO"
     },
@@ -48,7 +48,7 @@ Content-Type: application/json
 ### Un administrador deberá poder registrar a un sponsor con su token y devolverle el token del sponsor, que no caducara
 POST http://localhost:3011/api/auth/register/sponsor
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjgzODA3NTI5fQ.e66Xs4bRhbm0fD8HnHFK7N5F64FVNSQqGVFmY6SeC0s
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjgzODI1ODgzfQ.iZ5XQ8xjl5BkoR1r6CvNPS07fGaoXpYjMDr-Jct91rc
 
 {
     "entity": "Oracle",
@@ -57,22 +57,10 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sZSI6I
     "email": "prpe.perez@u-tad.com"
 }
 
-### Un usuario registrado deberá poder crear sus preferncias con su token
-POST http://localhost:3011/api/preferences
-Content-Type: application/json
-Authorization: Bearer tokenMember
-
-{
-    "category": "medioambiental",
-    "modality": "online",
-    "availability": "total",
-    "commitment_estimate": "total"
-}
-
 ### Un sponsor deberá poder crear una actividad con su token de sponsor
 POST http://localhost:3011/api/activities
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sZSI6InNwb25zb3IiLCJpYXQiOjE2ODM4MDc2MjQsImV4cCI6MTY4MzgxNDgyNH0.n3Wam_1HKJgs76LS7jtz_q7kI-SXTgq2fpBoKyx2HrU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6InNwb25zb3IiLCJpYXQiOjE2ODM4MjU5MDgsImV4cCI6MTY4MzgzMzEwOH0.h1A4o3AUKIX7DoD-hW1i9ZifdxdH0zBliEVJrRRw1u8
 
 {
     "name": "Zoolabos",
@@ -91,12 +79,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sZSI6I
 ### Un usuario registrado podrá apuntarse a una actividad haciendo un post a la tabla de participation
 POST http://localhost:3011/api/participation/1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjgzMjAyMTA3LCJleHAiOjE2ODMyMDkzMDd9.JrhKSdQ3oRB3IchB8VvD5YC3yYSKhAM2JqLIBAPRSEg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6Im1lbWJlciIsImlhdCI6MTY4MzgyNjAwMywiZXhwIjoxNjgzODMzMjAzfQ.OSSMZuDgD65kqmh4c-GrFhp3cUIW-ewOY_eFlWEc7Qk
 
 ### Un usuario registrado podrá darse de baja de una actividad
 DELETE http://localhost:3011/api/participation/1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjgzMjAyMTA3LCJleHAiOjE2ODMyMDkzMDd9.JrhKSdQ3oRB3IchB8VvD5YC3yYSKhAM2JqLIBAPRSEg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6Im1lbWJlciIsImlhdCI6MTY4MzgyNjAwMywiZXhwIjoxNjgzODMzMjAzfQ.OSSMZuDgD65kqmh4c-GrFhp3cUIW-ewOY_eFlWEc7Qk
 
 ### Un sponsor deberá tener acceso a los usuarios inscritos a una actividad
 

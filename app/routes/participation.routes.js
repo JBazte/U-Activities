@@ -16,7 +16,7 @@ module.exports = app => {
 
     router.put("/:id", validatorGetParticipation, validatorCreateParticipation, participation.update);
     
-    router.delete("/:id", validatorGetParticipation, participation.deleteOne);
+    router.delete("/:activity_id", authMiddlewareMember, validatorGetParticipation, participation.deleteOne);
 
     app.use('/api/participation', router);
   };
