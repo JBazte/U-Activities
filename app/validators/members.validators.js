@@ -105,5 +105,11 @@ const hashPasswordUpdate = async (req, res, next) => {
     next()
 }
 
+const validatorGetActivitySponsor = [
+    check("sponsor_id").exists().notEmpty(),
+    (req, res, next) => {
+        return validateResults(req, res, next)
+    }
+]
 
-module.exports = { validatorCreateMember, validatorGetMember, checkParamsUpdate, checkParamsCreate, hashPasswordUpdate }
+module.exports = { validatorCreateMember, validatorGetMember, validatorGetActivitySponsor, checkParamsUpdate, checkParamsCreate, hashPasswordUpdate }

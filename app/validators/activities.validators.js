@@ -34,5 +34,25 @@ const validatorGetActivitySponsor = [
         return validateResults(req, res, next)
     }
 ]
+const validatorGetCategory = [
+    check("category").exists().notEmpty(),
+    (req, res, next) => {
+        return validateResults(req, res, next)
+    }
+]
 
-module.exports = {validatorCreateActivity, validatorGetActivity, validatorGetActivitySponsor}
+const validatorGetActionField = [
+    check("action_field").exists().notEmpty(),
+    (req, res, next) => {
+        return validateResults(req, res, next)
+    }
+]
+
+const validatorGetInvolvedGroup = [
+    check("involved_group").exists().notEmpty(),
+    (req, res, next) => {
+        return validateResults(req, res, next)
+    }
+]
+
+module.exports = { validatorGetCategory, validatorGetActionField, validatorGetInvolvedGroup, validatorCreateActivity, validatorGetActivity, validatorGetActivitySponsor}

@@ -147,3 +147,70 @@ exports.deleteOne = (req, res) => {
         });
     });
 }
+
+exports.findCategory = (req, res) => {
+  const category = req.params.category;
+
+  Activities.findAll({
+    where: { category: category }
+  })
+  .then(data =>{
+    res.send(data);
+  })
+  .catch(err => {
+      res.status(500).send({
+          message:
+              err.message || "Some error occurred while retrieving all Activities."
+      });
+  });
+}
+
+exports.findActionField = (req, res) => {
+  const actionField = req.params.actionField;
+
+  Activities.findAll({
+    where: { action_field: actionField }
+  })
+  .then(data =>{
+    res.send(data);
+  })
+  .catch(err => {
+      res.status(500).send({
+          message:
+              err.message || "Some error occurred while retrieving all Activities."
+      });
+  });
+}
+
+exports.findInvolvedGroup = (req, res) => {
+  const involvedGroup = req.params.involvedGroup;
+
+  Activities.findAll({
+    where: { involved_group: involvedGroup }
+  })
+  .then(data =>{
+    res.send(data);
+  })
+  .catch(err => {
+      res.status(500).send({
+          message:
+              err.message || "Some error occurred while retrieving all Activities."
+      });
+  });
+}
+
+exports.orderDate = (req, res) => {
+
+  Activities.findAll({
+    order:  [["start_date", "asc"]]
+  })
+  .then(data =>{
+    res.send(data);
+  })
+  .catch(err => {
+      res.status(500).send({
+          message:
+              err.message || "Some error occurred while retrieving all Activities."
+      });
+  });
+}

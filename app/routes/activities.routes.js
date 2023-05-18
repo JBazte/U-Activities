@@ -1,7 +1,7 @@
 module.exports = app => {
   const activities = require("../controllers/activities.controller.js");
   //const {validatorGetSponsor} = require("../validators/sponsors.validators.js");
-  const {validatorCreateActivity, validatorGetActivity, validatorGetActivitySponsor} = require("../validators/activities.validators.js")
+  const {validatorGetCategory, validatorGetActionField, validatorGetInvolvedGroup, validatorCreateActivity, validatorGetActivity, validatorGetActivitySponsor} = require("../validators/activities.validators.js")
   const { authMiddlewareSponsor } = require("../middleware/session.js")
 
   var router = require("express").Router();
@@ -139,6 +139,11 @@ module.exports = app => {
    *              description: Validation error
    */
   router.delete("/:id", validatorGetActivity, activities.deleteOne);
+
+  router.get("/category/:category", validatorGetCategory, activities.findCategory)
+  router.get("/actionField/:actionField", validatorGetActionField, activities.findActionField)
+  router.get("/involvedGroup/:involvedGroup", validatorGetInvolvedGroup, activities.findInvolvedGroup)
+  router.get("/date/orderDate", activities.orderDate)
 
   app.use('/api/activities', router);
   };

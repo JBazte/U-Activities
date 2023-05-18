@@ -1,8 +1,9 @@
 module.exports = app => {
   const members = require("../controllers/members.controller.js");
+  const activities = require("../controllers/activities.controller.js");
   var router = require("express").Router();
   
-  const {validatorCreateMember, validatorGetMember, hashPasswordUpdate, checkParamsUpdate, checkParamsCreate} = require("../validators/members.validators.js")
+  const {validatorCreateMember, validatorGetMember, validatorGetActivitySponsor} = require("../validators/members.validators.js")
   const { authMiddlewareMember } = require("../middleware/session.js")
 
   /**
@@ -86,7 +87,7 @@ module.exports = app => {
    *          '500':
    *              description: Server error
    */
-  //router.get("/sponsor/:sponsor_id", validatorGetActivitySponsor, activities.getActivities);
+  router.get("/sponsor/:sponsor_id", validatorGetActivitySponsor, activities.getActivities);
 
   /**
    * @openapi
@@ -138,6 +139,6 @@ module.exports = app => {
    *              description: Validation error
    */
   router.delete("/:id", validatorGetMember, members.deleteOne);
-
+  
   app.use('/api/members', router);
 };

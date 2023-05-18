@@ -50,3 +50,18 @@ DELETE http://localhost:3011/api/activities/2
 ###
 
 GET http://localhost:3011/api/activities/sponsor/1
+
+###
+GET http://localhost:3011/api/activities/date/orderDate
+
+###
+
+GET http://localhost:3011/api/activities/category/1
+
+###
+
+GET http://localhost:3011/api/activities/actionField/1
+
+### 
+
+GET http://localhost:3011/api/activities/involvedGroup/1
