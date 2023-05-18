@@ -1,14 +1,25 @@
-import { React } from 'react';
+import { React, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faCircleXmark } from '@fortawesome/free-regular-svg-icons'
 import { faUserCircle, faCircle, faBell, faCog } from '@fortawesome/free-solid-svg-icons';
 import { Link } from "react-router-dom";
+import Popup from './Popup';
 
 function Navbar() {
+    const [showPopup, setShowPopup] = useState(false);
+
+    const handleLogoutClick = () => {
+        setShowPopup(true);
+    };
+
+    const handleClosePopup = () => {
+        setShowPopup(false);
+    };
+
     return (
         <nav className="navbar sticky-top navbar-expand-md bg-white justify-content-center shadow-sm">
             <div className="d-flex page-margin w-100 align-middle">
-                <Link className="navbar-brand me-5" to="#">
+                <Link className="navbar-brand me-5" to="/">
                     <img src="https://st1.u-tad.com/media/2020/06/logo_utad.png" alt="" className="d-inline-block align-top" />
                 </Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsingNavbar3">
@@ -17,7 +28,7 @@ function Navbar() {
                 <div className="navbar-collapse collapse w-100" id="collapsingNavbar3">
                     <ul className="nav nav-pills navbar-nav w-100 h-100 align-middle">
                         <li className="nav-item mx-3 my-auto">
-                            <Link className="nav-link rounded-pill py-0 px-3 active" to="#">Eventos<span className="sr-only">(current)</span></Link>
+                            <Link className="nav-link rounded-pill py-0 px-3 active" to="/">Eventos<span className="sr-only">(current)</span></Link>
                         </li>
                         <li className="nav-item mx-3 my-auto">
                             <Link className="nav-link rounded-pill py-0 px-3 navbar-custom-text" to="#">Buscar</Link>
@@ -36,11 +47,13 @@ function Navbar() {
                                 <Link className="nav-link" to="#">Ajustes</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="#">Cerrar sesión</Link>
+                                <Link className="nav-link" to="#" onClick={handleLogoutClick}                            >
+                                    Cerrar sesión
+                                </Link>
                             </li>
                         </div>
                         <li className="nav-item my-auto ms-auto">
-                            <Link className="nav-link navbar-custom-text" to="#"><u>Iniciar sesión</u></Link>
+                            <Link className="nav-link navbar-custom-text" to="/login"><u>Iniciar sesión</u></Link>
                         </li>
                         <li className="nav-item dropdown me-3 my-auto d-none d-md-block">
                             <Link className="nav-link dropdown-toggle pt-1" to="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ color: "#0065ef" }} >
@@ -70,7 +83,7 @@ function Navbar() {
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link className="dropdown-item" to="#">
+                                    <Link className="dropdown-item" to="#" onClick={handleLogoutClick}>
                                         <span className="me-2">
                                             <FontAwesomeIcon icon={faCircleXmark} transform="grow-6" style={{ color: "#000000" }} />
                                         </span> Cerrar sesión
@@ -81,6 +94,9 @@ function Navbar() {
                     </ul>
                 </div>
             </div>
+            {showPopup && (
+                <Popup content="¿Estas seguro de querer cerrar la sesión?" handleClose={handleClosePopup} />
+            )}
         </nav>
     );
 }
