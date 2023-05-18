@@ -2,7 +2,8 @@ module.exports = app => {
   const members = require("../controllers/members.controller.js");
   var router = require("express").Router();
   
-  const {validatorCreateMember, validatorGetMember} = require("../validators/members.validators.js")
+  const {validatorCreateMember, validatorGetMember, hashPasswordUpdate, checkParamsUpdate, checkParamsCreate} = require("../validators/members.validators.js")
+  const { authMiddlewareMember } = require("../middleware/session.js")
 
   /**
   * @openapi
@@ -85,7 +86,7 @@ module.exports = app => {
    *          '500':
    *              description: Server error
    */
-  router.get("/sponsor/:sponsor_id", validatorGetActivitySponsor, activities.getActivities);
+  //router.get("/sponsor/:sponsor_id", validatorGetActivitySponsor, activities.getActivities);
 
   /**
    * @openapi
@@ -94,7 +95,7 @@ module.exports = app => {
    *      tags:
    *      - Members
    *      summary: Update a member
-   *      description: Update a member
+   *      description: Update a member, a member will just be able to edit his own account, as he will get the id from the token
    *      parameters:
    *          -   name: id
    *              in: path
@@ -113,7 +114,7 @@ module.exports = app => {
    *          '401':
    *              description: Validation error
    */
-  router.put("/:id", validatorGetMember, validatorCreateMember, members.update)
+  router.put("/", authMiddlewareMember, hashPasswordUpdate, members.update)
 
   /**
    * @openapi

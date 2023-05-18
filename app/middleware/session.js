@@ -26,8 +26,17 @@ const authMiddlewareMember = async (req, res, next) => {
         }
 
         const member = await members.findByPk(dataToken.id)
+
+        if(member == null)
+        {
+            handleHttpError(res, "NOT_EXISTS_MEMBER", 401)
+            return
+        }
+
         req.member = member // Inyecto al user en la petición
         
+        
+
         next()
 
     }catch(err){
@@ -62,6 +71,12 @@ const authMiddlewareSponsor = async (req, res, next) => {
         const sponsor = await sponsors.findByPk(dataToken.id)
         req.sponsor = sponsor // Inyecto al user en la petición
         
+        if(sponsor == null)
+        {
+            handleHttpError(res, "NOT_EXISTS_SPONSOR", 401)
+            return
+        }
+
         next()
 
     }catch(err){
@@ -95,6 +110,12 @@ const authMiddlewareAdministrator = async (req, res, next) => {
 
         const admin = await administrators.findByPk(dataToken.id)
         req.admin = admin // Inyecto al user en la petición
+
+        if(admin == null)
+        {
+            handleHttpError(res, "NOT_EXISTS_ADMIN", 401)
+            return
+        }
         
         next()
 

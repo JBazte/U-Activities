@@ -87,7 +87,8 @@ exports.findOne = (req, res) => {
 };
 
 exports.update = (req, res) => {
-  const id = req.params.id;
+  const id = req.member.id;
+  console.log(id)
 
   Members.update(req.body, {
     where: { id: id }
@@ -99,13 +100,13 @@ exports.update = (req, res) => {
         });
       } else {
         res.send({
-          message: `Cannot update member with id=${id}. Maybe Tutorial was not found or req.body is empty!`
+          message: `Cannot update member with id=${id}. Maybe Member was not found or req.body is empty!`
         });
       }
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error updating member with id=" + id
+        message: "Error updating member with id=" + id + err
       });
     });
 };

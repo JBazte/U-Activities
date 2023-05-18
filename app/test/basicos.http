@@ -1,6 +1,14 @@
 ### Un usuario no registrado debería poder ver todas las actividades
 GET http://localhost:3011/api/activities
 
+### Un usuario no registrado podrá ver los detalles de una actividad concreta
+GET http://localhost:3011/api/activities/1
+
+
+
+########################################################################################
+###################     HISTORIAS DE USUARIOS REGISTRADOS ##############################
+########################################################################################
 
 ### Un usuario no registrado deberá poder registrarse  y obtener su token, a su vez creará sus preferencias
 POST http://localhost:3011/api/auth/register/member HTTP/1.1
@@ -8,13 +16,13 @@ Content-Type: application/json
 
 {
     "member": {
-        "first_name": "Alex",
-        "last_name": "Concejero",
-        "email": "aleexe@gmail.com",
+        "first_name": "Jose",
+        "last_name": "Castel",
+        "email": "joret@gmail.com",
         "password": "password1",
-        "phone": "123456789",
+        "phone": "123496789",
         "birth_date": "1995-06-15",
-        "dni": "54779987H",
+        "dni": "57093987H",
         "gender": "male",
         "degree": "INSO"
     },
@@ -31,9 +39,46 @@ POST http://localhost:3011/api/auth/login/member HTTP/1.1
 Content-Type: application/json
 
 {
-    "email": "pedro@gmail.com",
+    "email": "joret@gmail.com",
     "password": "password1"
 }
+
+### Un usuario registrado deberá poder editar su propio usuario
+PUT http://localhost:3011/api/members
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsInJvbGUiOiJtZW1iZXIiLCJpYXQiOjE2ODQ0MTIwNDgsImV4cCI6MTY4NDQxOTI0OH0.JuHI2OwdWLUBHR7IWNt40pc4lxAeuTaUjCGAUyEK0iU
+
+{
+    "first_name": "Josecaelos",
+    "last_name": "Castel",
+    "email": "joret@gmail.com",
+    "password": "password2",
+    "phone": "123496789",
+    "birth_date": "1995-06-15",
+    "dni": "57093987H",
+    "gender": "male",
+    "degree": "INSO"
+}
+
+
+### Un usuario registrado podrá apuntarse a una actividad haciendo un post a la tabla de participation
+POST http://localhost:3011/api/participation/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6Im1lbWJlciIsImlhdCI6MTY4MzgzMTY3OCwiZXhwIjoxNjgzODM4ODc4fQ.Qxa8h2jjg8jWzM3ppyAGHjc2lqqMNgbNnRPmibkUIJk
+
+### Un usuario registrado podrá darse de baja de una actividad
+DELETE http://localhost:3011/api/participation/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6Im1lbWJlciIsImlhdCI6MTY4MzgzMTY3OCwiZXhwIjoxNjgzODM4ODc4fQ.Qxa8h2jjg8jWzM3ppyAGHjc2lqqMNgbNnRPmibkUIJk
+
+
+
+
+
+
+########################################################################################
+###################     HISTORIAS DE ADMINISTRADORES ###################################
+########################################################################################
 
 ### Un administrador deberá poder registar su usuario 
 POST http://localhost:3011/api/auth/register/admin
@@ -48,7 +93,7 @@ Content-Type: application/json
 ### Un administrador deberá poder registrar a un sponsor con su token y devolverle el token del sponsor, que no caducara
 POST http://localhost:3011/api/auth/register/sponsor
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjgzODI1ODgzfQ.iZ5XQ8xjl5BkoR1r6CvNPS07fGaoXpYjMDr-Jct91rc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjgzODMxNzA3fQ.dvlKeMj7F6xus1VdZTyyyHEf2DLwAstK2lx0vmZO4Ys
 
 {
     "entity": "Oracle",
@@ -57,13 +102,26 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6I
     "email": "prpe.perez@u-tad.com"
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 ### Un sponsor deberá poder crear una actividad con su token de sponsor
 POST http://localhost:3011/api/activities
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6InNwb25zb3IiLCJpYXQiOjE2ODM4MjU5MDgsImV4cCI6MTY4MzgzMzEwOH0.h1A4o3AUKIX7DoD-hW1i9ZifdxdH0zBliEVJrRRw1u8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6InNwb25zb3IiLCJpYXQiOjE2ODM4MzE3NDksImV4cCI6MTY4MzgzODk0OX0.C2v-Q90kOCSnyoIlpB_-iuoHc7OyTgm1Y8JYI8GBF7Y
 
 {
-    "name": "Zoolabos",
+    "name": "PruebaActividad",
     "description": "steochondropathy",
     "category": "social",
     "action_field": "rutrum",
@@ -75,16 +133,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6I
     "min_members": 22,
     "max_members": 75
 }
-
-### Un usuario registrado podrá apuntarse a una actividad haciendo un post a la tabla de participation
-POST http://localhost:3011/api/participation/1
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6Im1lbWJlciIsImlhdCI6MTY4MzgyNjAwMywiZXhwIjoxNjgzODMzMjAzfQ.OSSMZuDgD65kqmh4c-GrFhp3cUIW-ewOY_eFlWEc7Qk
-
-### Un usuario registrado podrá darse de baja de una actividad
-DELETE http://localhost:3011/api/participation/1
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6Im1lbWJlciIsImlhdCI6MTY4MzgyNjAwMywiZXhwIjoxNjgzODMzMjAzfQ.OSSMZuDgD65kqmh4c-GrFhp3cUIW-ewOY_eFlWEc7Qk
 
 ### Un sponsor deberá tener acceso a los usuarios inscritos a una actividad
 
