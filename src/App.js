@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import NotFound from "./pages/NotFound";
 import Signup from './pages/Signup';
 import Activity from './pages/Activity';
+import ActivityEdit from './pages/sponsor/ActivityEdit';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/activity" element={<Activity />} />
+        <Route path="/sponsor/activity" element={<ActivityEdit />} />
       </Routes>
     </BrowserRouter>
   );

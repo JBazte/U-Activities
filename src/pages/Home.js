@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 import ActivityContainer from '../components/ActivityContainer'
 import Carousel from '../components/Carousel';
 
@@ -17,6 +18,7 @@ function Home() {
                     </div>
                 </div>
             </div>
+            <Footer />
         </>
     )
 }

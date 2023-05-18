@@ -1,8 +1,8 @@
 import React from 'react';
-import Navbar from '../components/Navbar'
-import ActivityDetails from '../components/ActivityDetails'
-import Footer from '../components/Footer';
-import ActivityInfo from '../components/ActivityInfo';
+import Navbar from '../../components/Navbar'
+import ActivityDetails from '../../components/sponsor/ActivityDetailsEdit'
+import Footer from '../../components/Footer';
+import ActivityInfo from '../../components/sponsor/ActivityInfoEdit';
 
 function Activity() {
     return (
