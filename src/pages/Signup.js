@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 import { useState } from 'react';
 
 function Signup() {
-    const [formData, setFormData] = useState({
+    const [userData, setUserData] = useState({
         email: '',
         password: '',
         first_name: '',
@@ -16,23 +16,72 @@ function Signup() {
         degree: ''
     });
 
-    const handleInputChange = (event) => {
+    const handleUserInputChange = (event) => {
         const { name, value } = event.target;
-        setFormData({
-            ...formData,
+        setUserData({
+            ...userData,
             [name]: value
         });
     };
 
+    const [additionalData, setAdditionalData] = useState({
+        category: [],
+        modality: [],
+        availability: '',
+        // commitment_estimate: []
+    });
+
+    const handleAdditionalInputChange = (event) => {
+        const { name, value, type, checked } = event.target;
+        if (type === 'checkbox') {
+            const updatedData = {
+                ...additionalData,
+                [name]: checked
+                    ? [...additionalData[name], value]
+                    : additionalData[name].filter((item) => item !== value)
+            };
+            setAdditionalData(updatedData);
+        } else {
+            setAdditionalData({
+                ...additionalData,
+                [name]: value
+            });
+        }
+    };
+
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [passwordError, setPasswordError] = useState('');
+
+    const handleConfirmPasswordChange = (event) => {
+        setConfirmPassword(event.target.value);
+    };
+
     const handleSubmit = async (event) => {
         event.preventDefault();
+
+        if (userData.password !== confirmPassword) {
+            setPasswordError('Las contraseñas no son iguales');
+            return;
+        }
+
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$/;
+        if (!passwordRegex.test(userData.password)) {
+            setPasswordError("La contraseña debe tener como mínimo 8 caracteres, 1 mayúscula, 1 minúscula, 1 número y 1 caracter especial");
+            return;
+        }
+
+        setPasswordError('');
+
         try {
             const response = await fetch('/api/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(formData)
+                body: JSON.stringify({
+                    user: userData,
+                    additionalData: additionalData
+                })
             });
             await response.json();
         } catch (err) {
@@ -59,32 +108,33 @@ function Signup() {
                                         <Form className='w-100 px-2 vh-100 overflow-auto' style={{ "maxHeight": '410px' }} onSubmit={handleSubmit}>
                                             <Form.Group controlId="formFirstName">
                                                 <Form.Label className='fw-bold text-dark h6'>Nombre</Form.Label>
-                                                <Form.Control type="text" name="first_name" onChange={handleInputChange} required />
+                                                <Form.Control type="text" name="first_name" onChange={handleUserInputChange} required />
                                             </Form.Group>
                                             <Form.Group controlId="formLastName">
                                                 <br />
                                                 <Form.Label className='fw-bold text-dark h6'>Apellido</Form.Label>
-                                                <Form.Control type="text" name="last_name" onChange={handleInputChange} required />
+                                                <Form.Control type="text" name="last_name" onChange={handleUserInputChange} required />
                                             </Form.Group>
                                             <Form.Group controlId="formEmail">
                                                 <br />
                                                 <Form.Label className='fw-bold text-dark h6'>Correo Electrónico</Form.Label>
-                                                <Form.Control type="email" name="email" onChange={handleInputChange} required />
+                                                <Form.Control type="email" name="email" onChange={handleUserInputChange} required />
                                             </Form.Group>
                                             <Form.Group controlId="formPassword">
                                                 <br />
                                                 <Form.Label className='fw-bold text-dark h6'>Crea una contraseña</Form.Label>
-                                                <Form.Control type="password" name="password" onChange={handleInputChange} required />
+                                                <Form.Control type="password" name="password" onChange={handleUserInputChange} required />
                                             </Form.Group>
-                                            <Form.Group>
+                                            <Form.Group controlId="formConfirmPassword">
                                                 <br />
                                                 <Form.Label className='fw-bold text-dark h6'>Confirmar contraseña</Form.Label>
-                                                <Form.Control type="password" required />
+                                                <Form.Control type="password" name="confirm_password" onChange={handleConfirmPasswordChange} required />
                                             </Form.Group>
-                                            <p className='text-decoration-none text-body form-text text-muted'>La contraseña debe tener mínimo 8 caracteres, 1 mayúscula, 1 minúscula, 1 número y 1 caracter especial.</p>
+                                            {passwordError && <span className="text-danger">{passwordError}</span>}
                                             <Form.Group controlId="formGender">
+                                                <br />
                                                 <Form.Label className='fw-bold text-dark h6'>Género</Form.Label>
-                                                <Form.Control as="select" name="gender" onChange={handleInputChange} required>
+                                                <Form.Control as="select" name="gender" onChange={handleUserInputChange} required>
                                                     <option>Selecciona tu género</option>
                                                     <option value="male">Masculino</option>
                                                     <option value="female">Femenino</option>
@@ -94,17 +144,17 @@ function Signup() {
                                             <Form.Group controlId="formDni">
                                                 <br />
                                                 <Form.Label className='fw-bold text-dark h6'>DNI</Form.Label>
-                                                <Form.Control type="text" name="dni" onChange={handleInputChange} required />
+                                                <Form.Control type="text" name="dni" onChange={handleUserInputChange} required />
                                             </Form.Group>
                                             <Form.Group controlId="formBirthDate">
                                                 <br />
                                                 <Form.Label className='fw-bold text-dark h6'>Fecha de Nacimiento</Form.Label>
-                                                <Form.Control type="date" name="birth_date" onChange={handleInputChange} required />
+                                                <Form.Control type="date" name="birth_date" onChange={handleUserInputChange} required />
                                             </Form.Group>
                                             <Form.Group controlId="formDegree">
                                                 <br />
                                                 <Form.Label className='fw-bold text-dark h6'>Titulación</Form.Label>
-                                                <Form.Control as="select" name="degree" onChange={handleInputChange} required >
+                                                <Form.Control as="select" name="degree" onChange={handleUserInputChange} required >
                                                     <option>Selecciona tu grado académico</option>
                                                     <option value="INSO">Grado en Ingeniería del Software</option>
                                                     <option value="INSG">Grado en Ingeniería del Software (Inglés)</option>
@@ -115,6 +165,58 @@ function Signup() {
                                                     <option value="ANIV">Grado en Animación</option>
                                                     <option value="ANIG">Grado en Animación (Inglés)</option>
                                                     <option value="FIIS">Doble Grado En Ingenieríar del Software y Física Computacional</option>
+                                                </Form.Control>
+                                            </Form.Group>
+                                            <Form.Group controlId="formCategory">
+                                                <br />
+                                                <Form.Label className="fw-bold text-dark h6">Categoría</Form.Label>
+                                                <div className="d-flex">
+                                                    <Form.Check
+                                                        className='text-dark pe-3'
+                                                        type="checkbox"
+                                                        name="category"
+                                                        value="sociales"
+                                                        label={<span className='text-dark'>Sociales</span>}
+                                                        onChange={handleAdditionalInputChange}
+                                                    />
+                                                    <Form.Check
+                                                        type="checkbox"
+                                                        name="category"
+                                                        value="medioambientes"
+                                                        label={<span className='text-dark'>Medioambientes</span>}
+                                                        onChange={handleAdditionalInputChange}
+                                                    />
+                                                </div>
+                                            </Form.Group>
+                                            <Form.Group controlId="formModality">
+                                                <br />
+                                                <Form.Label className="fw-bold text-dark h6">Modalidad</Form.Label>
+                                                <div className="d-flex">
+                                                    <Form.Check
+                                                        className='text-dark pe-3'
+                                                        type="checkbox"
+                                                        name="modality"
+                                                        value="presencial"
+                                                        label={<span className='text-dark'>Presencial</span>}
+                                                        onChange={handleAdditionalInputChange}
+                                                    />
+                                                    <Form.Check
+                                                        type="checkbox"
+                                                        name="modality"
+                                                        value="telemático"
+                                                        label={<span className='text-dark'>Telemático</span>}
+                                                        onChange={handleAdditionalInputChange}
+                                                    />
+                                                </div>
+                                            </Form.Group>
+                                            <Form.Group controlId="formAvailability">
+                                                <br />
+                                                <Form.Label className='fw-bold text-dark h6'>Disponibilidad de tiempo</Form.Label>
+                                                <Form.Control as="select" name="availability" onChange={handleAdditionalInputChange} required >
+                                                    <option>Selecciona tu disponibilidad</option>
+                                                    <option value="semanal">Semanal</option>
+                                                    <option value="mensual">Mensual</option>
+                                                    <option value="anual">Anual</option>
                                                 </Form.Control>
                                             </Form.Group>
                                             <br />
