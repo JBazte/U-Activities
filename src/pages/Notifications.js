@@ -1,17 +1,17 @@
 import React from 'react';
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import ActivityContainer from '../components/ActivityContainer'
+import NotificationContainer from '../components/NotificationContainer'
 import Carousel from '../components/Carousel';
 
-function Home() {
+function Notifications() {
     return (
         <>
             <Navbar />
             <div className='page-margin'>
                 <div className='row mt-4'>
                     <div className='col me-3'>
-                        <ActivityContainer />
+                        <NotificationContainer />
                     </div>
                     <div className='col-custom mb-5 mx-3 d-none d-lg-block'>
                         <Carousel />
@@ -23,4 +23,4 @@ function Home() {
     )
 }
 
-export default Home;
+export default Notifications;

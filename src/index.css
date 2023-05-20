@@ -137,9 +137,20 @@ code {
   width: 50% !important;
 }
 
+.col-notification-body-custom {
+  flex: 0 0 auto;
+  width: 75% !important;
+}
+
 .col-card-image-custom {
   flex: 0 0 auto;
   width: 28% !important;
+}
+
+.col-notification-card-image-custom {
+  flex: 0 0 auto;
+  width: 120px !important;
+  height: 90px !important;
 }
 
 .card-image {

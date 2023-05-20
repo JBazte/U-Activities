@@ -38,7 +38,7 @@ function Navbar() {
                         </li>
                         <div className='d-md-none'>
                             <li className="nav-item">
-                                <Link className="nav-link" to="#">Notificaciones</Link>
+                                <Link className="nav-link" to="/notifications">Notificaciones</Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="#">Guardados</Link>
@@ -61,7 +61,7 @@ function Navbar() {
                             </Link>
                             <ul className="dropdown-menu border border-3 border-primary dropdown-custom-position" aria-labelledby="navbarDropdown">
                                 <li>
-                                    <Link className="dropdown-item" to="#">
+                                    <Link className="dropdown-item" to="/notifications">
                                         <span className="fa-layers me-2">
                                             <FontAwesomeIcon icon={faCircle} transform="grow-6" style={{ color: "#000000" }} />
                                             <FontAwesomeIcon icon={faBell} inverse transform="shrink-3" />

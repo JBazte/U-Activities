@@ -7,6 +7,7 @@ import NotFound from "./pages/NotFound";
 import Signup from './pages/Signup';
 import Activity from './pages/Activity';
 import ActivityEdit from './pages/sponsor/ActivityEdit';
+import Notifications from './pages/Notifications';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/activity" element={<Activity />} />
+        <Route path="/notifications" element={<Notifications />} />
         <Route path="/sponsor/activity" element={<ActivityEdit />} />
       </Routes>
     </BrowserRouter>
