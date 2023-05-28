@@ -5,7 +5,8 @@ module.exports = app => {
     const { validatorLoginMember, validatorRegisterMember } = require("../validators/auth.validators")
     const preferences = require("../controllers/preferences.controller")
     const { validatorCreateAdministrator } = require("../validators/administrators.validators")
-    const { validatorCreateSponsor } = require("../validators/sponsors.validators")
+    const { validatorCreateSponsor, validatorGetSponsor } = require("../validators/sponsors.validators")
+    const sponsors = require("../controllers/sponsors.controller")
     const { authMiddlewareAdministrator } = require("../middleware/session")
     //const {authMiddlewareMember}                            = require("../middleware/session")
     var router = express.Router();
@@ -21,6 +22,9 @@ module.exports = app => {
 
     //REGISTAR UN SPONSOR
     router.post("/register/sponsor", authMiddlewareAdministrator, validatorCreateSponsor, registerSponsor)
+
+    //DAR DE BAJA UN SPONSOR
+    router.delete("/delete/sponsor/:id", authMiddlewareAdministrator, validatorGetSponsor, sponsors.deleteOne)
 
     app.use('/api/auth', router);
 };

@@ -3,7 +3,7 @@ module.exports = app => {
   const activities = require("../controllers/activities.controller.js");
   var router = require("express").Router();
   
-  const {validatorCreateMember, validatorGetMember, validatorGetActivitySponsor} = require("../validators/members.validators.js")
+  const {validatorCreateMember, validatorGetMember, validatorGetActivitySponsor, hashPasswordUpdate} = require("../validators/members.validators.js")
   const { authMiddlewareMember } = require("../middleware/session.js")
 
   /**

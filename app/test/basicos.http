@@ -92,7 +92,7 @@ Content-Type: application/json
     "phone": 717712185
 }
 
-### Un administrador deberá poder registrar a un sponsor con su token y devolverle el token del sponsor, que no caducara
+### Un administrador deberá poder registrar a un sponsor con su token y devolverle el token del sponsor, que no caducará
 POST http://localhost:3011/api/auth/register/sponsor
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjgzODMxNzA3fQ.dvlKeMj7F6xus1VdZTyyyHEf2DLwAstK2lx0vmZO4Ys
@@ -103,6 +103,10 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6I
     "password": "1234",
     "email": "prpe.perez@u-tad.com"
 }
+
+### Un administrador deberá poder dar de baja a un sponsor
+DELETE http://localhost:3011/api/auth/delete/sponsor/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjgzODMxNzA3fQ.dvlKeMj7F6xus1VdZTyyyHEf2DLwAstK2lx0vmZO4Ys
 
 
 
