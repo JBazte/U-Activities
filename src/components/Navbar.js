@@ -2,17 +2,23 @@ import { React, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faCircleXmark } from '@fortawesome/free-regular-svg-icons'
 import { faUserCircle, faCircle, faBell, faCog } from '@fortawesome/free-solid-svg-icons';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Popup from './Popup';
 
 function Navbar() {
     const [showPopup, setShowPopup] = useState(false);
+    let navigate = useNavigate();
 
     const handleLogoutClick = () => {
         setShowPopup(true);
     };
 
-    const handleClosePopup = () => {
+    const handleAcceptPopup = () => {
+        navigate("/login");
+        setShowPopup(false);
+    };
+
+    const handleDeclinePopup = () => {
         setShowPopup(false);
     };
 
@@ -47,7 +53,7 @@ function Navbar() {
                                 <Link className="nav-link" to="#">Ajustes</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="#" onClick={handleLogoutClick}                            >
+                                <Link className="nav-link" to="#" onClick={handleLogoutClick}>
                                     Cerrar sesión
                                 </Link>
                             </li>
@@ -95,7 +101,7 @@ function Navbar() {
                 </div>
             </div>
             {showPopup && (
-                <Popup content="¿Estas seguro de querer cerrar la sesión?" handleClose={handleClosePopup} />
+                <Popup content="¿Estas seguro de querer cerrar la sesión?" handleAccept={handleAcceptPopup} handleDecline={handleDeclinePopup} />
             )}
         </nav>
     );

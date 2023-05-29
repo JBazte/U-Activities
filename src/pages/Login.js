@@ -30,7 +30,7 @@ function Login() {
                                                 <Form.Label className='fw-bold text-dark h6'>Contraseña</Form.Label>
                                                 <Form.Control type="password" />
                                             </Form.Group>
-                                            <Link to="#" className='text-decoration-none text-body'><u>¿Has olvidado tu contraseña?</u></Link>
+                                            <Link to="/forgot" className='text-decoration-none text-body'><u>¿Has olvidado tu contraseña?</u></Link>
                                             {/* <Form.Group controlId="formBasicCheckbox">
                                                     <Form.Check type="checkbox">
                                                     <Form.Check.Input />

@@ -8,7 +8,7 @@ import Signup from './pages/Signup';
 import Activity from './pages/Activity';
 import ActivityEdit from './pages/sponsor/ActivityEdit';
 import Notifications from './pages/Notifications';
-
+import Forgot from './pages/Forgot'
 function App() {
   return (
     <BrowserRouter>
@@ -20,6 +20,7 @@ function App() {
         <Route path="/activity" element={<Activity />} />
         <Route path="/notifications" element={<Notifications />} />
         <Route path="/sponsor/activity" element={<ActivityEdit />} />
+        <Route path="/forgot" element={<Forgot />} />
       </Routes>
     </BrowserRouter>
   );

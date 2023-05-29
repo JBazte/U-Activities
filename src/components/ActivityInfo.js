@@ -1,10 +1,25 @@
-import React from 'react';
+import { React, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faCalendarXmark, faClock, faMap } from '@fortawesome/free-regular-svg-icons'
 import { faUserGroup, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { Button } from 'react-bootstrap';
+import Popup from './Popup';
 
 function ActivityInfo() {
+    const [showPopup, setShowPopup] = useState(false);
+
+    const handleLogoutClick = () => {
+        setShowPopup(true);
+    };
+
+    const handleAcceptPopup = () => {
+        setShowPopup(false);
+    };
+
+    const handleDeclinePopup = () => {
+        setShowPopup(false);
+    };
+
     return (
         <>
             <h1 className='activity-detail-type-text'>Información del evento</h1>
@@ -30,7 +45,7 @@ function ActivityInfo() {
                         </p>
                         <div className='mt-auto'>
                             <Button className='w-100 rounded-1 my-1' style={{ backgroundColor: 'var(--light-grey)', border: 'none' }}>Guardar en favoritos <FontAwesomeIcon icon={faHeart} transform='grow-1' className='ms-2' /></Button>
-                            <Button className='w-100 rounded-1 my-1 bg-button-blue' style={{ backgroundColor: 'var(--light-grey)', border: 'none' }}>Inscribirse a la actividad </Button>
+                            <Button className='w-100 rounded-1 my-1 bg-button-blue' onClick={handleLogoutClick} style={{ backgroundColor: 'var(--light-grey)', border: 'none' }}>Inscribirse a la actividad </Button>
                         </div>
                     </div>
                 </div>
@@ -64,6 +79,9 @@ function ActivityInfo() {
                         </div>
                     </div>
                 </div>
+                {showPopup && (
+                    <Popup content="¿Seguro que quieres inscribirte en la actividad?" handleAccept={handleAcceptPopup} handleDecline={handleDeclinePopup} />
+                )}
             </div>
         </>
     )

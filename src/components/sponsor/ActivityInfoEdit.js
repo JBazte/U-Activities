@@ -1,10 +1,25 @@
-import React from 'react';
+import { React, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendarXmark, faClock, faMap } from '@fortawesome/free-regular-svg-icons'
 import { faUserGroup } from '@fortawesome/free-solid-svg-icons'
 import { Button } from 'react-bootstrap';
+import Popup from '../Popup';
 
 function ActivityInfo() {
+    const [showPopup, setShowPopup] = useState(false);
+
+    const handleLogoutClick = () => {
+        setShowPopup(true);
+    };
+
+    const handleAcceptPopup = () => {
+        setShowPopup(false);
+    };
+
+    const handleDeclinePopup = () => {
+        setShowPopup(false);
+    };
+
     return (
         <>
             <h1 className='activity-detail-type-text'>Información del evento</h1>
@@ -31,10 +46,13 @@ function ActivityInfo() {
                             <input id="maxParticipantes" type="number" min={1} className="mb-2" placeholder='Max' style={{ width: "5rem" }} />
                         </p>
                         <div className='mt-auto'>
-                            <Button className='w-100 rounded-1 my-1 bg-button-blue' style={{ backgroundColor: 'var(--light-grey)', border: 'none' }}>Publicar actividad</Button>
+                            <Button className='w-100 rounded-1 my-1 bg-button-blue' onClick={handleLogoutClick} style={{ backgroundColor: 'var(--light-grey)', border: 'none' }}>Publicar actividad</Button>
                         </div>
                     </div>
                 </div>
+                {showPopup && (
+                    <Popup content="¿Seguro que quieres publicar este evento?" handleAccept={handleAcceptPopup} handleDecline={handleDeclinePopup} />
+                )}
             </div>
         </>
     )

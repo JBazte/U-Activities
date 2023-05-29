@@ -95,7 +95,7 @@ function Signup() {
                 <div className="container-fluid">
                     <div className="row d-flex align-items-center">
                         <div className="col-sm-4 px-0 position-relative d-none d-sm-block">
-                            <Link className="navbar-brand" to="#">
+                            <Link className="navbar-brand" to="/login">
                                 <img src="https://st1.u-tad.com/media/2020/06/logo_utad.png" alt="Logo" className="d-inline-block align-top position-absolute" style={{ left: "10%", top: "10%", marginTop: "-30px", marginLeft: "-5px" }} />
                             </Link>
                             <img src='https://www.marketinclusion.com/wp-content/uploads/2018/08/Fundraising-y-Deporte-ONG.jpg' alt='activity_img' className="w-100 vh-100 object-center" style={{ objectFit: "cover" }} />
