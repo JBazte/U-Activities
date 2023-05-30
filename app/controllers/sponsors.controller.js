@@ -123,3 +123,7 @@ exports.deleteOne = (req, res) => {
         });
       });
 }
+
+exports.findUsersInActivity = (req, res) => {
+  
+}

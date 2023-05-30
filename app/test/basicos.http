@@ -16,13 +16,13 @@ Content-Type: application/json
 
 {
     "member": {
-        "first_name": "Jose",
+        "first_name": "Pepito",
         "last_name": "Castel",
-        "email": "joret@gmail.com",
+        "email": "Pepito@gmail.com",
         "password": "password1",
         "phone": "123496789",
         "birth_date": "1995-06-15",
-        "dni": "57093987H",
+        "dni": "57090987H",
         "gender": "male",
         "degree": "INSO"
     },
@@ -48,16 +48,16 @@ Content-Type: application/json
 ### Un usuario registrado deberá poder editar su propio usuario
 PUT http://localhost:3011/api/members
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsInJvbGUiOiJtZW1iZXIiLCJpYXQiOjE2ODQ0MTIwNDgsImV4cCI6MTY4NDQxOTI0OH0.JuHI2OwdWLUBHR7IWNt40pc4lxAeuTaUjCGAUyEK0iU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsInJvbGUiOiJtZW1iZXIiLCJpYXQiOjE2ODU0NjYzNjMsImV4cCI6MTY4NTQ3MzU2M30.WqQrT8pm9AiR_nvRcLPLC0wQe4qcX2fK-3rs3TXDFeE
 
 {
-    "first_name": "Josecaelos",
-    "last_name": "Castel",
-    "email": "joret@gmail.com",
-    "password": "password2",
+    "first_name": "Pepito",
+    "last_name": "Castelo",
+    "email": "Pepito@gmail.com",
+    "password": "password1",
     "phone": "123496789",
     "birth_date": "1995-06-15",
-    "dni": "57093987H",
+    "dni": "57090987H",
     "gender": "male",
     "degree": "INSO"
 }
@@ -66,7 +66,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsInJvbGUiO
 ### Un usuario registrado podrá apuntarse a una actividad haciendo un post a la tabla de participation
 POST http://localhost:3011/api/participation/1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6Im1lbWJlciIsImlhdCI6MTY4MzgzMTY3OCwiZXhwIjoxNjgzODM4ODc4fQ.Qxa8h2jjg8jWzM3ppyAGHjc2lqqMNgbNnRPmibkUIJk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsInJvbGUiOiJtZW1iZXIiLCJpYXQiOjE2ODU0NjYzNjMsImV4cCI6MTY4NTQ3MzU2M30.WqQrT8pm9AiR_nvRcLPLC0wQe4qcX2fK-3rs3TXDFeE
 
 ### Un usuario registrado podrá darse de baja de una actividad
 DELETE http://localhost:3011/api/participation/1
@@ -95,7 +95,7 @@ Content-Type: application/json
 ### Un administrador deberá poder registrar a un sponsor con su token y devolverle el token del sponsor, que no caducará
 POST http://localhost:3011/api/auth/register/sponsor
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjgzODMxNzA3fQ.dvlKeMj7F6xus1VdZTyyyHEf2DLwAstK2lx0vmZO4Ys
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjg1NDY2NDQyfQ.A4yVgLCD2bL1hCcFImf8eG_Uun7BDycm_4NuW8fl0qs
 
 {
     "entity": "Oracle",
@@ -124,7 +124,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6I
 ### Un sponsor deberá poder crear una actividad con su token de sponsor
 POST http://localhost:3011/api/activities
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6InNwb25zb3IiLCJpYXQiOjE2ODM4MzE3NDksImV4cCI6MTY4MzgzODk0OX0.C2v-Q90kOCSnyoIlpB_-iuoHc7OyTgm1Y8JYI8GBF7Y
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6InNwb25zb3IiLCJpYXQiOjE2ODU0NjY0NTksImV4cCI6MTY4NTQ3MzY1OX0.sCI_bJ933-zHOijV2OnwGQcO7RgxuwUeOPE2VYsau3I
 
 {
     "name": "PruebaActividad",

@@ -7,7 +7,7 @@ module.exports = app => {
     const { validatorCreateAdministrator } = require("../validators/administrators.validators")
     const { validatorCreateSponsor, validatorGetSponsor } = require("../validators/sponsors.validators")
     const sponsors = require("../controllers/sponsors.controller")
-    const { authMiddlewareAdministrator } = require("../middleware/session")
+    const { authMiddlewareAdministrator, authMiddlewareSponsor } = require("../middleware/session")
     //const {authMiddlewareMember}                            = require("../middleware/session")
     var router = express.Router();
 
@@ -25,6 +25,9 @@ module.exports = app => {
 
     //DAR DE BAJA UN SPONSOR
     router.delete("/delete/sponsor/:id", authMiddlewareAdministrator, validatorGetSponsor, sponsors.deleteOne)
+
+    //Un sponsor deberá tener acceso a los usuarios inscritos a una actividad
+    router.get("/sponsor/members/idActivity", authMiddlewareSponsor, )
 
     app.use('/api/auth', router);
 };
