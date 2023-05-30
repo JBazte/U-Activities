@@ -46,6 +46,7 @@ function ActivityInfo() {
                         <div className='mt-auto'>
                             <Button className='w-100 rounded-1 my-1' style={{ backgroundColor: 'var(--light-grey)', border: 'none' }}>Guardar en favoritos <FontAwesomeIcon icon={faHeart} transform='grow-1' className='ms-2' /></Button>
                             <Button className='w-100 rounded-1 my-1 bg-button-blue' onClick={handleLogoutClick} style={{ backgroundColor: 'var(--light-grey)', border: 'none' }}>Inscribirse a la actividad </Button>
+                            <Button className='d-none w-100 rounded-1 my-1' onClick={handleLogoutClick} style={{ backgroundColor: 'var(--red)', border: 'none' }}>Darse de baja de la actividad </Button>
                         </div>
                     </div>
                 </div>

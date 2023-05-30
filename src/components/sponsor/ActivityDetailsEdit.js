@@ -30,6 +30,11 @@ function ActivityDetails() {
                         </li>
                         <li className="list-inline-item pe-5 ps-3">
                             <p className='d-none text-white bg-opacity-75 rounded-5 activity-detail-tags bg-button-blue'><small>Categoría</small></p>
+                            <select class="form-select" aria-label="Categoría">
+                                <option selected>Categoría</option>
+                                <option value="1">Social</option>
+                                <option value="2">Medioambiental</option>
+                            </select>
                         </li>
                     </ul>
                 </div>
