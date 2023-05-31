@@ -36,9 +36,9 @@ module.exports = app => {
      * /api/auth/register/member:
      *  post:
      *      tags:
-     *      - Not registered User
+     *      - Not Registered User
      *      summary: Create a user
-     *      description: ''
+     *      description: 'It will create a user and also the preferences of that user'
      *      responses:
      *          '200':
      *              description: Get the user edited
@@ -95,16 +95,16 @@ module.exports = app => {
     //DAR DE BAJA UN SPONSOR
     /**
      * @openapi
-     * /api/auth/delete/sponsor/:id:
+     * /api/auth/delete/sponsor/{id}:
      *  delete:
      *      tags:
-     *      - Sponsor
-     *      summary: An sponsor deletes his own sponsor
-     *      description: 'A verified jwt admin registers a sponsor in db, which will return the jwt from sponsor'
+     *      - Administrator
+     *      summary: An admin deletes a sponsor
+     *      description: 'A verified jwt admin deletes a sponsor in db'
      *      parameters:
     *          -   name: id
     *              in: path
-    *              description: id that need to be updated
+    *              description: id that need to be deleted in sponsors table
     *              required: true
     *              schema:
     *                  type: string

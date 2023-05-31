@@ -11,7 +11,7 @@ module.exports = app => {
   * /api/activities:
   *  post:
   *      tags:
-  *      - Activities
+  *      - Sponsor
   *      summary: create a new activity
   *      description: ''
   *      requestBody:
@@ -27,8 +27,53 @@ module.exports = app => {
   */
   router.post("/",authMiddlewareSponsor, validatorCreateActivity, activities.create);
 
+  /**
+  * @openapi
+  * /api/activities:
+  *  get:
+  *      tags:
+  *      - Not Registered User
+  *      summary: See all activities
+  *      description: ''
+  *      requestBody:
+  *          content:
+  *              application/json:
+  *                  schema:
+  *                      $ref: "#/components/schemas/activities"
+  *      responses:
+  *          '200':
+  *              description: Returns the objects
+  *          '401':
+  *              description: Validation error
+  */
   router.get("/", activities.findAll);
 
+  /**
+  * @openapi
+  * /api/activities/{id}:
+  *  get:
+  *      tags:
+  *      - Not Registered User
+  *      summary: See an activity by id
+  *      description: ''
+  *      parameters:
+  *          -   name: id
+  *              in: path
+  *              description: id that need to be seen
+  *              required: true
+  *              schema:
+  *                  type: string
+  *      requestBody:
+  *          content:
+  *              application/json:
+  *                  schema:
+  *                      $ref: "#/components/schemas/activities"
+  *      responses:
+  *          '200':
+  *              description: Returns the object
+  *          '401':
+  *              description: Validation error
+  */
   router.get("/:id", validatorGetActivity, activities.findOne);
 
   router.get("/sponsor/:sponsor_id", validatorGetActivitySponsor, activities.getActivities);
