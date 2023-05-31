@@ -1,7 +1,9 @@
 const db = require("../models");
 const sequelize = require("sequelize");
 const Activities = db.activities;
+const Sponsors = db.sponsors
 const Op = db.Sequelize.Op;
+const {handleHttpError} = require("../utils/handleErrors")
 
 //CREATE ONE ACTIVITY
 exports.create = (req, res) => {
@@ -46,20 +48,41 @@ exports.create = (req, res) => {
 
 // Retrieve all Activities from the database.
 
-exports.findAll = (req, res) =>{
+exports.findAll = async (req, res) =>{
     const act = req.query.act;
+    const data = await Activities.findAll()
+    const newData = []
 
-    Activities.findAll()
-        .then(data =>{
-            res.send(data);
-        })
-        .catch(err => {
-            res.status(500).send({
-                message:
-                    err.message || "Some error occurred while retrieving all Activities."
-            });
-        });
-};
+    for(let i in data)
+    {
+      let name = await Sponsors.findOne({
+        where: {
+            id: data[i].sponsor_id
+        },
+        attributes: ['user']
+      }) 
+      console.log(name)
+      newData.push({
+        id: data[i].id,
+        name: data[i].name,
+        description: data[i].description,
+        category: data[i].category,
+        action_field: data[i].action_field,
+        involved_group: data[i].involved_group,
+        location: data[i].location,
+        start_date: data[i].start_date,
+        end_date: data[i].end_date,
+        modality: data[i].modality,
+        min_members: data[i].min_members,
+        max_members: data[i].max_members,
+        sponsor_id: data[i].sponsor_id,
+        sponsor_name: name.user
+      })
+      
+    }
+    res.send(newData);
+  }
+;
 
 exports.getActivities = (req, res) => {
   const sponsor_id = req.params.sponsor_id
@@ -79,25 +102,79 @@ exports.getActivities = (req, res) => {
     });
 }
 
-// Find a single Activity whit an id
-exports.findOne = (req, res) => {
-    const id = req.params.id;
+exports.findAll = async (req, res) =>{
+  const act = req.query.act;
+  const data = await Activities.findAll()
+  const newData = []
 
-    Activities.findByPk(id)
-        .then(data => {
-            if (data) {
-              res.send(data);
-            } else {
-              res.status(404).send({
-                message: "Cannot find a Activity with id" + id
-              });
-            }
-          })
-        .catch(err => {
-            res.status(500).send({
-              message: "Error retrieving Activity with id=" + id
-            });
-        });
+  for(let i in data)
+  {
+    let name = await Sponsors.findOne({
+      where: {
+          id: data[i].sponsor_id
+      },
+      attributes: ['user']
+    }) 
+    console.log(name)
+    newData.push({
+      id: data[i].id,
+      name: data[i].name,
+      description: data[i].description,
+      category: data[i].category,
+      action_field: data[i].action_field,
+      involved_group: data[i].involved_group,
+      location: data[i].location,
+      start_date: data[i].start_date,
+      end_date: data[i].end_date,
+      modality: data[i].modality,
+      min_members: data[i].min_members,
+      max_members: data[i].max_members,
+      sponsor_id: data[i].sponsor_id,
+      sponsor_name: name.user
+    })
+    
+  }
+  res.send(newData);
+}
+
+// Find a single Activity whit an id
+exports.findOne = async (req, res) => {
+    const id = req.params.id;
+    const activity = await Activities.findByPk(id)
+    const newData = []
+
+    if(activity)
+    {
+      const name = await Sponsors.findOne({
+        where: {
+            id: activity.sponsor_id
+        },
+        attributes: ['user']
+      }) 
+
+      newData.push({
+        id: activity.id,
+        name: activity.name,
+        description: activity.description,
+        category: activity.category,
+        action_field: activity.action_field,
+        involved_group: activity.involved_group,
+        location: activity.location,
+        start_date: activity.start_date,
+        end_date: activity.end_date,
+        modality: activity.modality,
+        min_members: activity.min_members,
+        max_members: activity.max_members,
+        sponsor_id: activity.sponsor_id,
+        sponsor_name: name.user
+      })
+
+      res.send(newData);
+    }
+    else{
+      handleHttpError(res, "USER_NOT_EXISTS", 404)
+      return
+    }
 };
 
 exports.update = (req, res) => {

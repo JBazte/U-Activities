@@ -58,7 +58,7 @@ module.exports = app => {
      * /api/auth/login/admin:
      *  post:
      *      tags:
-     *      - Login Admin
+     *      - Administrator
      *      summary: Login to your admin
      *      description: ''
      *      responses:

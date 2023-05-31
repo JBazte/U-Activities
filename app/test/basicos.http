@@ -2,7 +2,7 @@
 GET http://localhost:3011/api/activities
 
 ### Un usuario no registrado podrá ver los detalles de una actividad concreta
-GET http://localhost:3011/api/activities/1
+GET http://localhost:3011/api/activities/2
 
 
 
@@ -89,6 +89,15 @@ Content-Type: application/json
 {
     "user": "Admin5",
     "email": "admin5@live.u-tad.com",
+    "phone": 717712185
+}
+
+### Un administrador deberá poder loggearse
+POST http://localhost:3011/api/auth/login/admin
+Content-Type: application/json
+
+{
+    "user": "Admin5",
     "phone": 717712185
 }
 
