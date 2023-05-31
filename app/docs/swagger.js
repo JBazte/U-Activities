@@ -60,11 +60,16 @@ const options = {
                     },
                     studies: {
                         type: "string",
-                        example: "Ingenieria del software"
+                        example: "INSO"
                     },
                     phone: {
                         type: "string",
                         example: "123456789"
+                    },
+                    dni: {
+                        type: "string",
+                        example: "54768967H"
+
                     },
                     extra_info: {
                         type: "string",
@@ -206,7 +211,7 @@ const options = {
                     }
                 }
             },
-            login: {
+            loginMiembro: {
                 type: "object",
                 required: ["email", "password"],
                 properties: {
@@ -215,8 +220,109 @@ const options = {
                         example: "miemail@google.com"
                     },
                     password: {
-                        type: "string"
+                        type: "string",
+                        example: "holaBuenas123"
                     },
+                }
+            },
+            loginSponsor: {
+                type: "object",
+                required: ["email", "password"],
+                properties: {
+                    email: {
+                        type: "string",
+                        example: "miemail@google.com"
+                    },
+                    password: {
+                        type: "string",
+                        example: "holaBuenas123"
+                    },
+                }
+            },
+            registerMiembro: {
+                type: "object",
+                required: ["email", "password"],
+                properties: {
+                    member: 
+                    {
+                        first_name: {
+                            type: "string",
+                            example: "Carlos"
+                        },
+                        last_name: {
+                            type: "string",
+                            example: "Martinez"
+                        },
+                        email: {
+                            type: "string",
+                            example: "miemail@google.com"
+                        },
+                        birth_date: {
+                            type: "date",
+                            example: "2002-4-23"
+                        },
+                        genre: {
+                            type: "string",
+                            example: "Hombre"
+                        },
+                        password: {
+                            type: "string",
+                            example: " "
+                        },
+                        studies: {
+                            type: "string",
+                            example: "INSO"
+                        },
+                        phone: {
+                            type: "string",
+                            example: "123456789"
+                        },
+                        dni: {
+                            type: "string",
+                            example: "54768967H"
+    
+                        }
+                    },
+                    preferences: {
+                        category: {
+                            type: "string",
+                            example: "medioambiental"
+                        },
+                        modality: {
+                            type: "string",
+                            example: "online"
+                        },
+                        availability: {
+                            type: "string",
+                            example: "total"
+                        },
+                        commitment_estimate: {
+                            type: "string",
+                            example: "total"
+                        }
+                    }
+                }
+            },
+            registerSponsor: {
+                type: "object",
+                required: ["entity", "user", "password", "email"],
+                properties: {
+                    entity: {
+                        type: "string",
+                        example: "Orecle"
+                    },
+                    user: {
+                        type: "string",
+                        example: "Pere"
+                    },
+                    password: {
+                        type: "string",
+                        example: "1234"
+                    },
+                    email: {
+                        type: "string",
+                        example: "prpe.perez@u-tad.com"
+                    }
                 }
             }
         },

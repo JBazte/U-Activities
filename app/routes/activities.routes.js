@@ -24,6 +24,8 @@ module.exports = app => {
   *              description: Returns the inserted object
   *          '401':
   *              description: Validation error
+  *      security:
+  *          - bearerAuth: []
   */
   router.post("/",authMiddlewareSponsor, validatorCreateActivity, activities.create);
 

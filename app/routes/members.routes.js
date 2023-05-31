@@ -114,6 +114,8 @@ module.exports = app => {
    *              description: Returns the inserted object
    *          '401':
    *              description: Validation error
+   *      security:
+   *          - bearerAuth: []
    */
   router.put("/", authMiddlewareMember, hashPasswordUpdate, members.update)
 
