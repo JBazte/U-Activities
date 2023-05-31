@@ -28,80 +28,12 @@ module.exports = app => {
     */
     router.post("/:activity_id", authMiddlewareMember, checkValidActivity,  participation.create);
 
-    /**
-     * @openapi
-     * /api/participation:
-     *  get:
-     *      tags:
-     *      - Participation
-     *      summary: Get participations in the System
-     *      description: ''
-     *      responses:
-     *          '200':
-     *              description: Returns the participations
-     *          '500':
-     *              description: Server error
-     */
     router.get("/", participation.findAll);
     
-    /**
-     * @openapi
-     * /api/participation/{:id}:
-     *  get:
-     *      tags:
-     *      - Participation
-     *      summary: Get one participation in the System
-     *      description: ''
-     *      responses:
-     *          '200':
-     *              description: Returns the participation
-     *          '500':
-     *              description: Server error
-     */
     router.get("/:id", validatorGetParticipation, participation.findOne);
   
-    /**
-     * @openapi
-     * /api/participation/activity/{:activity_id}:
-     *  get:
-     *      tags:
-     *      - Participation
-     *      summary: Get the number of members that are in a participation
-     *      description: ''
-     *      responses:
-     *          '200':
-     *              description: Returns the number of members in the participation
-     *          '500':
-     *              description: Server error
-     */
     router.get("/activity/:activity_id", validatorGetActivityParticipation, participation.getMembers);
     
-    /**
-     * @openapi
-     * /api/participation/{id}:
-     *  put:
-     *      tags:
-     *      - Participation
-     *      summary: Update a participation
-     *      description: Update a participation
-     *      parameters:
-     *          -   name: id
-     *              in: path
-     *              description: id that need to be updated
-     *              required: true
-     *              schema:
-     *                  type: string
-     *      requestBody:
-     *          content:
-     *              application/json:
-     *                  schema:
-     *                      $ref: "#/components/schemas/participation"
-     *      responses:
-     *          '200':
-     *              description: Returns the inserted object
-     *          '401':
-     *              description: Validation error
-     */
     router.put("/:id", validatorGetParticipation, validatorCreateParticipation, participation.update);
     
     /**
