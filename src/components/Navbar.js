@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faCircleXmark } from '@fortawesome/free-regular-svg-icons'
 import { faUserCircle, faCircle, faBell, faCog } from '@fortawesome/free-solid-svg-icons';
@@ -7,13 +7,22 @@ import Popup from './Popup';
 
 function Navbar() {
     const [showPopup, setShowPopup] = useState(false);
+    const [isAdmin, setIsAdmin] = useState(false);
     let navigate = useNavigate();
+
+    useEffect(() => {
+        const adminCookie = document.cookie.split(';').find((cookie) => cookie.trim().startsWith('admin-token='));
+        if (adminCookie) {
+            setIsAdmin(true);
+        }
+    }, []);
 
     const handleLogoutClick = () => {
         setShowPopup(true);
     };
 
     const handleAcceptPopup = () => {
+        document.cookie = "admin-token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
         navigate("/login");
         setShowPopup(false);
     };
@@ -42,6 +51,10 @@ function Navbar() {
                         <li className="nav-item mx-3 my-auto">
                             <Link className="nav-link rounded-pill py-0 px-3 navbar-custom-text" to="#">Más</Link>
                         </li>
+                        {isAdmin &&
+                            <li className="nav-item mx-3 my-auto">
+                                <Link className="nav-link rounded-pill py-0 px-3 navbar-custom-text" to="/admin/sponsor">Agregar Sponsor</Link>
+                            </li>}
                         <div className='d-md-none'>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/notifications">Notificaciones</Link>

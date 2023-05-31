@@ -3,19 +3,26 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
 import Home from './pages/Home';
 import Login from './pages/Login';
+import AdminLogin from './pages/admin/Login';
+import SponsorLogin from './pages/sponsor/Login';
 import NotFound from "./pages/NotFound";
 import Signup from './pages/Signup';
+import SponsorSignup from './pages/sponsor/Signup';
 import Activity from './pages/Activity';
 import ActivityEdit from './pages/sponsor/ActivityEdit';
 import Notifications from './pages/Notifications';
-import Forgot from './pages/Forgot'
+import Forgot from './pages/Forgot';
+
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={HomePage(<Home />)} />
         <Route path="/login" element={<Login />} />
+        <Route path="/sponsor/login" element={<SponsorLogin />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route path="/admin/sponsor" element={<SponsorSignup />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/activity" element={<Activity />} />
         <Route path="/notifications" element={<Notifications />} />

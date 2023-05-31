@@ -28,7 +28,7 @@ function Signup() {
         category: [],
         modality: [],
         availability: '',
-        // commitment_estimate: []
+        commitment_estimate: ''
     });
 
     const handleAdditionalInputChange = (event) => {
@@ -217,6 +217,15 @@ function Signup() {
                                                     <option value="semanal">Semanal</option>
                                                     <option value="mensual">Mensual</option>
                                                     <option value="anual">Anual</option>
+                                                </Form.Control>
+                                            </Form.Group>
+                                            <Form.Group controlId="formDedication">
+                                                <br />
+                                                <Form.Label className='fw-bold text-dark h6'>Estimación de la dedicación</Form.Label>
+                                                <Form.Control as="select" name="commitment_estimate" onChange={handleAdditionalInputChange} required >
+                                                    <option>Selecciona tu disponibilidad</option>
+                                                    <option value="total">Total</option>
+                                                    <option value="parcial">Parcial</option>
                                                 </Form.Control>
                                             </Form.Group>
                                             <br />
