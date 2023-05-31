@@ -11,8 +11,8 @@ module.exports = app => {
   * /api/activities:
   *  post:
   *      tags:
-  *      - Activities
-  *      summary: create a new activity
+  *      - Sponsor
+  *      summary: Create a new activity
   *      description: ''
   *      requestBody:
   *          content:

@@ -5,41 +5,10 @@ module.exports = app => {
   
     var router = require("express").Router();
 
-    /**
-    * @openapi
-    * /api/administrators:
-    *  post:
-    *      tags:
-    *      - Administrators
-    *      summary: create a new admin
-    *      description: ''
-    *      requestBody:
-    *          content:
-    *              application/json:
-    *                  schema:
-    *                      $ref: "#/components/schemas/administrators"
-    *      responses:
-    *          '200':
-    *              description: Returns the inserted object
-    *          '401':
-    *              description: Validation error
-    */
+    // Create a new admin, it will be done by db
     router.post("/", validatorCreateAdministrator, administrators.create);
-    
-    /**
-     * @openapi
-     * /api/administrators:
-     *  get:
-     *      tags:
-     *      - Administrators
-     *      summary: Get all admins in the System
-     *      description: ''
-     *      responses:
-     *          '200':
-     *              description: Returns the administrators
-     *          '500':
-     *              description: Server error
-     */
+
+    //Get all the admins
     router.get("/", administrators.findAll);
 
     /**
