@@ -1,8 +1,8 @@
 
 module.exports = app => {
     const express = require("express")
-    const { registerMember, loginMember, registerAdmin, registerSponsor, loginSponsor }                   = require("../controllers/auth.controller")
-    const { validatorLoginMember, validatorRegisterMember, validatorLoginSponsor } = require("../validators/auth.validators")
+    const { registerMember, loginMember, registerAdmin, registerSponsor, loginSponsor, loginAdmin }                   = require("../controllers/auth.controller")
+    const { validatorLoginMember, validatorRegisterMember, validatorLoginSponsor, validatorLoginAdmin } = require("../validators/auth.validators")
     const preferences = require("../controllers/preferences.controller")
     const { validatorCreateAdministrator } = require("../validators/administrators.validators")
     const { validatorCreateSponsor, validatorGetSponsor } = require("../validators/sponsors.validators")
@@ -51,6 +51,25 @@ module.exports = app => {
 
     //REGISTAR UN ADMIN
     router.post("/register/admin", validatorCreateAdministrator, registerAdmin)
+
+    //LOGIN UN ADMIN
+    /**
+     * @openapi
+     * /api/auth/login/admin:
+     *  post:
+     *      tags:
+     *      - Login Admin
+     *      summary: Login to your admin
+     *      description: ''
+     *      responses:
+     *          '200':
+     *              description: Get your admin
+     *          '403':
+     *              description: Errors in parameters or not found admin
+     *          '500':
+     *              description: Server error
+     */
+    router.post("/login/admin", validatorLoginAdmin, loginAdmin)
 
     //LOGIN DEL SPONSOR
     /**
