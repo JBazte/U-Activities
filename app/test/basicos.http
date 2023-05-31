@@ -41,7 +41,7 @@ POST http://localhost:3011/api/auth/login/member HTTP/1.1
 Content-Type: application/json
 
 {
-    "email": "joret@gmail.com",
+    "email": "Pepito@gmail.com",
     "password": "password1"
 }
 
@@ -87,26 +87,26 @@ POST http://localhost:3011/api/auth/register/admin
 Content-Type: application/json
 
 {
-    "user": "Admin3",
-    "email": "admin3@live.u-tad.com",
+    "user": "Admin5",
+    "email": "admin5@live.u-tad.com",
     "phone": 717712185
 }
 
 ### Un administrador deberá poder registrar a un sponsor con su token y devolverle el token del sponsor, que no caducará
 POST http://localhost:3011/api/auth/register/sponsor
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjg1NDY2NDQyfQ.A4yVgLCD2bL1hCcFImf8eG_Uun7BDycm_4NuW8fl0qs
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Mywicm9sZSI6ImFkbWluIiwiaWF0IjoxNjg1NTQ1MTk5fQ.7pAn6rovR3QWTqpATuPwM6p7jqmo3YeY7FdJqQhy-Zg
 
 {
-    "entity": "Oracle",
-    "user": "Pere",
-    "password": "1234",
-    "email": "prpe.perez@u-tad.com"
+    "entity": "Oracles",
+    "user": "Oracles",
+    "password": "password1",
+    "email": "oraclesSpain@u-tad.com"
 }
 
 ### Un administrador deberá poder dar de baja a un sponsor
-DELETE http://localhost:3011/api/auth/delete/sponsor/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjgzODMxNzA3fQ.dvlKeMj7F6xus1VdZTyyyHEf2DLwAstK2lx0vmZO4Ys
+DELETE http://localhost:3011/api/auth/delete/sponsor/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjg1NTQyNjkyfQ.SHpdqDYwyJQP8sOmalA8TIakT5vj2hIEaXF0o06-eVE
 
 
 
@@ -124,17 +124,17 @@ POST http://localhost:3011/api/auth/login/sponsor
 Content-Type: application/json
 
 {
-    "email": "joret@gmail.com",
+    "email": "oracleSpain@u-tad.com",
     "password": "password1"
 }
 
 ### Un sponsor deberá poder crear una actividad con su token de sponsor
 POST http://localhost:3011/api/activities
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6InNwb25zb3IiLCJpYXQiOjE2ODU0NjY0NTksImV4cCI6MTY4NTQ3MzY1OX0.sCI_bJ933-zHOijV2OnwGQcO7RgxuwUeOPE2VYsau3I
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwicm9sZSI6InNwb25zb3IiLCJpYXQiOjE2ODU1NDUyMjUsImV4cCI6MTY4NTU1MjQyNX0.PrVzfDv7k_HB8Y3lygMuAaUn__STVED4wHrIH0eqCtU
 
 {
-    "name": "PruebaActividad",
+    "name": "PruebaActividad2",
     "description": "steochondropathy",
     "category": "social",
     "action_field": "rutrum",

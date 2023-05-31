@@ -3,6 +3,7 @@ const { tokenSignUser, tokenSignAdmin, tokenSignSponsor } = require("../utils/ha
 const { encrypt, compare } = require("../utils/handlePassword")
 const {handleHttpError} = require("../utils/handleErrors")
 const {members, administrators, sponsors} = require("../models")
+const bcrypt = require('bcryptjs')
 
 /**
  * Encargado de registrar un nuevo usuario
@@ -130,16 +131,16 @@ const loginSponsor = async (req, res) => {
             where: {
                 email: req.email
             },
-            attributes: ['user', 'email']
+            attributes: ['user', 'email', 'password']
         }); 
 
         if(!sponsor){
-            handleHttpError(res, "USER_NOT_EXISTS", 404)
+            handleHttpError(res, "SPONSOR_NOT_EXISTS", 404)
             return
         }
         
         const hashPassword = sponsor.password;
-        const check = await compare(req.password, hashPassword)
+        const check = await bcrypt.compare(req.password, hashPassword)
 
         if(!check){
             handleHttpError(res, "INVALID_PASSWORD", 401)
