@@ -5,15 +5,15 @@ import Footer from '../../components/Footer';
 
 function Login() {
     let navigate = useNavigate();
-    const [userEmail, setUserEmail] = useState('');
+    const [adminPhone, setAdminPhone] = useState('');
 
-    const handleUserEmailChange = (event) => {
-        setUserEmail(event.target.value);
+    const handleAdminPhoneChange = (event) => {
+        setAdminPhone(event.target.value);
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        document.cookie = 'admin-token=' + userEmail + '; path=/';
+        document.cookie = 'admin-token=' + adminPhone + '; path=/';
         window.location.href = '/';
         navigate("/admin/login");
     };
@@ -35,14 +35,14 @@ function Login() {
                                     <Card.Body className="py-3 d-flex flex-column align-items-center">
                                         <h3 className="mb-4">INICIAR SESIÓN</h3>
                                         <Form className='w-100 px-2' onSubmit={handleSubmit}>
-                                            <Form.Group controlId="formEmail" onChange={handleUserEmailChange}>
-                                                <Form.Label className='fw-bold text-dark h6'>Correo Electrónico</Form.Label>
-                                                <Form.Control type="email" />
+                                            <Form.Group controlId="formUser">
+                                                <Form.Label className='fw-bold text-dark h6'>Nombre de Usuario</Form.Label>
+                                                <Form.Control type="user" required />
                                             </Form.Group>
                                             <br />
-                                            <Form.Group controlId="formPassword">
-                                                <Form.Label className='fw-bold text-dark h6'>Contraseña</Form.Label>
-                                                <Form.Control type="password" />
+                                            <Form.Group controlId="formPhone" onChange={handleAdminPhoneChange}>
+                                                <Form.Label className='fw-bold text-dark h6'>Teléfono</Form.Label>
+                                                <Form.Control type="phone" required />
                                             </Form.Group>
                                             <button type="submit" className="btn btn-primary mt-3 w-100">Acceder</button>
                                         </Form>
