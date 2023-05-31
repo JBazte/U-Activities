@@ -1,8 +1,8 @@
 
 module.exports = app => {
     const express = require("express")
-    const { registerMember, loginMember, registerAdmin, registerSponsor }                   = require("../controllers/auth.controller")
-    const { validatorLoginMember, validatorRegisterMember } = require("../validators/auth.validators")
+    const { registerMember, loginMember, registerAdmin, registerSponsor, loginSponsor }                   = require("../controllers/auth.controller")
+    const { validatorLoginMember, validatorRegisterMember, validatorLoginSponsor } = require("../validators/auth.validators")
     const preferences = require("../controllers/preferences.controller")
     const { validatorCreateAdministrator } = require("../validators/administrators.validators")
     const { validatorCreateSponsor, validatorGetSponsor } = require("../validators/sponsors.validators")
@@ -20,6 +20,9 @@ module.exports = app => {
     //REGISTAR UN ADMIN
     router.post("/register/admin", validatorCreateAdministrator, registerAdmin)
 
+    //LOGIN DEL SPONSOR
+    router.post("/login/sponsor", validatorLoginSponsor, loginSponsor)
+
     //REGISTAR UN SPONSOR
     router.post("/register/sponsor", authMiddlewareAdministrator, validatorCreateSponsor, registerSponsor)
 
@@ -27,7 +30,7 @@ module.exports = app => {
     router.delete("/delete/sponsor/:id", authMiddlewareAdministrator, validatorGetSponsor, sponsors.deleteOne)
 
     //Un sponsor deberá tener acceso a los usuarios inscritos a una actividad
-    router.get("/sponsor/members/idActivity", authMiddlewareSponsor, )
+    //router.get("/sponsor/members/idActivity", authMiddlewareSponsor, )
 
     app.use('/api/auth', router);
 };

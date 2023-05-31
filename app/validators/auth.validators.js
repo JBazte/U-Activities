@@ -25,4 +25,12 @@ const validatorLoginMember = [
     }
 ]
 
-module.exports = {validatorRegisterMember, validatorLoginMember}
+const validatorLoginSponsor = [
+    check("email").exists().notEmpty().isEmail(),
+    check("password").exists().notEmpty().isLength( {min:8, max: 64} ),
+    (req, res, next) => {
+        return validateResults(req, res, next)
+    }
+]
+
+module.exports = {validatorRegisterMember, validatorLoginMember, validatorLoginSponsor}

@@ -119,7 +119,14 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6I
 
 
 
+### Un sponsor deberá poder loggearse
+POST http://localhost:3011/api/auth/login/sponsor
+Content-Type: application/json
 
+{
+    "email": "joret@gmail.com",
+    "password": "password1"
+}
 
 ### Un sponsor deberá poder crear una actividad con su token de sponsor
 POST http://localhost:3011/api/activities

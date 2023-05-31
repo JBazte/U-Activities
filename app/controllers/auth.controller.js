@@ -123,4 +123,42 @@ const loginMember = async (req, res) => {
     }
 }
 
-module.exports = { registerMember, registerAdmin, registerSponsor, loginMember }
+const loginSponsor = async (req, res) => {
+    try {
+        req = matchedData(req)
+        var sponsor = await sponsors.findOne({
+            where: {
+                email: req.email
+            },
+            attributes: ['user', 'email']
+        }); 
+
+        if(!sponsor){
+            handleHttpError(res, "USER_NOT_EXISTS", 404)
+            return
+        }
+        
+        const hashPassword = sponsor.password;
+        const check = await compare(req.password, hashPassword)
+
+        if(!check){
+            handleHttpError(res, "INVALID_PASSWORD", 401)
+            return
+        }
+
+        //Si no quisiera devolver el hash del password
+        sponsor.set('password', undefined, {strict: false})
+        const data = {
+            token: await tokenSignSponsor(sponsor),
+            sponsor
+        }
+
+        res.send(data)
+
+    }catch(err){
+        console.log(err)
+        handleHttpError(res, "ERROR_LOGIN_SPONSOR")
+    }
+}
+
+module.exports = { registerMember, registerAdmin, registerSponsor, loginMember, loginSponsor }
