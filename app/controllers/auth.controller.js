@@ -161,6 +161,7 @@ const loginSponsor = async (req, res) => {
         handleHttpError(res, "ERROR_LOGIN_SPONSOR")
     }
 }
+
 const loginAdmin = async (req, res) => {
     try {
         req = matchedData(req)
@@ -176,13 +177,13 @@ const loginAdmin = async (req, res) => {
             return
         }
 
+        const check = compare(req.user, admin.user)
+
         if(!check){
             handleHttpError(res, "INVALID_PASSWORD", 401)
             return
         }
-
-        //Si no quisiera devolver el hash del password
-        admin.set('password', undefined, {strict: false})
+         
         const data = {
             token: await tokenSignAdmin(admin),
             admin
