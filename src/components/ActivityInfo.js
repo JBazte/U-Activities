@@ -5,20 +5,38 @@ import { faUserGroup, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { Button } from 'react-bootstrap';
 import Popup from './Popup';
 
-function ActivityInfo({ data }) {
+function ActivityInfo({data}) {
+    const [showSubscribePopup, setShowSubscribePopup] = useState(false);
+    const [showUnsubscribePopup, setShowUnsubscribePopup] = useState(false);
+    const [isSubscribed, setIsSubscribed] = useState(false);
+
     const { name, location, start_date, end_date } = data;
     const [showPopup, setShowPopup] = useState(false);
 
-    const handleLogoutClick = () => {
-        setShowPopup(true);
+    const handleSubscribeClick = () => {
+        setShowSubscribePopup(true);
     };
 
-    const handleAcceptPopup = () => {
-        setShowPopup(false);
+    const handleAcceptSubscribePopup = () => {
+        setShowSubscribePopup(false);
+        setIsSubscribed(true);
     };
 
-    const handleDeclinePopup = () => {
-        setShowPopup(false);
+    const handleDeclineSubscribePopup = () => {
+        setShowSubscribePopup(false);
+    };
+
+    const handleUnsubscribeClick = () => {
+        setShowUnsubscribePopup(true);
+    };
+
+    const handleAcceptUnsubscribePopup = () => {
+        setShowUnsubscribePopup(false);
+        setIsSubscribed(false);
+    };
+
+    const handleDeclineUnsubscribePopup = () => {
+        setShowUnsubscribePopup(false);
     };
 
     return (
@@ -46,8 +64,10 @@ function ActivityInfo({ data }) {
                         </p>
                         <div className='mt-auto'>
                             <Button className='w-100 rounded-1 my-1' style={{ backgroundColor: 'var(--light-grey)', border: 'none' }}>Guardar en favoritos <FontAwesomeIcon icon={faHeart} transform='grow-1' className='ms-2' /></Button>
-                            <Button className='w-100 rounded-1 my-1 bg-button-blue' onClick={handleLogoutClick} style={{ backgroundColor: 'var(--light-grey)', border: 'none' }}>Inscribirse a la actividad </Button>
-                            <Button className='d-none w-100 rounded-1 my-1' onClick={handleLogoutClick} style={{ backgroundColor: 'var(--red)', border: 'none' }}>Darse de baja de la actividad </Button>
+                            {!isSubscribed &&
+                                <Button id="subscribe-button" className='w-100 rounded-1 my-1 bg-button-blue' onClick={handleSubscribeClick} style={{ backgroundColor: 'var(--light-grey)', border: 'none' }}>Inscribirse a la actividad </Button>}
+                            {isSubscribed &&
+                                <Button id="unsubscribe-button" className='w-100 rounded-1 my-1' onClick={handleUnsubscribeClick} style={{ backgroundColor: 'var(--red)', border: 'none' }}>Darse de baja de la actividad </Button>}
                         </div>
                     </div>
                 </div>
@@ -81,8 +101,11 @@ function ActivityInfo({ data }) {
                         </div>
                     </div>
                 </div>
-                {showPopup && (
-                    <Popup content="¿Seguro que quieres inscribirte en la actividad?" handleAccept={handleAcceptPopup} handleDecline={handleDeclinePopup} />
+                {showSubscribePopup && (
+                    <Popup content="¿Seguro que quieres inscribirte en la actividad?" handleAccept={handleAcceptSubscribePopup} handleDecline={handleDeclineSubscribePopup} />
+                )}
+                {showUnsubscribePopup && (
+                    <Popup content="¿Seguro que quieres darte de baja en la actividad?" handleAccept={handleAcceptUnsubscribePopup} handleDecline={handleDeclineUnsubscribePopup} />
                 )}
             </div>
         </>

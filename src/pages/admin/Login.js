@@ -1,9 +1,23 @@
-import React from 'react';
+import { React, useState } from 'react';
 import { Form, Card } from 'react-bootstrap';
-import { Link } from "react-router-dom";
-import Footer from '../components/Footer';
+import { Link, useNavigate } from "react-router-dom";
+import Footer from '../../components/Footer';
 
 function Login() {
+    let navigate = useNavigate();
+    const [adminPhone, setAdminPhone] = useState('');
+
+    const handleAdminPhoneChange = (event) => {
+        setAdminPhone(event.target.value);
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        document.cookie = 'admin-token=' + adminPhone + '; path=/';
+        window.location.href = '/';
+        navigate("/admin/login");
+    };
+
     return (
         <>
             <section className="vh-100 overflow-hidden">
@@ -20,32 +34,19 @@ function Login() {
                                 <Card className="shadow custom-form">
                                     <Card.Body className="py-3 d-flex flex-column align-items-center">
                                         <h3 className="mb-4">INICIAR SESIÓN</h3>
-                                        <Form className='w-100 px-2'>
-                                            <Form.Group controlId="formEmail">
-                                                <Form.Label className='fw-bold text-dark h6'>Correo Electrónico</Form.Label>
-                                                <Form.Control type="email" required />
+                                        <Form className='w-100 px-2' onSubmit={handleSubmit}>
+                                            <Form.Group controlId="formUser">
+                                                <Form.Label className='fw-bold text-dark h6'>Nombre de Usuario</Form.Label>
+                                                <Form.Control type="user" required />
                                             </Form.Group>
                                             <br />
-                                            <Form.Group controlId="formPassword">
-                                                <Form.Label className='fw-bold text-dark h6'>Contraseña</Form.Label>
-                                                <Form.Control type="password" required />
+                                            <Form.Group controlId="formPhone" onChange={handleAdminPhoneChange}>
+                                                <Form.Label className='fw-bold text-dark h6'>Teléfono</Form.Label>
+                                                <Form.Control type="phone" required />
                                             </Form.Group>
-                                            <Link to="/forgot" className='text-decoration-none text-body'><u>¿Has olvidado tu contraseña?</u></Link>
-                                            {/* <Form.Group controlId="formBasicCheckbox">
-                                                    <Form.Check type="checkbox">
-                                                    <Form.Check.Input />
-                                                    <span> Remember me</span>
-                                                    </Form.Check>
-                                                </Form.Group> */}
-                                            <br />
                                             <button type="submit" className="btn btn-primary mt-3 w-100">Acceder</button>
-                                            <div className="mt-4 w-100 text-center">
-                                                <Link to="/signup">
-                                                    <u style={{ color: "black", textDecoration: "underline black" }}>¿No tienes una cuenta?</u><u style={{ color: "#0065EF", textDecoration: "underline #0065EF" }}> Regístrate</u>
-                                                </Link>
-                                            </div>
                                         </Form>
-                                    </Card.Body >
+                                    </Card.Body>
                                 </Card>
                             </div>
                         </div>

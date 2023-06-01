@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Card } from 'react-bootstrap';
 import { Link } from "react-router-dom";
-import Footer from '../components/Footer';
+import Footer from '../../components/Footer';
 
 function Login() {
     return (
@@ -23,12 +23,12 @@ function Login() {
                                         <Form className='w-100 px-2'>
                                             <Form.Group controlId="formEmail">
                                                 <Form.Label className='fw-bold text-dark h6'>Correo Electrónico</Form.Label>
-                                                <Form.Control type="email" required />
+                                                <Form.Control type="email" />
                                             </Form.Group>
                                             <br />
                                             <Form.Group controlId="formPassword">
                                                 <Form.Label className='fw-bold text-dark h6'>Contraseña</Form.Label>
-                                                <Form.Control type="password" required />
+                                                <Form.Control type="password" />
                                             </Form.Group>
                                             <Link to="/forgot" className='text-decoration-none text-body'><u>¿Has olvidado tu contraseña?</u></Link>
                                             {/* <Form.Group controlId="formBasicCheckbox">
