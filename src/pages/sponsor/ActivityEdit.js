@@ -6,6 +6,8 @@ import ActivityDetails from '../../components/sponsor/ActivityDetailsEdit'
 import Footer from '../../components/Footer';
 import ActivityInfo from '../../components/sponsor/ActivityInfoEdit';
 
+const serverURL = process.env.REACT_APP_BACKEND_URL;
+
 function Activity() {
 
     let navigate = useNavigate();
@@ -14,15 +16,17 @@ function Activity() {
         name: '',
         description: '',
         category: '',
-        action_field: '',
-        involved_group: '',
+        action_field: 'NONE',
+        involved_group: 'NONE',
         location: '',
         start_date: '',
         end_date: '',
-        modality: '',
+        modality: 'NONE',
         min_members: 0,
         max_members: 0
       });
+
+      
 
     //BLOQUEO PARA GENTE SIN TOKEN SPONSOR
     useEffect(() => {
@@ -41,7 +45,9 @@ function Activity() {
         const { name, value } = event.target;
         setActivityData((prevData) => ({
           ...prevData,
-          [name]: value
+          [name]: value,
+          [name]: value,end_date: prevData.start_date,
+
         }));
       };
     
@@ -57,27 +63,49 @@ function Activity() {
     event.preventDefault();
 
     try {
-        console.log(JSON.stringify(activityData))
-        /** 
-        const response = await fetch('http://localhost:3011/api/activities', {
+        var catStr = "default";
+        switch(activityData.category){
+            case "0":
+                break;
+            case "1":
+                catStr="Social";
+                break;
+            case "2":
+                catStr="Medioambiental";
+            break;
+            default:
+        }
+
+        const updatedActivityData = {
+            ...activityData,
+            category: catStr,
+            end_date: activityData.start_date,
+            min_members: parseInt(activityData.min_members),
+            max_members: parseInt(activityData.max_members)
+          };
+        
+        
+        console.log(JSON.stringify(updatedActivityData))
+        
+        const response = await fetch(`${serverURL}/activities`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${sponsorToken}`
         },
-        body: JSON.stringify(activityData)
+        body: JSON.stringify(updatedActivityData)
         });
-
         if (response.ok) {
-        // La solicitud fue exitosa
+        console.log("CONSEGUIDO!!!");
         // Realizar las acciones necesarias (redireccionar, mostrar un mensaje, etc.)
         } else {
         // La solicitud no fue exitosa
         // Manejar el error apropiadamente
-        }*/
+        }
     } catch (error) {
         // Ocurrió un error durante la solicitud
         // Manejar el error apropiadamente
+        console.log("ERROR!!!");
     }
     };
 

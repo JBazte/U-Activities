@@ -68,6 +68,8 @@ function Signup() {
 
         setPasswordError('');
 
+        
+
         try {
             const response = await fetch(`${serverURL}/auth/register/sponsor`, {
                 method: 'POST',

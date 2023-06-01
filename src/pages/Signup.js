@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form, Card } from 'react-bootstrap';
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Footer from '../components/Footer';
 import { useState } from 'react';
@@ -7,6 +8,7 @@ import { useState } from 'react';
 const serverURL = process.env.REACT_APP_BACKEND_URL;
 
 function Signup() {
+    let navigate = useNavigate();
     const [userData, setUserData] = useState({
         email: '',
         password: '',
@@ -66,13 +68,25 @@ function Signup() {
             return;
         }
 
-        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$/;
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
         if (!passwordRegex.test(userData.password)) {
-            setPasswordError("La contraseña debe tener como mínimo 8 caracteres, 1 mayúscula, 1 minúscula, 1 número y 1 caracter especial");
-            return;
+        setPasswordError("La contraseña debe tener como mínimo 8 caracteres, 1 mayúscula y 1 número");
+        return;
         }
-
+        
         setPasswordError('');
+        
+        const modifiedAdditionalData = {
+            ...additionalData, // Copia todos los valores existentes de additionalData
+            category: additionalData.category[0], // Modifica el valor de la clave "category"
+            modality: additionalData.modality[0] // Modifica el valor de la clave "modality"
+          };
+
+        const requestBody = {
+            member: userData,
+            preferences: modifiedAdditionalData
+          };
+        console.log(JSON.stringify(requestBody));
 
         try {
             const response = await fetch(`${serverURL}/auth/register/member`, {
@@ -80,12 +94,17 @@ function Signup() {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({
-                    user: userData,
-                    additionalData: additionalData
-                })
+                body: JSON.stringify(requestBody)
             });
             await response.json();
+            if (response.ok) {
+                console.log("CONSEGUIDO!!!");
+                navigate("/login");
+                // Realizar las acciones necesarias (redireccionar, mostrar un mensaje, etc.)
+                } else {
+                // La solicitud no fue exitosa
+                // Manejar el error apropiadamente
+                }
         } catch (err) {
             console.error('Registration failed:', err);
         }
@@ -97,7 +116,7 @@ function Signup() {
                 <div className="container-fluid">
                     <div className="row d-flex align-items-center">
                         <div className="col-sm-4 px-0 position-relative d-none d-sm-block">
-                            <Link className="navbar-brand" to="/login">
+                            <Link className="navbar-brand" to="/">
                                 <img src="https://st1.u-tad.com/media/2020/06/logo_utad.png" alt="Logo" className="d-inline-block align-top position-absolute" style={{ left: "10%", top: "10%", marginTop: "-30px", marginLeft: "-5px" }} />
                             </Link>
                             <img src='https://www.marketinclusion.com/wp-content/uploads/2018/08/Fundraising-y-Deporte-ONG.jpg' alt='activity_img' className="w-100 vh-100 object-center" style={{ objectFit: "cover" }} />
@@ -121,6 +140,11 @@ function Signup() {
                                                 <br />
                                                 <Form.Label className='fw-bold text-dark h6'>Correo Electrónico</Form.Label>
                                                 <Form.Control type="email" name="email" onChange={handleUserInputChange} required />
+                                            </Form.Group>
+                                            <Form.Group controlId="formPhone">
+                                                <br />
+                                                <Form.Label className='fw-bold text-dark h6'>Numero Telefono</Form.Label>
+                                                <Form.Control type="phone" name="phone" onChange={handleUserInputChange} required />
                                             </Form.Group>
                                             <Form.Group controlId="formPassword">
                                                 <br />

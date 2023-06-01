@@ -31,7 +31,7 @@ function ActivityDetails({onChange}) {
                         </li>
                         <li className="list-inline-item pe-5 ps-3">
                             <p className='d-none text-white bg-opacity-75 rounded-5 activity-detail-tags bg-button-blue'><small>Categoría</small></p>
-                            <select class="form-select" aria-label="Categoría">
+                            <select name='category' onChange={onChange} class="form-select" aria-label="Categoría">
                                 <option selected id="categroy">Categoría</option>
                                 <option value="1">Social</option>
                                 <option value="2">Medioambiental</option>
@@ -42,9 +42,9 @@ function ActivityDetails({onChange}) {
 
                 <div className='px-5'>
                     <input type="text" name='name' onChange={onChange} id='name' className="mb-2 activity-detail-title" placeholder='Nombre del Evento' /> <br />
-                    <textarea rows={4} id="description" className='mb-2 activity-detail-subtitle w-100' placeholder="Descripcion breve" />
+                    <textarea rows={4} id="description" name='description' onChange={onChange} className='mb-2 activity-detail-subtitle w-100' placeholder="Descripcion breve" />
                     <label for="fecha" >Día</label>
-                    <input type="date" id="fecha" className='ms-2 mb-2 activity-detail-schedule' /> <br />
+                    <input type="date" name='start_date' onChange={onChange} id="fecha" className='ms-2 mb-2 activity-detail-schedule' /> <br />
                     <label for="horario">Horario</label>
                     <input type="time" id="horario" className='ms-2 mb-2 activity-detail-schedule' />
                     <input type="time" className='ms-2 mb-2 activity-detail-schedule' />
