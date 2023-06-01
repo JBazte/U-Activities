@@ -1,8 +1,9 @@
 import React from 'react';
+import {onChange} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCamera } from '@fortawesome/free-solid-svg-icons'
 
-function ActivityDetails() {
+function ActivityDetails({onChange}) {
     return (
         <>
             <div className="bg-white shadow rounded overflow-hidden">
@@ -31,7 +32,7 @@ function ActivityDetails() {
                         <li className="list-inline-item pe-5 ps-3">
                             <p className='d-none text-white bg-opacity-75 rounded-5 activity-detail-tags bg-button-blue'><small>Categoría</small></p>
                             <select class="form-select" aria-label="Categoría">
-                                <option selected>Categoría</option>
+                                <option selected id="categroy">Categoría</option>
                                 <option value="1">Social</option>
                                 <option value="2">Medioambiental</option>
                             </select>
@@ -40,9 +41,9 @@ function ActivityDetails() {
                 </div>
 
                 <div className='px-5'>
-                    <input type="text" className="mb-2 activity-detail-title" placeholder='Nombre del Evento' /> <br />
-                    <textarea rows={4} className='mb-2 activity-detail-subtitle w-100' placeholder="Descripcion breve" />
-                    <label for="fecha">Día</label>
+                    <input type="text" name='name' onChange={onChange} id='name' className="mb-2 activity-detail-title" placeholder='Nombre del Evento' /> <br />
+                    <textarea rows={4} id="description" className='mb-2 activity-detail-subtitle w-100' placeholder="Descripcion breve" />
+                    <label for="fecha" >Día</label>
                     <input type="date" id="fecha" className='ms-2 mb-2 activity-detail-schedule' /> <br />
                     <label for="horario">Horario</label>
                     <input type="time" id="horario" className='ms-2 mb-2 activity-detail-schedule' />

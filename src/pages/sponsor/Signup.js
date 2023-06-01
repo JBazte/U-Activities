@@ -5,14 +5,21 @@ import Footer from '../../components/Footer';
 import Navbar from '../../components/Navbar'
 import { useState } from 'react';
 
+const serverURL = process.env.REACT_APP_BACKEND_URL;
+
 function Signup() {
     let navigate = useNavigate();
+    const [adminToken, setAdminToken] = useState('');
 
     useEffect(() => {
         const adminCookie = document.cookie.split(';').find((cookie) => cookie.trim().startsWith('admin-token='));
         if (!adminCookie) {
             navigate("/admin/login");
+        } else {
+            const token = adminCookie.split('=')[1];
+            setAdminToken(token);
         }
+        
 
     }, [navigate]);
 
@@ -53,23 +60,26 @@ function Signup() {
             return;
         }
 
-        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$/;
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
         if (!passwordRegex.test(sponsorData.password)) {
-            setPasswordError("La contraseña debe tener como mínimo 8 caracteres, 1 mayúscula, 1 minúscula, 1 número y 1 caracter especial");
-            return;
+        setPasswordError("La contraseña debe tener como mínimo 8 caracteres, 1 mayúscula y 1 número");
+        return;
         }
 
         setPasswordError('');
 
         try {
-            const response = await fetch('/api/register', {
+            const response = await fetch(`${serverURL}/auth/register/sponsor`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${adminToken}`
                 },
                 body: JSON.stringify(sponsorData)
             });
             await response.json();
+            
+            navigate("/sponsor/login");
         } catch (err) {
             console.error('Registration failed:', err);
         }

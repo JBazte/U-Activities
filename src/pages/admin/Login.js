@@ -3,19 +3,44 @@ import { Form, Card } from 'react-bootstrap';
 import { Link, useNavigate } from "react-router-dom";
 import Footer from '../../components/Footer';
 
+const serverURL = process.env.REACT_APP_BACKEND_URL;
+
 function Login() {
     let navigate = useNavigate();
-    const [adminPhone, setAdminPhone] = useState('');
+    const [email, setEmail] = useState('');
+    const [phone, setPhone] = useState('');
 
-    const handleAdminPhoneChange = (event) => {
-        setAdminPhone(event.target.value);
-    };
-
-    const handleSubmit = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
-        document.cookie = 'admin-token=' + adminPhone + '; path=/';
-        navigate("/");
+
+        try {
+            const response = await fetch(`${serverURL}/auth/login/admin`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email: email,
+                    phone: phone
+                })
+            });
+
+            const data = await response.json();
+
+            const {member, token} = data;
+            
+            document.cookie = 'admin-token=' + token + '; path=/';
+            navigate("/admin/sponsor");
+
+            // Aquí puedes realizar acciones con la respuesta del servidor
+            console.log(data);
+        } catch (error) {
+            // Aquí puedes manejar el error de la solicitud
+            //TODO: mensaje gestion errores login
+            console.error(error);
+        }
     };
+    
 
     return (
         <>
@@ -32,14 +57,14 @@ function Login() {
                             <div className="p-5">
                                 <Card className="shadow custom-form">
                                     <Card.Body className="py-3 d-flex flex-column align-items-center">
-                                        <h3 className="mb-4">INICIAR SESIÓN</h3>
-                                        <Form className='w-100 px-2' onSubmit={handleSubmit}>
+                                        <h3 className="mb-4">INICIAR SESIÓN ADMIN</h3>
+                                        <Form className='w-100 px-2' onSubmit={handleLogin}>
                                             <Form.Group controlId="formUser">
-                                                <Form.Label className='fw-bold text-dark h6'>Nombre de Usuario</Form.Label>
-                                                <Form.Control type="user" required />
+                                                <Form.Label className='fw-bold text-dark h6'>Email</Form.Label>
+                                                <Form.Control type="email" required value={email} onChange={(e) => setEmail(e.target.value)}/>
                                             </Form.Group>
                                             <br />
-                                            <Form.Group controlId="formPhone" onChange={handleAdminPhoneChange}>
+                                            <Form.Group controlId="formPhone" required value={phone} onChange={(e) => setPhone(e.target.value)}>
                                                 <Form.Label className='fw-bold text-dark h6'>Teléfono</Form.Label>
                                                 <Form.Control type="phone" required />
                                             </Form.Group>

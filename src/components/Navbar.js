@@ -24,6 +24,7 @@ function Navbar() {
     const handleAcceptPopup = () => {
         document.cookie = "admin-token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
         document.cookie = "user-token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        document.cookie = "sponsor-token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
         navigate("/login");
         setShowPopup(false);
     };

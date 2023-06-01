@@ -5,20 +5,27 @@ import { faUserGroup } from '@fortawesome/free-solid-svg-icons'
 import { Button } from 'react-bootstrap';
 import Popup from '../Popup';
 
-function ActivityInfo() {
+function ActivityInfo({onSubmit,onChange}) {
     const [showPopup, setShowPopup] = useState(false);
 
     const handleLogoutClick = () => {
         setShowPopup(true);
+        
     };
 
     const handleAcceptPopup = () => {
+        
         setShowPopup(false);
+        const event = { preventDefault: () => {} }; // Crear un objeto evento simulado
+        onSubmit(event);
+        
     };
 
     const handleDeclinePopup = () => {
         setShowPopup(false);
     };
+
+    
 
     return (
         <>
@@ -30,10 +37,6 @@ function ActivityInfo() {
                         <p className='d-flex'>
                             <FontAwesomeIcon icon={faCalendarXmark} transform='grow-5' className='my-1 me-2' />
                             <input type="text" className="mb-2 w-100" placeholder='Fecha del Evento y Horario' /> <br />
-                        </p>
-                        <p className='d-flex'>
-                            <FontAwesomeIcon icon={faClock} transform='grow-5' className='my-1 me-2' />
-                            <input type="number" min={1} className="mb-2 w-100" placeholder='Días Para Inscribirse' /> <br />
                         </p>
                         <p className='d-flex'>
                             <FontAwesomeIcon icon={faMap} transform='grow-5' className='my-1 me-2' />
