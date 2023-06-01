@@ -93,7 +93,7 @@ const loginMember = async (req, res) => {
             where: {
                 email: req.email
             },
-            attributes: ['password', 'first_name', 'email']
+            attributes: ['password', 'first_name', 'email','id']
         }); 
 
         if(!member){
@@ -131,7 +131,7 @@ const loginSponsor = async (req, res) => {
             where: {
                 email: req.email
             },
-            attributes: ['user', 'email', 'password']
+            attributes: ['user', 'email', 'password','id']
         }); 
 
         if(!sponsor){
@@ -167,9 +167,9 @@ const loginAdmin = async (req, res) => {
         req = matchedData(req)
         var admin = await administrators.findOne({
             where: {
-                user: req.user
+                email: req.email
             },
-            attributes: ['user', 'phone']
+            attributes: ['email', 'phone','id']
         }); 
 
         if(!admin){
@@ -177,7 +177,7 @@ const loginAdmin = async (req, res) => {
             return
         }
 
-        const check = compare(req.user, admin.user)
+        const check = compare(req.email, admin.email)
 
         if(!check){
             handleHttpError(res, "INVALID_PASSWORD", 401)
@@ -193,7 +193,7 @@ const loginAdmin = async (req, res) => {
 
     }catch(err){
         console.log(err)
-        handleHttpError(res, "ERROR_LOGIN_SPONSOR")
+        handleHttpError(res, "ERROR_LOGIN_ADMIN")
     }
 }
 

@@ -111,12 +111,12 @@ exports.findAll = async (req, res) =>{
           where: {
             id: activity.sponsor_id,
           },
-          attributes: ['user'],
+          attributes: ['entity'],
         });
 
         return {
           ...activity.toJSON(),
-          sponsor_name: sponsor.user,
+          sponsor_name: sponsor.entity,
         };
       })
     );
@@ -136,13 +136,13 @@ exports.findOne = async (req, res) => {
         where: {
             id: activity.sponsor_id
         },
-        attributes: ['user']
+        attributes: ['entity']
       })
 
       //...activity(se ponen los tres puntos para sacar toda la información del objeto "activity") y le añadimos el sponsor
       const newData = {
         ...activity.toJSON(),
-        sponsor_name: name.user
+        sponsor_name: name.entity
       }
 
       res.send(newData);
