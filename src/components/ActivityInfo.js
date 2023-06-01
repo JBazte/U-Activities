@@ -4,13 +4,15 @@ import { faHeart, faCalendarXmark, faClock, faMap } from '@fortawesome/free-regu
 import { faUserGroup, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { Button } from 'react-bootstrap';
 import Popup from './Popup';
+import moment from 'moment';
+
 
 function ActivityInfo({data}) {
     const [showSubscribePopup, setShowSubscribePopup] = useState(false);
     const [showUnsubscribePopup, setShowUnsubscribePopup] = useState(false);
     const [isSubscribed, setIsSubscribed] = useState(false);
 
-    const { name, location, start_date, end_date } = data;
+    const { location, start_date, max_members } = data;
     const [showPopup, setShowPopup] = useState(false);
 
     const handleSubscribeClick = () => {
@@ -38,6 +40,8 @@ function ActivityInfo({data}) {
     const handleDeclineUnsubscribePopup = () => {
         setShowUnsubscribePopup(false);
     };
+    const currentDate = moment().startOf('day');
+    const diasRestantes = moment(start_date).diff(currentDate,'days');
 
     return (
         <>
@@ -48,19 +52,19 @@ function ActivityInfo({data}) {
 
                         <p>
                             <FontAwesomeIcon icon={faCalendarXmark} transform='grow-5' className='me-2' />
-                            <b>Fecha</b> del Evento y Horario
+                            <b>{start_date}</b> del Evento y Horario
                         </p>
                         <p>
                             <FontAwesomeIcon icon={faClock} transform='grow-5' className='me-2' />
-                            <b>X</b> Días Para Inscribirse
+                            <b>{diasRestantes}</b> Días Para Inscribirse
                         </p>
                         <p>
                             <FontAwesomeIcon icon={faMap} transform='grow-5' className='me-2' />
-                            <b>Ubicación</b>
+                            <b>{location}</b>
                         </p>
                         <p className='mb-4'>
                             <FontAwesomeIcon icon={faUserGroup} transform='grow-5' className='me-2' />
-                            <b>Participantes XX/XX</b>
+                            <b>Participantes XX/{max_members}</b>
                         </p>
                         <div className='mt-auto'>
                             <Button className='w-100 rounded-1 my-1' style={{ backgroundColor: 'var(--light-grey)', border: 'none' }}>Guardar en favoritos <FontAwesomeIcon icon={faHeart} transform='grow-1' className='ms-2' /></Button>

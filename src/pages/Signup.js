@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import Footer from '../components/Footer';
 import { useState } from 'react';
 
+const serverURL = process.env.REACT_APP_BACKEND_URL;
+
 function Signup() {
     const [userData, setUserData] = useState({
         email: '',
@@ -73,7 +75,7 @@ function Signup() {
         setPasswordError('');
 
         try {
-            const response = await fetch('/api/register', {
+            const response = await fetch(`${serverURL}/auth/register/member`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

@@ -14,8 +14,7 @@ function Login() {
     const handleSubmit = (e) => {
         e.preventDefault();
         document.cookie = 'admin-token=' + adminPhone + '; path=/';
-        window.location.href = '/';
-        navigate("/admin/login");
+        navigate("/");
     };
 
     return (
