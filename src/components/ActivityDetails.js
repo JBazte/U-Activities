@@ -3,7 +3,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendarXmark } from '@fortawesome/free-regular-svg-icons'
 import { Button } from 'react-bootstrap';
 
-function ActivityDetails() {
+function ActivityDetails({data}) {
+    const { name,category, description  } = data;
+    console.log(data);
     return (
         <>
             <div className="bg-white shadow rounded overflow-hidden">
@@ -12,7 +14,7 @@ function ActivityDetails() {
                     <div className='w-100 h-100 activity-detail-gradient'></div>
                     <div className='pt-3 ms-5 w-25 position-absolute top-0'>
                         <div className='d-flex'>
-                            <p className='activity-detail-type-text text-white'><small>TIPO DE EVENTO</small></p>
+                            <p className='activity-detail-type-text text-white'><small>{name}</small></p>
                         </div>
                     </div>
                     <div className="px-5 pb-4 media align-items-end position-absolute top-100 start-0 translate-middle-y">
@@ -28,14 +30,14 @@ function ActivityDetails() {
                             <p className='text-white bg-opacity-75 rounded-5 activity-detail-tags'><small>Fines de semana</small></p>
                         </li>
                         <li className="list-inline-item pe-5 ps-3">
-                            <p className='text-white bg-opacity-75 rounded-5 activity-detail-tags bg-button-blue'><small>Categoría</small></p>
+                            <p className='text-white bg-opacity-75 rounded-5 activity-detail-tags bg-button-blue'><small>{category}</small></p>
                         </li>
                     </ul>
                 </div>
 
                 <div className='px-5'>
-                    <h1 className="mb-0 activity-detail-title">Nombre del Evento</h1>
-                    <h5 className='mt-auto activity-detail-subtitle'>Descripcion breve del evento</h5>
+                    <h1 className="mb-0 activity-detail-title">{name}</h1>
+                    <h5 className='mt-auto activity-detail-subtitle'>{description}</h5>
                     <p className='ms-2 mb-2 activity-detail-schedule'><FontAwesomeIcon icon={faCalendarXmark} color='#6F7276' transform="grow-1" className='me-2' /> Lunes 23-10-23</p>
                     <p className='ms-2 mb-2 activity-detail-schedule'><FontAwesomeIcon icon={faCalendarXmark} color='#6F7276' transform="grow-1" className='me-2' /> 19:00-20:00</p>
                     <p className="mt-3 mb-3 activity-detail-body w-100">

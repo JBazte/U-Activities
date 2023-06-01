@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendarCheck } from '@fortawesome/free-regular-svg-icons'
 import { faUser } from '@fortawesome/free-solid-svg-icons';
@@ -6,7 +7,29 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import ActivityCard from './ActivityCard'
 
+
+const serverURL = process.env.REACT_APP_BACKEND_URL;
+
 function ActivityContainer() {
+
+    const [data, setData] = useState(null);
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+    const fetchData = async () => {
+        try {
+        const response = await fetch(`${serverURL}/activities`);
+        const jsonData = await response.json();
+        setData(jsonData);
+        //console.log(jsonData);
+        } catch (error) {
+        console.error('Error:', error);
+        }
+    };
+
+    
     return (
         <>
             <div className="d-flex text-start">
@@ -40,9 +63,16 @@ function ActivityContainer() {
                 </div>
             </div>
             <div className="mt-4">
-                <ActivityCard />
-                <ActivityCard />
-                <ActivityCard />
+            {data ? (
+                <ul>
+                {data.map((item) => (
+                    <ActivityCard key={item.id} data={item} />
+                ))}
+                </ul>
+            ):(
+                <p>Loading...</p>
+            )}
+                
             </div>
         </>
     )

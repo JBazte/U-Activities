@@ -5,7 +5,8 @@ import { faUserGroup, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { Button } from 'react-bootstrap';
 import Popup from './Popup';
 
-function ActivityInfo() {
+function ActivityInfo({ data }) {
+    const { name, location, start_date, end_date } = data;
     const [showPopup, setShowPopup] = useState(false);
 
     const handleLogoutClick = () => {
