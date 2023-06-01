@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
-import { Form, Card } from 'react-bootstrap';
-import { Link, useNavigate} from "react-router-dom";
+import { Form, Card, Alert } from 'react-bootstrap';
+import { Link, useNavigate } from "react-router-dom";
 import Footer from '../components/Footer';
 
 const serverURL = process.env.REACT_APP_BACKEND_URL;
@@ -10,6 +10,11 @@ function Login() {
     let navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
+
+    const handleCloseAlert = () => {
+        setErrorMessage('');
+    };
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -28,7 +33,7 @@ function Login() {
 
             const data = await response.json();
 
-            const {member, token} = data;
+            const { member, token } = data;
             // Almacenar el token en el encabezado de las solicitudes
             /** 
             const headers = {
@@ -38,12 +43,11 @@ function Login() {
             */
             document.cookie = 'user-token=' + token + '; path=/';
             navigate("/");
-
             // Aquí puedes realizar acciones con la respuesta del servidor
             console.log(data);
         } catch (error) {
             // Aquí puedes manejar el error de la solicitud
-            //TODO: mensaje gestion errores login
+            setErrorMessage("Nombre de usuario o contraseña incorrectos");
             console.error(error);
         }
     };
@@ -65,16 +69,21 @@ function Login() {
                                     <Card.Body className="py-3 d-flex flex-column align-items-center">
                                         <h3 className="mb-4">INICIAR SESIÓN</h3>
                                         <Form className='w-100 px-2' onSubmit={handleLogin}>
-                                            
+
                                             <Form.Group controlId="formEmail">
                                                 <Form.Label className='fw-bold text-dark h6'>Correo Electrónico</Form.Label>
-                                                <Form.Control type="email" required value={email} onChange={(e) => setEmail(e.target.value)}/>
+                                                <Form.Control type="email" required value={email} onChange={(e) => setEmail(e.target.value)} />
                                             </Form.Group>
                                             <br />
                                             <Form.Group controlId="formPassword">
                                                 <Form.Label className='fw-bold text-dark h6'>Contraseña</Form.Label>
-                                                <Form.Control type="password" required value={password} onChange={(e) => setPassword(e.target.value)}/>
+                                                <Form.Control type="password" required value={password} onChange={(e) => setPassword(e.target.value)} />
                                             </Form.Group>
+                                            {errorMessage && (
+                                                <Alert variant="danger" className='mt-3' onClose={handleCloseAlert} dismissible>
+                                                    <span>{errorMessage}</span>
+                                                </Alert>
+                                            )}
                                             <Link to="/forgot" className='text-decoration-none text-body'><u>¿Has olvidado tu contraseña?</u></Link>
                                             {/* <Form.Group controlId="formBasicCheckbox">
                                                     <Form.Check type="checkbox">

@@ -8,12 +8,20 @@ import Popup from './Popup';
 function Navbar() {
     const [showPopup, setShowPopup] = useState(false);
     const [isAdmin, setIsAdmin] = useState(false);
+    const [displayLogIn, setDisplayLogIn] = useState(true);
     let navigate = useNavigate();
 
     useEffect(() => {
         const adminCookie = document.cookie.split(';').find((cookie) => cookie.trim().startsWith('admin-token='));
+        const userCookie = document.cookie.split(';').find((cookie) => cookie.trim().startsWith('user-token='));
+        const sponsorCookie = document.cookie.split(';').find((cookie) => cookie.trim().startsWith('sponsor-token='));
         if (adminCookie) {
             setIsAdmin(true);
+            setDisplayLogIn(false);
+        } else if (userCookie) {
+            setDisplayLogIn(false);
+        } else if (sponsorCookie) {
+            setDisplayLogIn(false);
         }
     }, []);
 
@@ -56,61 +64,72 @@ function Navbar() {
                         {isAdmin &&
                             <li className="nav-item mx-3 my-auto">
                                 <Link className="nav-link rounded-pill py-0 px-3 navbar-custom-text" to="/admin/sponsor">Agregar Sponsor</Link>
-                            </li>}
+                            </li>
+                        }
                         <div className='d-md-none'>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/notifications">Notificaciones</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="#">Guardados</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="#">Ajustes</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="#" onClick={handleLogoutClick}>
-                                    Cerrar sesión
-                                </Link>
-                            </li>
+                            {!displayLogIn && (
+                                <>
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/notifications">Notificaciones</Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="#">Guardados</Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="#">Ajustes</Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="#" onClick={handleLogoutClick}>
+                                            Cerrar sesión
+                                        </Link>
+                                    </li>
+                                </>
+                            )}
                         </div>
                         <li className="nav-item my-auto ms-auto">
-                            <Link className="nav-link navbar-custom-text" to="/login"><u>Iniciar sesión</u></Link>
+                            {displayLogIn && (
+                                <Link className="nav-link navbar-custom-text" to="/login"><u>Iniciar sesión</u></Link>
+                            )}
                         </li>
                         <li className="nav-item dropdown me-3 my-auto d-none d-md-block">
-                            <Link className="nav-link dropdown-toggle pt-1" to="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ color: "#0065ef" }} >
-                                <FontAwesomeIcon icon={faUserCircle} size="2xl" style={{ color: "#000000" }} />
-                            </Link>
-                            <ul className="dropdown-menu border border-3 border-primary dropdown-custom-position" aria-labelledby="navbarDropdown">
-                                <li>
-                                    <Link className="dropdown-item" to="/notifications">
-                                        <span className="fa-layers me-2">
-                                            <FontAwesomeIcon icon={faCircle} transform="grow-6" style={{ color: "#000000" }} />
-                                            <FontAwesomeIcon icon={faBell} inverse transform="shrink-3" />
-                                        </span> Notificaciones
+                            {!displayLogIn && (
+                                <>
+                                    <Link className="nav-link dropdown-toggle pt-1" to="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{ color: "#0065ef" }} >
+                                        <FontAwesomeIcon icon={faUserCircle} size="2xl" style={{ color: "#000000" }} />
                                     </Link>
-                                </li>
-                                <li>
-                                    <Link className="dropdown-item" to="#">
-                                        <span className="me-2">
-                                            <FontAwesomeIcon icon={faHeart} transform="grow-6" style={{ color: "#000000" }} />
-                                        </span> Guardados
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link className="dropdown-item" to="#">
-                                        <span className="me-2">
-                                            <FontAwesomeIcon icon={faCog} transform="grow-6" style={{ color: "#000000" }} />
-                                        </span> Ajustes
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link className="dropdown-item" to="#" onClick={handleLogoutClick}>
-                                        <span className="me-2">
-                                            <FontAwesomeIcon icon={faCircleXmark} transform="grow-6" style={{ color: "#000000" }} />
-                                        </span> Cerrar sesión
-                                    </Link>
-                                </li>
-                            </ul>
+                                    <ul className="dropdown-menu border border-3 border-primary dropdown-custom-position" aria-labelledby="navbarDropdown">
+                                        <li>
+                                            <Link className="dropdown-item" to="/notifications">
+                                                <span className="fa-layers me-2">
+                                                    <FontAwesomeIcon icon={faCircle} transform="grow-6" style={{ color: "#000000" }} />
+                                                    <FontAwesomeIcon icon={faBell} inverse transform="shrink-3" />
+                                                </span> Notificaciones
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link className="dropdown-item" to="#">
+                                                <span className="me-2">
+                                                    <FontAwesomeIcon icon={faHeart} transform="grow-6" style={{ color: "#000000" }} />
+                                                </span> Guardados
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link className="dropdown-item" to="#">
+                                                <span className="me-2">
+                                                    <FontAwesomeIcon icon={faCog} transform="grow-6" style={{ color: "#000000" }} />
+                                                </span> Ajustes
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link className="dropdown-item" to="#" onClick={handleLogoutClick}>
+                                                <span className="me-2">
+                                                    <FontAwesomeIcon icon={faCircleXmark} transform="grow-6" style={{ color: "#000000" }} />
+                                                </span> Cerrar sesión
+                                            </Link>
+                                        </li>
+                                    </ul>
+                                </>
+                            )}
                         </li>
                     </ul>
                 </div>
