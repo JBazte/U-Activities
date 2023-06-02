@@ -68,7 +68,7 @@ Content-Type: application/json
     "member": {
         "first_name": "Saul",
         "last_name": "Ivars",
-        "email": "toma@dale.com",
+        "email": "toma@d.com",
         "password": "password1",
         "phone": "123496789",
         "birth_date": "1995-06-15",
@@ -120,37 +120,4 @@ Content-Type: application/json
     "min_members": 22,
     "max_members": 75,
     "sponsor_id": 1
-}
-
-###
-### Un usuario no registrado deberá poder registrarse  y obtener su token, a su vez creará sus preferencias
-POST http://localhost:3011/api/auth/register/member HTTP/1.1
-Content-Type: application/json
-
-{
-    "member": {
-        "first_name": "Saul",
-        "last_name": "Ivars",
-        "email": "toma@dale.com",
-        "password": "password1",
-        "phone": "123496789",
-        "birth_date": "1995-06-15",
-        "dni": "54376745p",
-        "gender": "male",
-        "degree": "INSO"
-    },
-    "preferences": {
-        "category": "medioambiental",
-        "modality": "online",
-        "availability": "total",
-        "commitment_estimate": "total"
-    }
-}
-### Un usuario registrado deberá poder hacer login y obtener su token
-POST http://localhost:3011/api/auth/login/member HTTP/1.1
-Content-Type: application/json
-
-{
-    "email": "toma@dale.com",
-    "password": "password1"
 }
