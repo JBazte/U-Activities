@@ -64,7 +64,7 @@ function ActivityInfo({data}) {
                         </p>
                         <p className='mb-4'>
                             <FontAwesomeIcon icon={faUserGroup} transform='grow-5' className='me-2' />
-                            <b>Participantes XX/{max_members}</b>
+                            <b>Participantes 0/{max_members}</b>
                         </p>
                         <div className='mt-auto'>
                             <Button className='w-100 rounded-1 my-1' style={{ backgroundColor: 'var(--light-grey)', border: 'none' }}>Guardar en favoritos <FontAwesomeIcon icon={faHeart} transform='grow-1' className='ms-2' /></Button>

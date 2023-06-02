@@ -37,7 +37,7 @@ function ActivityDetails({data}) {
 
                 <div className='px-5'>
                     <h1 className="mb-0 activity-detail-title">{name}</h1>
-                    <h5 className='mt-auto activity-detail-subtitle'>{description}</h5>
+                    <h5 className='mt-auto activity-detail-subtitle'>{description.split('.')[0]+'.'}</h5>
                     <p className='ms-2 mb-2 activity-detail-schedule'><FontAwesomeIcon icon={faCalendarXmark} color='#6F7276' transform="grow-1" className='me-2' /> Lunes 23-10-23</p>
                     <p className='ms-2 mb-2 activity-detail-schedule'><FontAwesomeIcon icon={faCalendarXmark} color='#6F7276' transform="grow-1" className='me-2' /> 19:00-20:00</p>
                     <p className="mt-3 mb-3 activity-detail-body w-100">

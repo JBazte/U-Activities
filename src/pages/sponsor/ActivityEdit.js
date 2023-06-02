@@ -96,7 +96,10 @@ function Activity() {
         body: JSON.stringify(updatedActivityData)
         });
         if (response.ok) {
-        console.log("CONSEGUIDO!!!");
+            const data = await response.json();
+            console.log("CONSEGUIDO!!!");
+            
+            navigate(`/activity/${data.id}`)
         // Realizar las acciones necesarias (redireccionar, mostrar un mensaje, etc.)
         } else {
         // La solicitud no fue exitosa

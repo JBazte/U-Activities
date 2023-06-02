@@ -20,14 +20,14 @@ function ActivityContainer() {
 
     const fetchData = async () => {
         try {
-        const response = await fetch(`${serverURL}/activities`);
-        const jsonData = await response.json();
-        setData(jsonData);
-        //console.log(jsonData);
+          const response = await fetch(`${serverURL}/activities`);
+          const jsonData = await response.json();
+          const sortedData = jsonData.sort((a, b) => new Date(a.start_date) - new Date(b.start_date));
+          setData(sortedData);
         } catch (error) {
-        console.error('Error:', error);
+          console.error('Error:', error);
         }
-    };
+      };
 
     
     return (
