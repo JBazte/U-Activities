@@ -47,7 +47,7 @@ exports.create = (req, res) => {
 };
 
 // Retrieve all Activities from the database.
-/**
+
 exports.findAll = async (req, res) =>{
     const act = req.query.act;
     const data = await Activities.findAll()
@@ -83,7 +83,7 @@ exports.findAll = async (req, res) =>{
     res.send(newData);
   }
 ;
- */
+
 exports.getActivities = (req, res) => {
   const sponsor_id = req.params.sponsor_id
   
@@ -101,26 +101,39 @@ exports.getActivities = (req, res) => {
       });
     });
 }
-// Retrieve all Activities from the database.
-exports.findAll = async (req, res) =>{
-    const act = req.query.act;
-    const data = await Activities.findAll();
-    const newData = await Promise.all(
-      data.map(async (activity) => {
-        const sponsor = await Sponsors.findOne({
-          where: {
-            id: activity.sponsor_id,
-          },
-          attributes: ['entity'],
-        });
 
-        return {
-          ...activity.toJSON(),
-          sponsor_name: sponsor.entity,
-        };
-      })
-    );
+exports.findAll = async (req, res) =>{
+  const act = req.query.act;
+  const data = await Activities.findAll()
+  const newData = []
+
+  for(let i in data)
+  {
+    let name = await Sponsors.findOne({
+      where: {
+          id: data[i].sponsor_id
+      },
+      attributes: ['user']
+    }) 
+    console.log(name)
+    newData.push({
+      id: data[i].id,
+      name: data[i].name,
+      description: data[i].description,
+      category: data[i].category,
+      action_field: data[i].action_field,
+      involved_group: data[i].involved_group,
+      location: data[i].location,
+      start_date: data[i].start_date,
+      end_date: data[i].end_date,
+      modality: data[i].modality,
+      min_members: data[i].min_members,
+      max_members: data[i].max_members,
+      sponsor_id: data[i].sponsor_id,
+      sponsor_name: name.user
+    })
     
+  }
   res.send(newData);
 }
 
@@ -128,7 +141,7 @@ exports.findAll = async (req, res) =>{
 exports.findOne = async (req, res) => {
     const id = req.params.id;
     const activity = await Activities.findByPk(id)
-    
+    const newData = []
 
     if(activity)
     {
@@ -136,14 +149,25 @@ exports.findOne = async (req, res) => {
         where: {
             id: activity.sponsor_id
         },
-        attributes: ['entity']
-      })
+        attributes: ['user']
+      }) 
 
-      //...activity(se ponen los tres puntos para sacar toda la información del objeto "activity") y le añadimos el sponsor
-      const newData = {
-        ...activity.toJSON(),
-        sponsor_name: name.entity
-      }
+      newData.push({
+        id: activity.id,
+        name: activity.name,
+        description: activity.description,
+        category: activity.category,
+        action_field: activity.action_field,
+        involved_group: activity.involved_group,
+        location: activity.location,
+        start_date: activity.start_date,
+        end_date: activity.end_date,
+        modality: activity.modality,
+        min_members: activity.min_members,
+        max_members: activity.max_members,
+        sponsor_id: activity.sponsor_id,
+        sponsor_name: name.user
+      })
 
       res.send(newData);
     }
