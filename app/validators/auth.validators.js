@@ -34,7 +34,7 @@ const validatorLoginSponsor = [
 ]
 
 const validatorLoginAdmin = [
-    check("user").exists().notEmpty().isEmail(),
+    check("email").exists().notEmpty().isEmail(),
     check("phone").exists().notEmpty().isLength( {min:8, max: 64} ),
     (req, res, next) => {
         return validateResults(req, res, next)

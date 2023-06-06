@@ -16,13 +16,13 @@ Content-Type: application/json
 
 {
     "member": {
-        "first_name": "Pepito",
-        "last_name": "Castel",
-        "email": "Pepito@gmail.com",
+        "first_name": "Saul",
+        "last_name": "Ivars",
+        "email": "toma@dale.com",
         "password": "password1",
         "phone": "123496789",
         "birth_date": "1995-06-15",
-        "dni": "57090987H",
+        "dni": "54376745p",
         "gender": "male",
         "degree": "INSO"
     },
@@ -87,9 +87,9 @@ POST http://localhost:3011/api/auth/register/admin
 Content-Type: application/json
 
 {
-    "user": "Admin5",
-    "email": "admin5@live.u-tad.com",
-    "phone": 717712185
+    "user": "AdminSaul",
+    "email": "saulit25@gmail.com",
+    "phone": 670866017
 }
 
 ### Un administrador deberá poder loggearse
@@ -97,8 +97,8 @@ POST http://localhost:3011/api/auth/login/admin
 Content-Type: application/json
 
 {
-    "user": "Admin5",
-    "phone": 717712185
+    "user": "AdminSaul",
+    "phone": 670866017
 }
 
 ### Un administrador deberá poder registrar a un sponsor con su token y devolverle el token del sponsor, que no caducará
@@ -107,10 +107,10 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Mywicm9sZSI6ImFkbWluIiwiaWF0IjoxNjg1NTQ1MTk5fQ.7pAn6rovR3QWTqpATuPwM6p7jqmo3YeY7FdJqQhy-Zg
 
 {
-    "entity": "Oracles",
-    "user": "Oracles",
+    "entity": "Uvas Jalon",
+    "user": "Fernando",
     "password": "password1",
-    "email": "oraclesSpain@u-tad.com"
+    "email": "uvas@u-tad.com"
 }
 
 ### Un administrador deberá poder dar de baja a un sponsor
@@ -140,12 +140,12 @@ Content-Type: application/json
 ### Un sponsor deberá poder crear una actividad con su token de sponsor
 POST http://localhost:3011/api/activities
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwicm9sZSI6InNwb25zb3IiLCJpYXQiOjE2ODU1NDUyMjUsImV4cCI6MTY4NTU1MjQyNX0.PrVzfDv7k_HB8Y3lygMuAaUn__STVED4wHrIH0eqCtU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6InNwb25zb3IiLCJpYXQiOjE2ODU2MjI2MzQsImV4cCI6MTY4NTYyOTgzNH0.54gIEEmhwE63ryP11L8nshRSS0ziYrdU6foyrgj3Yco
 
 {
-    "name": "PruebaActividad2",
-    "description": "steochondropathy",
-    "category": "social",
+    "name": "Vendimia de la uva",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vulputate condimentum ante in volutpat. Phasellus a ante turpis. Vivamus tortor enim, lacinia sit amet maximus tincidunt, venenatis vel libero. Mauris fringilla tortor id varius tristique. Vestibulum faucibus arcu et metus vehicula, ut sollicitudin libero laoreet. ",
+    "category": "agricultura",
     "action_field": "rutrum",
     "involved_group": "ac",
     "location": "578 Fair Oaks Court",
