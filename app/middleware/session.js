@@ -96,7 +96,7 @@ const authMiddlewareAdministrator = async (req, res, next) => {
         const token = req.headers.authorization.split(' ').pop() 
         //Del token, miramos en Payload (revisar verifyToken de utils/handleJwt)
         const dataToken = await verifyTokenAdmin(token)
-
+        console.log(dataToken)
         if(!dataToken) {
             handleHttpError(res, "NOT_PAYLOAD_DATA", 401)
             return

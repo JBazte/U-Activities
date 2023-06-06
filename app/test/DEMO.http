@@ -1,0 +1,123 @@
+### MOSTRAR ACTIVITIES SIN TOKEN
+
+GET http://localhost:3011/api/activities
+
+### MOSTRAR DETALLES DE UNA ACTIVITY SIN TOKEN
+
+GET http://localhost:3011/api/activities/3
+
+### INICIAR SESION ADMIN (EL REGISTRO SE HARA EN BASE DE DATOS)
+
+POST http://localhost:3011/api/auth/login/admin
+Content-Type: application/json
+
+{
+    "email": "nova@gmail.com",
+    "phone": 999999999
+}
+
+### CREAR UN USUARIO DE SPONSOR DESDE UN USUARIO ADMIN
+
+POST http://localhost:3011/api/auth/register/sponsor
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODU2NDM3OTN9.PAxNHL1orPohXn06Y0OHTkXiA1CGhiv-R2-hzJ845JA
+
+{
+    "entity": "Pruebas",
+    "user": "Julio",
+    "password": "password1",
+    "email": "ffsf@santander.com"
+}
+
+### INICIAR SESION CON UN SPONSOR
+
+POST http://localhost:3011/api/auth/login/sponsor
+Content-Type: application/json
+
+{
+    "email": "oracleSpain@u-tad.com",
+    "password": "password1"
+}
+
+### CREAR UNA NUEVA ACTIVIDAD DESDE LA CUENTA DE UN SPONOR
+
+POST http://localhost:3011/api/activities
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Niwicm9sZSI6InNwb25zb3IiLCJpYXQiOjE2ODU2MjI2MzQsImV4cCI6MTY4NTYyOTgzNH0.54gIEEmhwE63ryP11L8nshRSS0ziYrdU6foyrgj3Yco
+
+{
+    "name": "Vendimia de la uva",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vulputate condimentum ante in volutpat. Phasellus a ante turpis. Vivamus tortor enim, lacinia sit amet maximus tincidunt, venenatis vel libero. Mauris fringilla tortor id varius tristique. Vestibulum faucibus arcu et metus vehicula, ut sollicitudin libero laoreet. ",
+    "category": "agricultura",
+    "action_field": "rutrum",
+    "involved_group": "ac",
+    "location": "578 Fair Oaks Court",
+    "start_date": "2022-05-26",
+    "end_date": "2023-12-21",
+    "modality": "presencial",
+    "min_members": 22,
+    "max_members": 75
+}
+
+### REGISTRARSE COMO NUEVO MIEMBRO
+
+POST http://localhost:3011/api/auth/register/member HTTP/1.1
+Content-Type: application/json
+
+{
+    "member": {
+        "first_name": "Saul",
+        "last_name": "Ivars",
+        "email": "toma@d.com",
+        "password": "password1",
+        "phone": "123496789",
+        "birth_date": "1995-06-15",
+        "dni": "54376745p",
+        "gender": "male",
+        "degree": "INSO"
+    },
+    "preferences": {
+        "category": "medioambiental",
+        "modality": "online",
+        "availability": "total",
+        "commitment_estimate": "total"
+    }
+}
+
+### INICIAR SESION CON EL NUEVO MIEMBRO
+
+POST http://localhost:3011/api/auth/login/member HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "Pepito@gmail.com",
+    "password": "password1"
+}
+
+### MOSTRAR ACTIVITIES DESDE EL MIEMBRO RECIEN CREADO
+
+???
+
+### MOSTRAR DETALLES DE UNA ACTIVITY DESDE EL MIEMBRO RECIEN CREADO
+
+???
+
+### ALGO MÁS QUE TIENE QUE HACER EL USUARIO
+
+POST http://localhost:3011/api/activities
+Content-Type: application/json
+
+{
+    "name": "Zoolabo",
+    "description": "steochondropathy",
+    "category": "social",
+    "action_field": "rutrum",
+    "involved_group": "ac",
+    "location": "578 Fair Oaks Court",
+    "start_date": "2022-05-26",
+    "end_date": "2023-12-21",
+    "modality": "presencial",
+    "min_members": 22,
+    "max_members": 75,
+    "sponsor_id": 1
+}
